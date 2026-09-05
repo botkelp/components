@@ -1,0 +1,62 @@
+{
+  "id": "prisma",
+  "name": "Prisma ORM (PostgreSQL)",
+  "version": "1.0.0",
+  "description": "Adds Prisma ORM (v7, driver-adapter based) with a PostgreSQL datasource and a hot-reload-safe singleton PrismaClient for use in Next.js Server Components, Route Handlers, and Server Actions. Point DATABASE_URL at any hosted Postgres instance.",
+  "requires": ["nextjs-base"],
+  "provides": ["orm"],
+  "dependencies": ["@prisma/client", "@prisma/adapter-pg"],
+  "devDependencies": ["prisma", "dotenv"],
+  "envVariables": ["DATABASE_URL"],
+  "sources": [
+    { "type": "docs", "label": "Prisma docs", "url": "https://www.prisma.io/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "prisma v7.10.0 release notes",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Prisma examples (has a Next.js example)",
+      "url": "https://github.com/prisma/prisma-examples/tree/5bc8f012075e2d9f0a42d4b62c205035cbc156de",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/schema.prisma.ejs",
+      "destination": "prisma/schema.prisma"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/prisma.config.ts.ejs",
+      "destination": "prisma.config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/prisma.ts.ejs",
+      "destination": "lib/prisma.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "@prisma/client": "7.10.0",
+          "@prisma/adapter-pg": "7.10.0"
+        },
+        "devDependencies": {
+          "prisma": "7.10.0",
+          "dotenv": "17.4.2"
+        },
+        "scripts": {
+          "postinstall": "prisma generate",
+          "db:push": "prisma db push",
+          "db:studio": "prisma studio"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "paypal",
+  "name": "PayPal React SDK",
+  "version": "1.0.0",
+  "description": "Adds PayPal's official React SDK (@paypal/react-paypal-js) for integrating PayPal payments, subscriptions, and payment methods into Next.js applications. Uses PayPalScriptProvider for SDK script management with React context.",
+  "requires": ["nextjs-base"],
+  "provides": ["payments", "billing"],
+  "dependencies": ["@paypal/react-paypal-js"],
+  "devDependencies": [],
+  "envVariables": ["NEXT_PUBLIC_PAYPAL_CLIENT_ID"],
+  "sources": [
+    { "type": "docs", "label": "PayPal JS SDK Documentation", "url": "https://paypal.github.io/paypal-js/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "paypal paypal-js @paypal/react-paypal-js@10.4.0 release",
+      "url": "https://github.com/paypal/paypal-js/releases/tag/%40paypal%2Freact-paypal-js%4010.4.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "PayPal paypal-js repository (React samples in packages/react-paypal-js)",
+      "url": "https://github.com/paypal/paypal-js/tree/eb54388b4f657fa638cdf6117a2fc665dd836540",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/paypal/client.ts.ejs",
+      "destination": "lib/paypal/client.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/paypal-provider.tsx.ejs",
+      "destination": "components/paypal-provider.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/paypal-buttons.tsx.ejs",
+      "destination": "components/paypal-buttons.tsx"
+    },
+    {
+      "type": "ast_inject",
+      "targetFile": "app/layout.tsx",
+      "astRule": "wrap_root_jsx",
+      "wrapperComponent": "PayPalProviderWrapper",
+      "importStatement": "import { PayPalProviderWrapper } from '@/components/paypal-provider'"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "@paypal/react-paypal-js": "10.4.0"
+        }
+      }
+    }
+  ]
+}

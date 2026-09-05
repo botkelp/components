@@ -1,0 +1,65 @@
+{
+  "id": "supabase-client",
+  "name": "Supabase Database & Auth Client",
+  "version": "2.0.0",
+  "description": "Adds browser/server Supabase clients (@supabase/ssr) and wraps the root layout in a SupabaseProvider via AST injection.",
+  "requires": ["nextjs-base"],
+  "provides": ["database", "authentication"],
+  "dependencies": ["@supabase/ssr", "@supabase/supabase-js"],
+  "devDependencies": [],
+  "envVariables": ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"],
+  "sources": [
+    { "type": "docs", "label": "Supabase docs", "url": "https://supabase.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "supabase/supabase releases (the monorepo's own release tags don't track @supabase/ssr or @supabase/supabase-js's npm versions, which ship from separate repos)",
+      "url": "https://github.com/supabase/supabase/releases",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Supabase examples",
+      "url": "https://github.com/supabase/supabase/tree/cecb3281201d6990437ba01bf4518c0ba3598cc2/examples",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "securityNotes": [
+    "The anon key is exposed to the client. You MUST enable Row-Level Security (RLS) on ALL tables.",
+    "Without RLS, anyone with the anon key can read/write your database directly.",
+    "See: https://supabase.com/docs/guides/auth/row-level-security"
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/supabase/client.ts.ejs",
+      "destination": "lib/supabase/client.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/supabase/server.ts.ejs",
+      "destination": "lib/supabase/server.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/supabase-provider.tsx.ejs",
+      "destination": "components/supabase-provider.tsx"
+    },
+    {
+      "type": "ast_inject",
+      "targetFile": "app/layout.tsx",
+      "astRule": "wrap_root_jsx",
+      "wrapperComponent": "SupabaseProvider",
+      "importStatement": "import { SupabaseProvider } from '@/components/supabase-provider'"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "@supabase/ssr": "0.12.5",
+          "@supabase/supabase-js": "2.113.0"
+        }
+      }
+    }
+  ]
+}

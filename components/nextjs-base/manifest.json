@@ -1,0 +1,85 @@
+{
+  "id": "nextjs-base",
+  "name": "Next.js App Router Base",
+  "version": "2.0.0",
+  "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Every other component requires this one, directly or transitively.",
+  "requires": [],
+  "provides": ["framework"],
+  "dependencies": ["next", "react", "react-dom"],
+  "devDependencies": [
+    "typescript",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "eslint",
+    "eslint-config-next"
+  ],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Next.js docs", "url": "https://nextjs.org/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "next.js v16.3.4 release notes",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Next.js examples",
+      "url": "https://github.com/vercel/next.js/tree/8ea76d64ca3931c1beccceb15d32df5d770f4957/examples",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/package.json.ejs",
+      "destination": "package.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.json.ejs",
+      "destination": "tsconfig.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/next.config.ts.ejs",
+      "destination": "next.config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/next-env.d.ts.ejs",
+      "destination": "next-env.d.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/eslint.config.mjs.ejs",
+      "destination": "eslint.config.mjs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/layout.tsx.ejs",
+      "destination": "app/layout.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/page.tsx.ejs",
+      "destination": "app/page.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/globals.css.ejs",
+      "destination": "app/globals.css"
+    }
+  ]
+}

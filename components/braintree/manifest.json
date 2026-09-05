@@ -1,0 +1,52 @@
+{
+  "id": "braintree",
+  "name": "Braintree Web SDK",
+  "version": "1.0.0",
+  "description": "Adds Braintree Web SDK (braintree-web) for integrating Braintree payment processing in Next.js applications. Provides client-side tokenization for credit cards, PayPal, and other payment methods. Requires a client authorization token from your server.",
+  "requires": ["nextjs-base"],
+  "provides": ["payments", "billing"],
+  "dependencies": ["braintree-web"],
+  "devDependencies": [],
+  "envVariables": ["NEXT_PUBLIC_BRAINTREE_AUTHORIZATION"],
+  "sources": [
+    { "type": "docs", "label": "Braintree Web Client Reference v3.145.0", "url": "https://braintree.github.io/braintree-web/current/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "braintree braintree-web v3.145.0 release",
+      "url": "https://github.com/braintree/braintree-web/releases/tag/3.145.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Braintree braintree-web repository with examples",
+      "url": "https://github.com/braintree/braintree-web/tree/1cf6bfc778e8db469ff2d7cbad2ce3c947ae7fa6",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/types/braintree-web.d.ts.ejs",
+      "destination": "types/braintree-web.d.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/braintree/client.ts.ejs",
+      "destination": "lib/braintree/client.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/braintree/hosted-fields.ts.ejs",
+      "destination": "lib/braintree/hosted-fields.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "braintree-web": "3.145.0"
+        }
+      }
+    }
+  ]
+}

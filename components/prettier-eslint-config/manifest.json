@@ -1,0 +1,62 @@
+{
+  "id": "prettier-eslint-config",
+  "name": "Prettier + ESLint Config",
+  "version": "2.0.0",
+  "description": "Adds Prettier with a standard config, and overwrites eslint.config.mjs (flat config) to fold in eslint-config-prettier/flat so formatting-conflicting lint rules are disabled.",
+  "requires": ["nextjs-base"],
+  "provides": ["code-formatting", "linting"],
+  "dependencies": [],
+  "devDependencies": ["prettier", "eslint-config-prettier"],
+  "envVariables": [],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "ESLint flat config docs (this component's actual job — folding eslint-config-prettier into eslint.config.mjs)",
+      "url": "https://eslint.org/docs/latest/use/configure/configuration-files",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-releases",
+      "label": "eslint v9.39.5 release notes",
+      "url": "https://github.com/eslint/eslint/releases/tag/v9.39.5",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "eslint-config-prettier's own repo (its README's flat-config usage is what this component actually follows — neither ESLint nor Prettier has a dedicated /examples directory)",
+      "url": "https://github.com/prettier/eslint-config-prettier/tree/bd6e6171434c7b34dec3dd0f325aab792c126ec6",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/prettierrc.json.ejs",
+      "destination": ".prettierrc.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/prettierignore.ejs",
+      "destination": ".prettierignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/eslint.config.mjs.ejs",
+      "destination": "eslint.config.mjs",
+      "overwrite": true
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "devDependencies": {
+          "prettier": "3.9.6",
+          "eslint-config-prettier": "10.1.8"
+        },
+        "scripts": {
+          "format": "prettier --write ."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "recaptcha",
+  "name": "reCAPTCHA Widget",
+  "version": "1.0.0",
+  "description": "Adds Google reCAPTCHA widget support to Next.js applications. This is a script-based integration (no npm install needed for the widget itself). The reCAPTCHA widget provides CAPTCHA protection for forms and prevents automated abuse. Requires a site key from Google reCAPTCHA admin console.",
+  "requires": ["nextjs-base"],
+  "provides": ["security", "captcha"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["NEXT_PUBLIC_RECAPTCHA_SITE_KEY"],
+  "sources": [
+    { "type": "docs", "label": "Google reCAPTCHA developer documentation", "url": "https://developers.google.com/recaptcha/docs/display", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "google recaptcha reference implementation",
+      "url": "https://github.com/google/recaptcha",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Google recaptcha sample implementations",
+      "url": "https://github.com/google/recaptcha/tree/master/examples",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/recaptcha-widget.tsx.ejs",
+      "destination": "components/recaptcha-widget.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/recaptcha-script.tsx.ejs",
+      "destination": "components/recaptcha-script.tsx"
+    },
+    {
+      "type": "ast_inject",
+      "targetFile": "app/layout.tsx",
+      "astRule": "add_import",
+      "importStatement": "import { ReCaptchaScript } from '@/components/recaptcha-script'"
+    },
+    {
+      "type": "ast_inject",
+      "targetFile": "app/layout.tsx",
+      "astRule": "add_export",
+      "exportStatement": "export { ReCaptchaScript }",
+      "position": "end"
+    }
+  ]
+}

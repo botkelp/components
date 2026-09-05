@@ -1,0 +1,49 @@
+{
+  "id": "tailwind",
+  "name": "Tailwind CSS",
+  "version": "2.0.0",
+  "description": "Adds Tailwind CSS v4 (CSS-first config, no tailwind.config.ts) and replaces app/globals.css with the Tailwind import + theme tokens.",
+  "requires": ["nextjs-base"],
+  "provides": ["styling"],
+  "dependencies": [],
+  "devDependencies": ["tailwindcss", "@tailwindcss/postcss"],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Tailwind CSS docs", "url": "https://tailwindcss.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "tailwindcss v4.3.3 release notes",
+      "url": "https://github.com/tailwindlabs/tailwindcss/releases/tag/v4.3.3",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Tailwind playgrounds (no separate /examples directory in this repo)",
+      "url": "https://github.com/tailwindlabs/tailwindcss/tree/f723e834ad032aa0f42405f95f684be3cfcac8ef/playgrounds",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/postcss.config.mjs.ejs",
+      "destination": "postcss.config.mjs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/globals.css.ejs",
+      "destination": "app/globals.css",
+      "overwrite": true
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "devDependencies": {
+          "tailwindcss": "4.3.3",
+          "@tailwindcss/postcss": "4.3.3"
+        }
+      }
+    }
+  ]
+}

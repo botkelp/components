@@ -1,0 +1,42 @@
+{
+  "id": "core-js",
+  "name": "Core JS Polyfill",
+  "version": "1.0.0",
+  "description": "Adds Core.js (v3.50.0), a modular standard library polyfill for ECMAScript features. Provides polyfills for ES6+ features including Promise, Array methods, Object methods, String methods, and more. Required for supporting older browsers in Next.js applications.",
+  "requires": ["nextjs-base"],
+  "provides": ["polyfill", "browser-support"],
+  "dependencies": ["core-js"],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Core.js official documentation", "url": "https://github.com/zloirock/core-js#readme", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "zloirock core-js v3.50.0 release",
+      "url": "https://github.com/zloirock/core-js/releases/tag/v3.50.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Core.js tests folder (as examples-equivalent)",
+      "url": "https://github.com/zloirock/core-js/tree/8935535573357734e255991651c307219d46105/tests",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/core-js.ts.ejs",
+      "destination": "lib/core-js.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "core-js": "3.50.0"
+        }
+      }
+    }
+  ]
+}

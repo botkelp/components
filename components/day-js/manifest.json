@@ -1,0 +1,48 @@
+{
+  "id": "day-js",
+  "name": "Day.js Date Library",
+  "version": "1.0.0",
+  "description": "Adds Day.js (v1.11.23), a 2kB immutable date-time library as a modern alternative to Moment.js with the same API. Parse, validate, manipulate, and display dates and times for modern browsers. Supports internationalization, plugins, and TypeScript.",
+  "requires": ["nextjs-base"],
+  "provides": ["date-time", "utilities"],
+  "dependencies": ["dayjs"],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Day.js official documentation", "url": "https://day.js.org/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "iamkun dayjs v1.11.23 release",
+      "url": "https://github.com/iamkun/dayjs/releases/tag/v1.11.23",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Day.js examples folder in repository",
+      "url": "https://github.com/iamkun/dayjs/tree/73017be41431e9d99bc89277c0cfa38d46d714db/examples",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/dayjs.ts.ejs",
+      "destination": "lib/dayjs.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/types/dayjs.d.ts.ejs",
+      "destination": "types/dayjs.d.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "dayjs": "1.11.23"
+        },
+        "devDependencies": {}
+      }
+    }
+  ]
+}

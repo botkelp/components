@@ -1,0 +1,38 @@
+{
+  "id": "footer",
+  "name": "Footer",
+  "version": "1.0.0",
+  "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
+  "requires": ["tailwind"],
+  "provides": ["footer"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Next.js docs (no separate upstream package — this is a plain Next.js App Router component)",
+      "url": "https://nextjs.org/docs",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-releases",
+      "label": "next.js v16.3.4 release notes",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Next.js examples",
+      "url": "https://github.com/vercel/next.js/tree/8ea76d64ca3931c1beccceb15d32df5d770f4957/examples",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/footer.tsx.ejs",
+      "destination": "components/footer.tsx"
+    }
+  ]
+}

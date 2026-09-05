@@ -1,0 +1,54 @@
+{
+  "id": "shadcn-ui",
+  "name": "Shadcn UI (Button, Card)",
+  "version": "1.0.0",
+  "description": "Adds the shadcn/ui `cn` utility plus Button and Card primitives, styled with Tailwind and class-variance-authority.",
+  "requires": ["tailwind"],
+  "provides": ["ui-components"],
+  "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "shadcn/ui docs", "url": "https://ui.shadcn.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "shadcn/ui releases (hand-rolled Button/Card here, not the shadcn CLI — no specific version to pin against)",
+      "url": "https://github.com/shadcn-ui/ui/releases",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "shadcn/ui reference app using these components",
+      "url": "https://github.com/shadcn-ui/ui/tree/51f3e12203b0026ea106cafb4f770bda9abead87/apps/v4",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/utils.ts.ejs",
+      "destination": "lib/utils.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/ui/button.tsx.ejs",
+      "destination": "components/ui/button.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/ui/card.tsx.ejs",
+      "destination": "components/ui/card.tsx"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "class-variance-authority": "0.7.0",
+          "clsx": "2.1.1",
+          "tailwind-merge": "2.5.2"
+        }
+      }
+    }
+  ]
+}
