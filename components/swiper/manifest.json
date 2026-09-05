@@ -1,0 +1,47 @@
+{
+  "id": "swiper",
+  "name": "Swiper Slider",
+  "version": "1.0.0",
+  "description": "Adds Swiper (v14), the most modern mobile touch slider with hardware-accelerated transitions. Library-agnostic, modular, and framework-compatible for Next.js applications. Supports React components via swiper/react.",
+  "requires": ["nextjs-base"],
+  "provides": ["ui", "carousel", "slider"],
+  "dependencies": ["swiper"],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Swiper official documentation", "url": "https://swiperjs.com/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "nolimits4web swiper v14.2.0 release",
+      "url": "https://github.com/nolimits4web/swiper/releases/tag/v14.2.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Swiper demos folder in repository",
+      "url": "https://github.com/nolimits4web/swiper/tree/eb02f3ce28aec376a055ac7ca9490f6c3788d0c2/demos",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/swiper.ts.ejs",
+      "destination": "lib/swiper.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/swiper-slider.tsx.ejs",
+      "destination": "components/swiper-slider.tsx"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "swiper": "14.2.0"
+        }
+      }
+    }
+  ]
+}

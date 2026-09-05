@@ -1,0 +1,45 @@
+{
+  "id": "jquery",
+  "name": "jQuery",
+  "version": "1.0.0",
+  "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app — real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
+  "requires": ["nextjs-base"],
+  "provides": ["dom-manipulation", "utilities"],
+  "dependencies": ["jquery"],
+  "devDependencies": ["@types/jquery"],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "jQuery official documentation", "url": "https://api.jquery.com/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "jquery jquery v4.0.0 release",
+      "url": "https://github.com/jquery/jquery/releases/tag/4.0.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "jQuery test folder (as examples-equivalent)",
+      "url": "https://github.com/jquery/jquery/tree/6a23511d406a44264992a27758432879f4c9a2d6/test",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/jquery.ts.ejs",
+      "destination": "lib/jquery.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "jquery": "4.0.0"
+        },
+        "devDependencies": {
+          "@types/jquery": "^3.5.0"
+        }
+      }
+    }
+  ]
+}

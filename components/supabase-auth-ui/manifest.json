@@ -1,0 +1,38 @@
+{
+  "id": "supabase-auth-ui",
+  "name": "Supabase Auth Pages (Login + Callback)",
+  "version": "1.1.0",
+  "description": "Adds a /login page (email magic link) styled with shadcn/ui Button, and the /auth/callback route handler that exchanges the OAuth/magic-link code for a session.",
+  "requires": ["supabase-client", "shadcn-ui"],
+  "provides": ["auth-ui"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [],
+  "sources": [
+    { "type": "docs", "label": "Supabase Auth docs", "url": "https://supabase.com/docs/guides/auth", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "supabase/supabase releases (the monorepo's own release tags don't track @supabase/ssr's npm version, which ships from a separate repo)",
+      "url": "https://github.com/supabase/supabase/releases",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Supabase auth examples",
+      "url": "https://github.com/supabase/supabase/tree/cecb3281201d6990437ba01bf4518c0ba3598cc2/examples/auth",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/login/page.tsx.ejs",
+      "destination": "app/login/page.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/auth/callback/route.ts.ejs",
+      "destination": "app/auth/callback/route.ts"
+    }
+  ]
+}

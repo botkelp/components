@@ -1,0 +1,571 @@
+[
+  {
+    "id": "aos",
+    "name": "Animate On Scroll (AOS)",
+    "version": "1.0.0",
+    "description": "Adds AOS (Animate On Scroll) library for CSS3-driven scroll animations in Next.js applications. Apply data-aos attributes to elements to trigger animations as they enter the viewport. Supports fade, flip, zoom, and slide animations with configurable duration, delay, and easing.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "ui",
+      "animation"
+    ],
+    "dependencies": [
+      "aos"
+    ],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "types/aos.d.ts",
+        "template": "templates/types/aos.d.ts.ejs"
+      },
+      {
+        "destination": "lib/aos.ts",
+        "template": "templates/lib/aos.ts.ejs"
+      },
+      {
+        "destination": "components/aos-init.tsx",
+        "template": "templates/components/aos-init.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "braintree",
+    "name": "Braintree Web SDK",
+    "version": "1.0.0",
+    "description": "Adds Braintree Web SDK (braintree-web) for integrating Braintree payment processing in Next.js applications. Provides client-side tokenization for credit cards, PayPal, and other payment methods. Requires a client authorization token from your server.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "payments",
+      "billing"
+    ],
+    "dependencies": [
+      "braintree-web"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_BRAINTREE_AUTHORIZATION"
+    ],
+    "files": [
+      {
+        "destination": "types/braintree-web.d.ts",
+        "template": "templates/types/braintree-web.d.ts.ejs"
+      },
+      {
+        "destination": "lib/braintree/client.ts",
+        "template": "templates/lib/braintree/client.ts.ejs"
+      },
+      {
+        "destination": "lib/braintree/hosted-fields.ts",
+        "template": "templates/lib/braintree/hosted-fields.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "core-js",
+    "name": "Core JS Polyfill",
+    "version": "1.0.0",
+    "description": "Adds Core.js (v3.50.0), a modular standard library polyfill for ECMAScript features. Provides polyfills for ES6+ features including Promise, Array methods, Object methods, String methods, and more. Required for supporting older browsers in Next.js applications.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "polyfill",
+      "browser-support"
+    ],
+    "dependencies": [
+      "core-js"
+    ],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "lib/core-js.ts",
+        "template": "templates/lib/core-js.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "day-js",
+    "name": "Day.js Date Library",
+    "version": "1.0.0",
+    "description": "Adds Day.js (v1.11.23), a 2kB immutable date-time library as a modern alternative to Moment.js with the same API. Parse, validate, manipulate, and display dates and times for modern browsers. Supports internationalization, plugins, and TypeScript.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "date-time",
+      "utilities"
+    ],
+    "dependencies": [
+      "dayjs"
+    ],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "lib/dayjs.ts",
+        "template": "templates/lib/dayjs.ts.ejs"
+      },
+      {
+        "destination": "types/dayjs.d.ts",
+        "template": "templates/types/dayjs.d.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase JS SDK",
+    "version": "1.0.0",
+    "description": "Adds Firebase JavaScript SDK (v12) with modular imports for use in Next.js applications. Initialize Firebase with your project's configuration object to access services like Firestore, Authentication, Realtime Database, and more.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database",
+      "authentication",
+      "realtime"
+    ],
+    "dependencies": [
+      "firebase"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_FIREBASE_API_KEY",
+      "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+      "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+      "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+      "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+      "NEXT_PUBLIC_FIREBASE_APP_ID",
+      "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID"
+    ],
+    "files": [
+      {
+        "destination": "lib/firebase.ts",
+        "template": "templates/lib/firebase.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "footer",
+    "name": "Footer",
+    "version": "1.0.0",
+    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
+    "requires": [
+      "tailwind"
+    ],
+    "provides": [
+      "footer"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "components/footer.tsx",
+        "template": "templates/components/footer.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "jquery",
+    "name": "jQuery",
+    "version": "1.0.0",
+    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app \u2014 real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "dom-manipulation",
+      "utilities"
+    ],
+    "dependencies": [
+      "jquery"
+    ],
+    "devDependencies": [
+      "@types/jquery"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "lib/jquery.ts",
+        "template": "templates/lib/jquery.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "navbar",
+    "name": "Navbar",
+    "version": "1.0.0",
+    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
+    "requires": [
+      "tailwind"
+    ],
+    "provides": [
+      "navigation"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "components/navbar.tsx",
+        "template": "templates/components/navbar.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "nextjs-base",
+    "name": "Next.js App Router Base",
+    "version": "2.0.0",
+    "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Every other component requires this one, directly or transitively.",
+    "requires": [],
+    "provides": [
+      "framework"
+    ],
+    "dependencies": [
+      "next",
+      "react",
+      "react-dom"
+    ],
+    "devDependencies": [
+      "typescript",
+      "@types/node",
+      "@types/react",
+      "@types/react-dom",
+      "eslint",
+      "eslint-config-next"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "next.config.ts",
+        "template": "templates/next.config.ts.ejs"
+      },
+      {
+        "destination": "next-env.d.ts",
+        "template": "templates/next-env.d.ts.ejs"
+      },
+      {
+        "destination": "eslint.config.mjs",
+        "template": "templates/eslint.config.mjs.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/gitignore.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      },
+      {
+        "destination": "app/layout.tsx",
+        "template": "templates/app/layout.tsx.ejs"
+      },
+      {
+        "destination": "app/page.tsx",
+        "template": "templates/app/page.tsx.ejs"
+      },
+      {
+        "destination": "app/globals.css",
+        "template": "templates/app/globals.css.ejs"
+      }
+    ]
+  },
+  {
+    "id": "paypal",
+    "name": "PayPal React SDK",
+    "version": "1.0.0",
+    "description": "Adds PayPal's official React SDK (@paypal/react-paypal-js) for integrating PayPal payments, subscriptions, and payment methods into Next.js applications. Uses PayPalScriptProvider for SDK script management with React context.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "payments",
+      "billing"
+    ],
+    "dependencies": [
+      "@paypal/react-paypal-js"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_PAYPAL_CLIENT_ID"
+    ],
+    "files": [
+      {
+        "destination": "lib/paypal/client.ts",
+        "template": "templates/lib/paypal/client.ts.ejs"
+      },
+      {
+        "destination": "components/paypal-provider.tsx",
+        "template": "templates/components/paypal-provider.tsx.ejs"
+      },
+      {
+        "destination": "components/paypal-buttons.tsx",
+        "template": "templates/components/paypal-buttons.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "prettier-eslint-config",
+    "name": "Prettier + ESLint Config",
+    "version": "2.0.0",
+    "description": "Adds Prettier with a standard config, and overwrites eslint.config.mjs (flat config) to fold in eslint-config-prettier/flat so formatting-conflicting lint rules are disabled.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "code-formatting",
+      "linting"
+    ],
+    "dependencies": [],
+    "devDependencies": [
+      "prettier",
+      "eslint-config-prettier"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": ".prettierrc.json",
+        "template": "templates/prettierrc.json.ejs"
+      },
+      {
+        "destination": ".prettierignore",
+        "template": "templates/prettierignore.ejs"
+      },
+      {
+        "destination": "eslint.config.mjs",
+        "template": "templates/eslint.config.mjs.ejs"
+      }
+    ]
+  },
+  {
+    "id": "prisma",
+    "name": "Prisma ORM (PostgreSQL)",
+    "version": "1.0.0",
+    "description": "Adds Prisma ORM (v7, driver-adapter based) with a PostgreSQL datasource and a hot-reload-safe singleton PrismaClient for use in Next.js Server Components, Route Handlers, and Server Actions. Point DATABASE_URL at any hosted Postgres instance.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "orm"
+    ],
+    "dependencies": [
+      "@prisma/client",
+      "@prisma/adapter-pg"
+    ],
+    "devDependencies": [
+      "prisma",
+      "dotenv"
+    ],
+    "envVariables": [
+      "DATABASE_URL"
+    ],
+    "files": [
+      {
+        "destination": "prisma/schema.prisma",
+        "template": "templates/schema.prisma.ejs"
+      },
+      {
+        "destination": "prisma.config.ts",
+        "template": "templates/prisma.config.ts.ejs"
+      },
+      {
+        "destination": "lib/prisma.ts",
+        "template": "templates/lib/prisma.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "recaptcha",
+    "name": "reCAPTCHA Widget",
+    "version": "1.0.0",
+    "description": "Adds Google reCAPTCHA widget support to Next.js applications. This is a script-based integration (no npm install needed for the widget itself). The reCAPTCHA widget provides CAPTCHA protection for forms and prevents automated abuse. Requires a site key from Google reCAPTCHA admin console.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "security",
+      "captcha"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
+    ],
+    "files": [
+      {
+        "destination": "components/recaptcha-widget.tsx",
+        "template": "templates/components/recaptcha-widget.tsx.ejs"
+      },
+      {
+        "destination": "components/recaptcha-script.tsx",
+        "template": "templates/components/recaptcha-script.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "shadcn-ui",
+    "name": "Shadcn UI (Button, Card)",
+    "version": "1.0.0",
+    "description": "Adds the shadcn/ui `cn` utility plus Button and Card primitives, styled with Tailwind and class-variance-authority.",
+    "requires": [
+      "tailwind"
+    ],
+    "provides": [
+      "ui-components"
+    ],
+    "dependencies": [
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "lib/utils.ts",
+        "template": "templates/lib/utils.ts.ejs"
+      },
+      {
+        "destination": "components/ui/button.tsx",
+        "template": "templates/components/ui/button.tsx.ejs"
+      },
+      {
+        "destination": "components/ui/card.tsx",
+        "template": "templates/components/ui/card.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "supabase-auth-ui",
+    "name": "Supabase Auth Pages (Login + Callback)",
+    "version": "1.1.0",
+    "description": "Adds a /login page (email magic link) styled with shadcn/ui Button, and the /auth/callback route handler that exchanges the OAuth/magic-link code for a session.",
+    "requires": [
+      "supabase-client",
+      "shadcn-ui"
+    ],
+    "provides": [
+      "auth-ui"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "app/login/page.tsx",
+        "template": "templates/app/login/page.tsx.ejs"
+      },
+      {
+        "destination": "app/auth/callback/route.ts",
+        "template": "templates/app/auth/callback/route.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "supabase-client",
+    "name": "Supabase Database & Auth Client",
+    "version": "2.0.0",
+    "description": "Adds browser/server Supabase clients (@supabase/ssr) and wraps the root layout in a SupabaseProvider via AST injection.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database",
+      "authentication"
+    ],
+    "dependencies": [
+      "@supabase/ssr",
+      "@supabase/supabase-js"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+    ],
+    "files": [
+      {
+        "destination": "lib/supabase/client.ts",
+        "template": "templates/lib/supabase/client.ts.ejs"
+      },
+      {
+        "destination": "lib/supabase/server.ts",
+        "template": "templates/lib/supabase/server.ts.ejs"
+      },
+      {
+        "destination": "components/supabase-provider.tsx",
+        "template": "templates/components/supabase-provider.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "swiper",
+    "name": "Swiper Slider",
+    "version": "1.0.0",
+    "description": "Adds Swiper (v14), the most modern mobile touch slider with hardware-accelerated transitions. Library-agnostic, modular, and framework-compatible for Next.js applications. Supports React components via swiper/react.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "ui",
+      "carousel",
+      "slider"
+    ],
+    "dependencies": [
+      "swiper"
+    ],
+    "devDependencies": [],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "lib/swiper.ts",
+        "template": "templates/lib/swiper.ts.ejs"
+      },
+      {
+        "destination": "components/swiper-slider.tsx",
+        "template": "templates/components/swiper-slider.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "version": "2.0.0",
+    "description": "Adds Tailwind CSS v4 (CSS-first config, no tailwind.config.ts) and replaces app/globals.css with the Tailwind import + theme tokens.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "styling"
+    ],
+    "dependencies": [],
+    "devDependencies": [
+      "tailwindcss",
+      "@tailwindcss/postcss"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "postcss.config.mjs",
+        "template": "templates/postcss.config.mjs.ejs"
+      },
+      {
+        "destination": "app/globals.css",
+        "template": "templates/globals.css.ejs"
+      }
+    ]
+  }
+]

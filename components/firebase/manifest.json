@@ -1,0 +1,42 @@
+{
+  "id": "firebase",
+  "name": "Firebase JS SDK",
+  "version": "1.0.0",
+  "description": "Adds Firebase JavaScript SDK (v12) with modular imports for use in Next.js applications. Initialize Firebase with your project's configuration object to access services like Firestore, Authentication, Realtime Database, and more.",
+  "requires": ["nextjs-base"],
+  "provides": ["database", "authentication", "realtime"],
+  "dependencies": ["firebase"],
+  "devDependencies": [],
+  "envVariables": ["NEXT_PUBLIC_FIREBASE_API_KEY", "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN", "NEXT_PUBLIC_FIREBASE_PROJECT_ID", "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET", "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID", "NEXT_PUBLIC_FIREBASE_APP_ID", "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID"],
+  "sources": [
+    { "type": "docs", "label": "Firebase web setup documentation", "url": "https://firebase.google.com/docs/web/setup", "verifiedAt": "2026-09-02" },
+    {
+      "type": "github-releases",
+      "label": "firebase firebase-js-sdk v12.18.0 release",
+      "url": "https://github.com/firebase/firebase-js-sdk/releases/tag/firebase%4012.18.0",
+      "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "github-examples",
+      "label": "Firebase quickstart-js examples",
+      "url": "https://github.com/firebase/quickstart-js/tree/232916704d89c1cdc9e8a1da17cf180113a1837c",
+      "verifiedAt": "2026-09-02"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/firebase.ts.ejs",
+      "destination": "lib/firebase.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "firebase": "12.18.0"
+        }
+      }
+    }
+  ]
+}
