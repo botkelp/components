@@ -380,8 +380,8 @@
   {
     "id": "clerk",
     "name": "Clerk Authentication",
-    "version": "1.0.0",
-    "description": "Clerk authentication integration for Next.js App Router. Includes Clerk provider, middleware, and sign-in/sign-out pages. Packages pinned to @clerk/nextjs@5.0.0 (verified 2026-09-06).",
+    "version": "2.0.0",
+    "description": "Clerk authentication integration for Next.js App Router using the real, current @clerk/nextjs API: clerkMiddleware in proxy.ts, a ClerkProvider actually wired into the root layout, and the built-in verifyWebhook helper for the webhook route.",
     "requires": [
       "nextjs-base"
     ],
@@ -395,11 +395,11 @@
     "envVariables": [
       "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
       "CLERK_SECRET_KEY",
-      "CLERK_WEBHOOK_SECRET",
+      "CLERK_WEBHOOK_SIGNING_SECRET",
       "NEXT_PUBLIC_CLERK_SIGN_IN_URL",
       "NEXT_PUBLIC_CLERK_SIGN_UP_URL",
-      "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL",
-      "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL"
+      "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL",
+      "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL"
     ],
     "files": [
       {
@@ -407,8 +407,8 @@
         "template": "templates/providers.tsx.ejs"
       },
       {
-        "destination": "middleware.ts",
-        "template": "templates/middleware/middleware.ts.ejs"
+        "destination": "proxy.ts",
+        "template": "templates/proxy.ts.ejs"
       },
       {
         "destination": "app/sign-in/[[...sign-in]]/page.tsx",
