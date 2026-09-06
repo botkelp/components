@@ -1,154 +1,43 @@
 /**
- * Clerk Webhook Handler
- * 
- * Handles Clerk webhook events for user synchronization.
- * 
- * Source: https://clerk.com/docs/nextjs/webhooks
+ * Clerk webhook handler using the SDK's own verifyWebhook helper — it reads
+ * CLERK_WEBHOOK_SIGNING_SECRET and verifies the raw request body itself, so
+ * there's no separate svix dependency or manual signature check to get
+ * wrong here.
+ *
+ * Source: https://github.com/clerk/skills/blob/main/skills/features/clerk-webhooks/SKILL.md
  * Verified: 2026-09-06
  */
-
+import { verifyWebhook } from '@clerk/nextjs/webhooks';
 import { NextRequest, NextResponse } from 'next/server';
-import { Webhook } from 'svix';
-import { clerkClient } from '@clerk/nextjs';
 
 export async function POST(request: NextRequest) {
+  let event;
   try {
-    const payload = await request.json();
-    const headers = request.headers;
-    
-    // Get the SVIX signature from headers
-    const svixId = headers.get('svix-id');
-    const svixTimestamp = headers.get('svix-timestamp');
-    const svixSignature = headers.get('svix-signature');
-    
-    if (!svixId || !svixTimestamp || !svixSignature) {
-      return NextResponse.json(
-        { error: 'Missing SVIX headers' },
-        { status: 400 }
-      );
-    }
-
-    // Get the webhook secret from environment
-    const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
-    if (!webhookSecret) {
-      return NextResponse.json(
-        { error: 'CLERK_WEBHOOK_SECRET is not configured' },
-        { status: 500 }
-      );
-    }
-
-    // Create a new SVIX Webhook instance
-    const wh = new Webhook(webhookSecret);
-    
-    // Verify the webhook payload
-    const verifiedPayload = wh.verify(payload, {
-      'svix-id': svixId,
-      'svix-timestamp': svixTimestamp,
-      'svix-signature': svixSignature,
-    }) as ClerkWebhookPayload;
-
-    // Handle the webhook event
-    const eventType = verifiedPayload.type;
-    const data = verifiedPayload.data;
-
-    switch (eventType) {
-      case 'user.created':
-        await handleUserCreated(data);
-        break;
-
-      case 'user.updated':
-        await handleUserUpdated(data);
-        break;
-
-      case 'user.deleted':
-        await handleUserDeleted(data);
-        break;
-
-      case 'session.created':
-        await handleSessionCreated(data);
-        break;
-
-      case 'session.ended':
-        await handleSessionEnded(data);
-        break;
-
-      default:
-        console.log(`Unhandled Clerk webhook event: ${eventType}`);
-    }
-
-    // Return 200 to acknowledge receipt
-    return NextResponse.json({ 
-      success: true, 
-      eventType 
-    });
-
+    event = await verifyWebhook(request);
   } catch (error) {
-    console.error('Clerk webhook error:', error);
-    return NextResponse.json(
-      { error: 'Failed to process webhook' },
-      { status: 500 }
-    );
+    console.error('Clerk webhook verification failed:', error);
+    return NextResponse.json({ error: 'Verification failed' }, { status: 400 });
   }
-}
 
-// Type definition for Clerk webhook payload
-type ClerkWebhookPayload = {
-  type: string;
-  data: any;
-};
+  switch (event.type) {
+    case 'user.created':
+      // In a real implementation: create a user record in your database.
+      console.log(`User created: ${event.data.id}`);
+      break;
 
-// Helper functions for handling different webhook events
-async function handleUserCreated(data: any) {
-  const userId = data.id;
-  const email = data.email_addresses?.[0]?.email_address;
-  
-  console.log(`User created: ${userId} with email: ${email}`);
-  
-  // In a real implementation:
-  // - Create user record in your database
-  // - Sync user metadata
-  // - Send welcome email
-}
+    case 'user.updated':
+      // In a real implementation: sync the updated fields.
+      console.log(`User updated: ${event.data.id}`);
+      break;
 
-async function handleUserUpdated(data: any) {
-  const userId = data.id;
-  const updatedFields = data;
-  
-  console.log(`User updated: ${userId}`);
-  
-  // In a real implementation:
-  // - Update user record in your database
-  // - Sync updated fields
-}
+    case 'user.deleted':
+      // In a real implementation: delete or deactivate the user record.
+      console.log(`User deleted: ${event.data.id}`);
+      break;
 
-async function handleUserDeleted(data: any) {
-  const userId = data.id;
-  
-  console.log(`User deleted: ${userId}`);
-  
-  // In a real implementation:
-  // - Delete or deactivate user record in your database
-  // - Clean up related data
-}
+    default:
+      console.log(`Unhandled Clerk webhook event: ${event.type}`);
+  }
 
-async function handleSessionCreated(data: any) {
-  const sessionId = data.id;
-  const userId = data.user_id;
-  
-  console.log(`Session created: ${sessionId} for user: ${userId}`);
-  
-  // In a real implementation:
-  // - Create session record in your database
-  // - Track active sessions
-}
-
-async function handleSessionEnded(data: any) {
-  const sessionId = data.id;
-  const userId = data.user_id;
-  
-  console.log(`Session ended: ${sessionId} for user: ${userId}`);
-  
-  // In a real implementation:
-  // - Update session status in your database
-  // - Clean up expired sessions
+  return NextResponse.json({ success: true, eventType: event.type });
 }
