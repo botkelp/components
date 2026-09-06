@@ -212,8 +212,8 @@
   {
     "id": "auth0",
     "name": "Auth0 Authentication",
-    "version": "1.0.0",
-    "description": "Auth0 authentication integration for Next.js App Router. Includes Auth0 provider, SDK configuration, and callback routes. Packages pinned to @auth0/auth0-nextjs@4.0.0 (verified 2026-09-06).",
+    "version": "2.0.0",
+    "description": "Auth0 authentication integration for Next.js App Router using the real @auth0/nextjs-auth0 v4 API: an Auth0Client instance, middleware-mounted auth routes (no custom route handler), and server-side session checks.",
     "requires": [
       "nextjs-base"
     ],
@@ -221,16 +221,15 @@
       "authentication"
     ],
     "dependencies": [
-      "@auth0/auth0-nextjs"
+      "@auth0/nextjs-auth0"
     ],
     "devDependencies": [],
     "envVariables": [
-      "AUTH0_SECRET",
-      "AUTH0_BASE_URL",
-      "AUTH0_ISSUER_BASE_URL",
+      "AUTH0_DOMAIN",
       "AUTH0_CLIENT_ID",
       "AUTH0_CLIENT_SECRET",
-      "NEXT_PUBLIC_AUTH0_DOMAIN"
+      "AUTH0_SECRET",
+      "APP_BASE_URL"
     ],
     "files": [
       {
@@ -238,16 +237,12 @@
         "template": "templates/lib/auth0.ts.ejs"
       },
       {
-        "destination": "app/api/auth/[...auth0]/route.ts",
-        "template": "templates/app/api/auth/[...auth0]/route.ts.ejs"
+        "destination": "proxy.ts",
+        "template": "templates/proxy.ts.ejs"
       },
       {
         "destination": "app/login/page.tsx",
         "template": "templates/app/login/page.tsx.ejs"
-      },
-      {
-        "destination": "app/api/auth/user/route.ts",
-        "template": "templates/app/api/auth/user/route.ts.ejs"
       }
     ]
   },
@@ -836,7 +831,7 @@
     "id": "footer",
     "name": "Footer",
     "version": "1.0.0",
-    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
+    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
     "requires": [
       "tailwind"
     ],
@@ -891,7 +886,7 @@
     "id": "jquery",
     "name": "jQuery",
     "version": "1.0.0",
-    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app \u2014 real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
+    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app — real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
     "requires": [
       "nextjs-base"
     ],
@@ -1097,7 +1092,7 @@
     "id": "navbar",
     "name": "Navbar",
     "version": "1.0.0",
-    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
+    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
     "requires": [
       "tailwind"
     ],
