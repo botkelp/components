@@ -1,0 +1,22 @@
+/**
+ * Mounts Auth0's built-in routes (/auth/login, /auth/logout, /auth/callback,
+ * /auth/profile, /auth/access-token) and refreshes the session cookie on
+ * every matched request. v4 has no manual app/api/auth/[...auth0] route
+ * handler — this file *is* the route handler.
+ *
+ * Next.js 16 renamed middleware.ts to proxy.ts (exported function `proxy`
+ * instead of `middleware`); nextjs-base pins Next 16, so this catalog
+ * targets proxy.ts directly rather than the deprecated middleware.ts name.
+ *
+ * Source: https://github.com/auth0/nextjs-auth0/blob/v4.29.0/README.md
+ * Verified: 2026-09-06
+ */
+import { auth0 } from "@/lib/auth0";
+
+export async function proxy(request: Request) {
+  return await auth0.middleware(request);
+}
+
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)"],
+};

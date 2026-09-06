@@ -7,7 +7,7 @@ One row per **individual component**. This is not a list of assembled apps.
 | [`angular-base`](components/angular-base/) | Angular Base | framework | `package.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.spec.json`, `src/index.html`, `src/main.ts`, `src/styles.css`, … (17 files) |
 | [`aos`](components/aos/) | Animate On Scroll (AOS) | ui, animation | `types/aos.d.ts`, `lib/aos.ts`, `components/aos-init.tsx` |
 | [`aspnet-base`](components/aspnet-base/) | ASP.NET Core Base | backend | `<%= projectName || 'AspNetCoreApp' %>.csproj`, `Program.cs`, `appsettings.json`, `appsettings.Development.json`, `Controllers/ExampleController.cs`, `Models/AppDbContext.cs`, `Models/Example.cs`, `Properties/launchSettings.json`, … (12 files) |
-| [`auth0`](components/auth0/) | Auth0 Authentication | authentication | `lib/auth0.ts`, `app/api/auth/[...auth0]/route.ts`, `app/login/page.tsx`, `app/api/auth/user/route.ts` |
+| [`auth0`](components/auth0/) | Auth0 Authentication | authentication | `lib/auth0.ts`, `proxy.ts`, `app/login/page.tsx` |
 | [`authjs`](components/authjs/) | Auth.js (NextAuth v5) | authentication | `auth.ts`, `app/api/auth/[...nextauth]/route.ts`, `proxy.ts`, `app/login/page.tsx` |
 | [`aws-hosting`](components/aws-hosting/) | AWS Hosting | hosting | `AWS_README.md`, `.ebextensions/nextjs.config` |
 | [`azure-hosting`](components/azure-hosting/) | Azure Hosting | hosting | `AZURE_README.md` |
