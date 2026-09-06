@@ -1,0 +1,75 @@
+/**
+ * NestJS Configuration Module
+ * 
+ * This module provides configuration for the NestJS application.
+ * 
+ * Source: https://docs.nestjs.com/techniques/configuration
+ * Verified: 2026-09-06
+ */
+
+import { Module } from '@nestjs/common';
+import { ConfigService } from './configuration';
+
+@Module({
+  providers: [
+    {
+      provide: ConfigService,
+      useValue: new ConfigService(),
+    },
+  ],
+  exports: [ConfigService],
+})
+export class ConfigModule {}
+
+// Configuration service
+class ConfigService {
+  private readonly envConfig: Record<string, string>;
+
+  constructor() {
+    this.envConfig = {
+      NODE_ENV: process.env.NODE_ENV || 'development',
+      PORT: process.env.PORT || '3000',
+      API_PREFIX: process.env.API_PREFIX || 'api',
+      APP_NAME: process.env.APP_NAME || '<%= projectName || 'NestJS API' %>',
+      CORS_ORIGINS: process.env.CORS_ORIGINS || 'http://localhost:3000',
+      CORS_METHODS: process.env.CORS_METHODS || 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+      CORS_CREDENTIALS: process.env.CORS_CREDENTIALS || 'false',
+    };
+
+    // Validate configuration
+    this.validate();
+  }
+
+  get(key: string): string {
+    return this.envConfig[key];
+  }
+
+  getNumber(key: string): number {
+    return parseInt(this.get(key), 10);
+  }
+
+  getBoolean(key: string): boolean {
+    return this.get(key).toLowerCase() === 'true';
+  }
+
+  private validate(): void {
+    const requiredKeys = ['PORT', 'API_PREFIX'];
+    
+    for (const key of requiredKeys) {
+      if (!this.envConfig[key]) {
+        throw new Error(`Missing required environment variable: ${key}`);
+      }
+    }
+
+    const port = this.getNumber('PORT');
+    if (port < 0 || port > 65535) {
+      throw new Error(`Invalid PORT: ${port}. Must be between 0 and 65535`);
+    }
+
+    if (!this.get('API_PREFIX').startsWith('/')) {
+      throw new Error('API_PREFIX must start with /');
+    }
+  }
+}
+
+export { ConfigService };

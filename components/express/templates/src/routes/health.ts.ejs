@@ -1,0 +1,83 @@
+/**
+ * Express Health Routes
+ * 
+ * This file provides health check endpoints.
+ * 
+ * Source: https://expressjs.com/en/guide/routing.html
+ * Verified: 2026-09-06
+ */
+
+import { Router, Request, Response } from 'express';
+import os from 'os';
+
+// Create router
+const router = Router();
+
+// Basic health check
+router.get('/', (req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'ok',
+    message: 'API is running',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Detailed health check
+router.get('/detailed', (req: Request, res: Response) => {
+  const uptime = process.uptime();
+  const memoryUsage = process.memoryUsage();
+  const cpuUsage = os.loadavg();
+
+  res.status(200).json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    system: {
+      platform: os.platform(),
+      architecture: os.arch(),
+      hostname: os.hostname(),
+      uptime: `${Math.floor(uptime / 60)} minutes`,
+    },
+    process: {
+      pid: process.pid,
+      memory: {
+        rss: `${(memoryUsage.rss / 1024 / 1024).toFixed(2)} MB`,
+        heapTotal: `${(memoryUsage.heapTotal / 1024 / 1024).toFixed(2)} MB`,
+        heapUsed: `${(memoryUsage.heapUsed / 1024 / 1024).toFixed(2)} MB`,
+        external: `${(memoryUsage.external / 1024 / 1024).toFixed(2)} MB`,
+      },
+      cpu: {
+        load1: cpuUsage[0],
+        load5: cpuUsage[1],
+        load15: cpuUsage[2],
+      },
+    },
+    services: {
+      database: { status: 'ok', type: 'not configured' },
+      cache: { status: 'ok', type: 'not configured' },
+    },
+  });
+});
+
+// Liveness probe
+router.get('/live', (req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'alive',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Readiness probe
+router.get('/ready', (req: Request, res: Response) => {
+  // Check if database and other services are ready
+  // In a real application, you would check actual service connections
+  res.status(200).json({
+    status: 'ready',
+    timestamp: new Date().toISOString(),
+    checks: {
+      database: true,
+      cache: true,
+    },
+  });
+});
+
+export default router;

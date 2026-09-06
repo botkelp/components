@@ -1,0 +1,145 @@
+{
+  "id": "laravel-base",
+  "name": "Laravel Base",
+  "version": "1.0.0",
+  "description": "Laravel PHP framework project. Provides a foundation for Laravel applications with MVC architecture, Eloquent ORM, and Blade templating. Packages pinned to laravel/framework v11.0.0 (verified 2026-09-06).",
+  "requires": [],
+  "conflictsWith": ["nextjs-base", "express", "nestjs", "django-base", "fastapi-base", "aspnet-base"],
+  "provides": ["backend"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["APP_NAME", "APP_ENV", "APP_KEY", "APP_DEBUG", "APP_URL", "DB_CONNECTION", "DB_HOST", "DB_PORT", "DB_DATABASE", "DB_USERNAME", "DB_PASSWORD"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Laravel official documentation",
+      "url": "https://laravel.com/docs/11.x",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Laravel installation guide",
+      "url": "https://laravel.com/docs/11.x/installation",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "laravel/framework v11.0.0",
+      "url": "https://github.com/laravel/framework/releases/tag/v11.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Laravel starter project",
+      "url": "https://github.com/laravel/laravel/tree/11.x",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/composer.json.ejs",
+      "destination": "composer.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/artisan.ejs",
+      "destination": "artisan"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/bootstrap/app.php.ejs",
+      "destination": "bootstrap/app.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/bootstrap/providers.php.ejs",
+      "destination": "bootstrap/providers.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/config/app.php.ejs",
+      "destination": "config/app.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/config/database.php.ejs",
+      "destination": "config/database.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/config/cors.php.ejs",
+      "destination": "config/cors.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/Http/Controllers/Controller.php.ejs",
+      "destination": "app/Http/Controllers/Controller.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/Http/Controllers/ExampleController.php.ejs",
+      "destination": "app/Http/Controllers/ExampleController.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/Models/Example.php.ejs",
+      "destination": "app/Models/Example.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/Providers/AppServiceProvider.php.ejs",
+      "destination": "app/Providers/AppServiceProvider.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/Providers/RouteServiceProvider.php.ejs",
+      "destination": "app/Providers/RouteServiceProvider.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/database/migrations/2024_01_01_000000_create_examples_table.php.ejs",
+      "destination": "database/migrations/2024_01_01_000000_create_examples_table.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/routes/api.php.ejs",
+      "destination": "routes/api.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/routes/web.php.ejs",
+      "destination": "routes/web.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/public/index.php.ejs",
+      "destination": "public/index.php"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Dockerfile.ejs",
+      "destination": "Dockerfile"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    }
+  ]
+}

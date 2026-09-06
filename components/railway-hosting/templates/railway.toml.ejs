@@ -1,0 +1,57 @@
+/**
+ * Railway Configuration
+ * 
+ * This file configures Railway deployment for your Next.js application.
+ * 
+ * Source: https://docs.railway.app/reference/railway-toml
+ * Verified: 2026-09-06
+ */
+
+[build]
+# Build command for Next.js
+command = "npm run build"
+
+# Directory to deploy
+watch_patterns = ["package.json", "next.config.js", "next.config.ts"]
+
+[deploy]
+# Start command for Next.js
+start_command = "npm start"
+
+# Number of instances to run
+instances = "1"
+
+# Memory allocation (in MB)
+memory = "1024"
+
+# CPU allocation (in vCPUs)
+cpu = "1"
+
+[variables]
+# Environment variables for production
+NODE_ENV = "production"
+
+# Next.js specific variables
+# Uncomment and set these as needed
+# NEXT_PUBLIC_BASE_URL = "https://your-app.railway.app"
+# NEXT_PUBLIC_API_URL = "https://your-app.railway.app/api"
+
+[services]
+# Define additional services (databases, etc.)
+# Example MySQL service:
+# [services.mysql]
+#   type = "mysql"
+#   version = "8.0"
+#   disk_size = "1gb"
+
+# Example PostgreSQL service:
+# [services.postgres]
+#   type = "postgres"
+#   version = "15"
+#   disk_size = "1gb"
+
+# Example Redis service:
+# [services.redis]
+#   type = "redis"
+#   version = "7"
+#   disk_size = "256mb"

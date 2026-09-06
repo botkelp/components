@@ -1,0 +1,164 @@
+# Railway Hosting Deployment Guide
+
+This project is configured for deployment on [Railway](https://railway.app).
+
+## Quick Start
+
+1. **Sign up for Railway**: [https://railway.app](https://railway.app)
+2. **Install the Railway CLI**:
+   ```bash
+   npm install -g @railway/cli
+   ```
+3. **Login to Railway**:
+   ```bash
+   railway login
+   ```
+
+## Deployment
+
+### Deploy Your Project
+
+```bash
+# Initialize a new Railway project
+railway init
+
+# Link to an existing Railway project
+railway link
+
+# Deploy your application
+railway up
+```
+
+### Environment Variables
+
+Set your environment variables in the Railway dashboard or via CLI:
+
+```bash
+# Set a single environment variable
+railway variables set NAME=value
+
+# Set multiple environment variables
+railway variables set NODE_ENV=production NEXT_PUBLIC_BASE_URL=https://your-app.railway.app
+```
+
+### Adding Services
+
+Add databases and other services to your project:
+
+```bash
+# Add a PostgreSQL database
+railway add postgres
+
+# Add a MySQL database
+railway add mysql
+
+# Add Redis
+railway add redis
+```
+
+### View Logs
+
+```bash
+# View application logs
+railway logs
+
+# Follow logs in real-time
+railway logs --follow
+```
+
+## Configuration
+
+The `railway.toml` file contains deployment configuration:
+
+- **Build command**: `npm run build`
+- **Start command**: `npm start`
+- **Memory**: 1GB
+- **CPU**: 1 vCPU
+
+Customize these settings in `railway.toml` as needed for your application.
+
+## Connecting to Databases
+
+When you add a database service, Railway automatically provides connection environment variables:
+
+- **PostgreSQL**: `DATABASE_URL`, `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`
+- **MySQL**: `DATABASE_URL`, `MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE`
+- **MongoDB**: `MONGODB_URI`, `MONGODB_HOST`, `MONGODB_PORT`
+
+## Scaling
+
+Scale your application horizontally:
+
+```bash
+# Scale to 2 instances
+railway scale --instances=2
+
+# Scale memory to 2GB
+railway scale --memory=2048
+
+# Scale CPU to 2 vCPUs
+railway scale --cpu=2
+```
+
+## Custom Domains
+
+Add a custom domain to your Railway project:
+
+```bash
+# Add a custom domain
+railway domain add yourdomain.com
+
+# Verify DNS configuration
+railway domain verify yourdomain.com
+```
+
+## Monitoring
+
+Railway provides built-in monitoring:
+
+- **Metrics**: CPU, memory, request count, response time
+- **Alerts**: Configure alerts for errors and performance issues
+- **Error tracking**: View and debug application errors
+
+## CI/CD
+
+Railway automatically sets up CI/CD for your project. Every push to your repository triggers a new deployment.
+
+### Manual Deployments
+
+```bash
+# Trigger a manual deployment
+railway deploy
+
+# Deploy a specific branch
+railway deploy --branch=feature-branch
+```
+
+## Troubleshooting
+
+### Build Failures
+
+Check the build logs for errors:
+
+```bash
+railway logs --build
+```
+
+### Runtime Errors
+
+View runtime logs and check for error messages:
+
+```bash
+railway logs --follow
+```
+
+### Database Connection Issues
+
+Verify your database connection strings and credentials in the Railway dashboard.
+
+## Resources
+
+- [Railway Documentation](https://docs.railway.app)
+- [Railway Next.js Guide](https://docs.railway.app/deploy/deploying-nextjs)
+- [Railway Community Discord](https://discord.gg/railway)
+- [Railway Status](https://status.railway.app)

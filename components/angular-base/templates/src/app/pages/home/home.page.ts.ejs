@@ -1,0 +1,26 @@
+/**
+ * Angular Home Page Component
+ * 
+ * This component displays the home page of the application.
+ * 
+ * Source: https://angular.dev/cli/generate
+ * Verified: 2026-09-06
+ */
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-home-page',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.css'],
+})
+export class HomePage {
+  appName = '<%= projectName || 'Angular App' %>';
+
+  getCurrentYear(): number {
+    return new Date().getFullYear();
+  }
+}

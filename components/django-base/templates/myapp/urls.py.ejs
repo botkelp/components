@@ -1,0 +1,23 @@
+"""
+URL configuration for myapp application.
+
+The `urlpatterns` list routes URLs to views.
+
+Source: https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Verified: 2026-09-06
+"""
+
+from django.urls import path
+from . import views
+
+app_name = 'myapp'
+
+urlpatterns = [
+    # Health check endpoint
+    path('health/', views.health_check, name='health-check'),
+    
+    # Example endpoints
+    path('examples/', views.example_list, name='example-list'),
+    path('examples/<int:pk>/', views.example_detail, name='example-detail'),
+    path('examples/create/', views.example_create, name='example-create'),
+]

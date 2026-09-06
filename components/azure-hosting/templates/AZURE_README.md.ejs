@@ -1,0 +1,239 @@
+# Azure Hosting Deployment Guide
+
+This project is configured for deployment on [Microsoft Azure](https://azure.microsoft.com).
+
+## Quick Start
+
+1. **Sign up for Azure**: [https://azure.microsoft.com](https://azure.microsoft.com)
+2. **Install Azure CLI**:
+   ```bash
+   curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+   ```
+   Or on macOS:
+   ```bash
+   brew install azure-cli
+   ```
+3. **Login to Azure**:
+   ```bash
+   az login
+   ```
+
+## Deployment Options
+
+### Option 1: Azure Static Web Apps (Recommended for Next.js)
+
+Azure Static Web Apps provides optimized hosting for Next.js applications with automatic deployments from GitHub.
+
+#### Deploy to Static Web Apps
+
+1. Go to the [Azure Portal](https://portal.azure.com)
+2. Click "Create a resource" -> "Web" -> "Static Web App"
+3. Configure your Static Web App:
+   - **Subscription**: Select your subscription
+   - **Resource Group**: Create new or select existing
+   - **Name**: Your application name
+   - **Hosting Plan**: Free or Standard
+   - **Source**: GitHub
+   - **Repository**: Select your repository
+   - **Branch**: Select the branch to deploy (usually `main` or `master`)
+   - **Build Preset**: Next.js
+   - **App location**: Leave as `/` if your app is in the root
+   - **API location**: `api` (if you have API routes)
+   - **Output location**: `.next/standalone`
+
+4. Click "Review + create" -> "Create"
+
+#### Environment Variables
+
+Set environment variables in the Azure Portal:
+
+1. Go to your Static Web App
+2. Navigate to "Configuration" -> "Application settings"
+3. Add your variables:
+   - `NODE_ENV=production`
+   - `NEXT_PUBLIC_BASE_URL=https://your-app.azurestaticapps.net`
+   - Any other application-specific variables
+
+### Option 2: Azure App Service
+
+Azure App Service provides a fully managed platform for building, deploying, and scaling web apps.
+
+#### Deploy to App Service
+
+```bash
+# Create a new App Service
+az webapp create --resource-group YourResourceGroup --plan YourAppServicePlan --name your-app-name --runtime "NODE:20-lts" --startup-file "npm start"
+
+# Configure deployment from local
+az webapp up --sku F1 --name your-app-name
+
+# Or deploy from GitHub
+az webapp deployment source config-local-git --name your-app-name
+```
+
+#### Configuration
+
+Create a `.deployment` file for App Service:
+
+```json
+{
+  "config": {
+    "NODE_VERSION": "20.x",
+    "NPM_FLAGS": "--production"
+  }
+}
+```
+
+### Option 3: Azure Container Instances (Advanced)
+
+For more control, deploy using Docker containers.
+
+#### Deploy to Container Instances
+
+```bash
+# Build and push your Docker image
+az acr build --registry YourRegistryName --image your-image-name:latest .
+
+# Create a container instance
+az container create --resource-group YourResourceGroup --name your-container --image YourRegistryName.azurecr.io/your-image-name:latest --cpu 1 --memory 1 --ports 3000 --ip-address Public
+```
+
+## Azure Services
+
+### Azure Database for PostgreSQL/MySQL
+
+Add a managed database to your Azure environment:
+
+1. Go to the [Azure Database Dashboard](https://portal.azure.com/#view/Microsoft_Azure_Database/DatabaseMenuBlade)
+2. Click "Create" -> "Azure Database for PostgreSQL" or "Azure Database for MySQL"
+3. Configure the database settings
+4. Connect to your application using the provided connection string
+
+### Azure Blob Storage
+
+Use Blob Storage for storing static assets or user uploads:
+
+```javascript
+const { BlobServiceClient } = require('@azure/storage-blob');
+
+const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
+```
+
+### Azure CDN
+
+Add Azure CDN to cache your application globally:
+
+1. Go to the [CDN Dashboard](https://portal.azure.com/#view/Microsoft_Azure_Cdn/CdnMenuBlade)
+2. Click "Create" -> "CDN"
+3. Set your origin (App Service, Static Web App, or Storage Account)
+4. Configure caching and behavior settings
+
+## Custom Domains
+
+Add a custom domain to your Azure deployment:
+
+### For Static Web Apps
+
+1. Go to your Static Web App
+2. Navigate to "Custom domains"
+3. Click "Add custom domain"
+4. Enter your domain name
+5. Follow the DNS configuration instructions
+
+### For App Service
+
+1. Go to your App Service
+2. Navigate to "Custom domains"
+3. Click "Add hostname"
+4. Enter your domain name
+5. Follow the DNS configuration instructions
+
+## Monitoring
+
+Azure provides extensive monitoring:
+
+- **Application Insights**: Application performance monitoring
+- **Monitor**: Metrics, logs, and alerts
+- **Health checks**: Application health monitoring
+
+### Enable Application Insights
+
+```bash
+# Create Application Insights resource
+az monitor app-insights create --resource-group YourResourceGroup --name your-app-insights --location eastus
+
+# Link to your App Service
+az monitor app-insights component link --app your-app-name --resource-group YourResourceGroup --web other --instrumentation-key YourInstrumentationKey
+```
+
+## CI/CD
+
+### Azure DevOps
+
+Set up continuous deployment with Azure DevOps:
+
+1. Go to the [Azure DevOps Portal](https://dev.azure.com)
+2. Create a new project
+3. Set up a pipeline with a GitHub repository
+4. Configure build and deploy stages
+
+### GitHub Actions
+
+Use GitHub Actions for CI/CD:
+
+```yaml
+name: Deploy to Azure
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'your-app-name'
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: '.'
+```
+
+## Troubleshooting
+
+### Build Failures
+
+Check the build logs in the Azure Portal for error messages.
+
+### Runtime Errors
+
+View application logs:
+
+```bash
+# For Static Web Apps
+az staticwebapp logs list --name your-app-name --resource-group YourResourceGroup
+
+# For App Service
+az webapp log tail --name your-app-name --resource-group YourResourceGroup
+```
+
+### Database Connection Issues
+
+Verify your database connection strings and firewall settings.
+
+## Resources
+
+- [Azure Documentation](https://docs.microsoft.com/en-us/azure/)
+- [Azure Static Web Apps Documentation](https://learn.microsoft.com/en-us/azure/static-web-apps/)
+- [Azure App Service Documentation](https://learn.microsoft.com/en-us/azure/app-service/)
+- [Azure Container Instances Documentation](https://learn.microsoft.com/en-us/azure/container-instances/)
+- [Azure Next.js Guide](https://learn.microsoft.com/en-us/azure/static-web-apps/publish-nextjs)
+- [Azure Community](https://techcommunity.microsoft.com/)
+- [Azure Status](https://status.azure.com)

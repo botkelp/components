@@ -1,0 +1,161 @@
+{
+  "id": "vue-base",
+  "name": "Vue Base",
+  "version": "1.0.0",
+  "description": "Vue.js frontend project with Vue 3, Vite, Pinia, and Vue Router. Provides a modern, reactive foundation for Vue applications with composition API. Packages pinned to vue@3.4.0, vite@5.0.0, pinia@2.1.7, vue-router@4.2.5 (verified 2026-09-06).",
+  "requires": [],
+  "conflictsWith": ["nextjs-base", "angular-base", "svelte-base"],
+  "provides": ["framework"],
+  "dependencies": ["vue", "pinia", "vue-router"],
+  "devDependencies": [
+    "@vitejs/plugin-vue",
+    "vite",
+    "@types/node",
+    "typescript",
+    "prettier",
+    "eslint",
+    "eslint-plugin-vue",
+    "@vue/test-utils",
+    "vitest",
+    "jsdom"
+  ],
+  "envVariables": ["VITE_APP_NAME", "VITE_API_URL"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Vue.js official documentation",
+      "url": "https://vuejs.org/guide/introduction.html",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Vite documentation",
+      "url": "https://vitejs.dev/guide/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "vuejs/core v3.4.0",
+      "url": "https://github.com/vuejs/core/releases/tag/v3.4.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Vue starter template",
+      "url": "https://github.com/vuejs/create-vue/tree/v3.4.0",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/package.json.ejs",
+      "destination": "package.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/vite.config.ts.ejs",
+      "destination": "vite.config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.json.ejs",
+      "destination": "tsconfig.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.node.json.ejs",
+      "destination": "tsconfig.node.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.app.json.ejs",
+      "destination": "tsconfig.app.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/index.html.ejs",
+      "destination": "index.html"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/main.ts.ejs",
+      "destination": "src/main.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/App.vue.ejs",
+      "destination": "src/App.vue"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/style.css.ejs",
+      "destination": "src/style.css"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/router/index.ts.ejs",
+      "destination": "src/router/index.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/stores/index.ts.ejs",
+      "destination": "src/stores/index.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/views/Home/HomeView.vue.ejs",
+      "destination": "src/views/Home/HomeView.vue"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/views/About/AboutView.vue.ejs",
+      "destination": "src/views/About/AboutView.vue"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.env.ejs",
+      "destination": ".env"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.prettierrc.ejs",
+      "destination": ".prettierrc"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.eslintrc.cjs.ejs",
+      "destination": ".eslintrc.cjs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/vitest.config.ts.ejs",
+      "destination": "vitest.config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Dockerfile.ejs",
+      "destination": "Dockerfile"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    }
+  ]
+}

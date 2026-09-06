@@ -1,0 +1,59 @@
+"""
+Django models for myapp application.
+
+Define your database models here.
+
+Source: https://docs.djangoproject.com/en/5.0/topics/db/models/
+Verified: 2026-09-06
+"""
+
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
+
+
+class CustomUser(AbstractUser):
+    """
+    Custom user model extending Django's AbstractUser.
+    
+    This allows you to add custom fields to the user model.
+    To use this, uncomment AUTH_USER_MODEL in settings.py:
+    AUTH_USER_MODEL = 'myapp.CustomUser'
+    """
+    # Add custom fields here
+    # Example: bio = models.TextField(max_length=500, blank=True)
+    
+    def __str__(self):
+        return self.username
+
+
+class BaseModel(models.Model):
+    """
+    Base model with common fields for all models.
+    """
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    
+    class Meta:
+        abstract = True
+
+
+class ExampleModel(BaseModel):
+    """
+    Example model demonstrating common field types.
+    """
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True)
+    count = models.IntegerField(default=0)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    is_featured = models.BooleanField(default=False)
+    
+    class Meta:
+        verbose_name = 'Example'
+        verbose_name_plural = 'Examples'
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return self.name

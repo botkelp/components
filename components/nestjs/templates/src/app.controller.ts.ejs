@@ -1,0 +1,28 @@
+/**
+ * NestJS Root Application Controller
+ * 
+ * This controller provides the root endpoints for the NestJS application.
+ * 
+ * Source: https://docs.nestjs.com/controllers
+ * Verified: 2026-09-06
+ */
+
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  root() {
+    return this.appService.getRootInfo();
+  }
+
+  @Get('health')
+  @HttpCode(HttpStatus.OK)
+  healthCheck() {
+    return this.appService.getHealth();
+  }
+}

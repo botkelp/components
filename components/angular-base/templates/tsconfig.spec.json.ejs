@@ -1,0 +1,22 @@
+/**
+ * TypeScript Test Configuration
+ * 
+ * This file configures the TypeScript compiler options for tests.
+ * 
+ * Source: https://angular.dev/cli/new
+ * Verified: 2026-09-06
+ */
+
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

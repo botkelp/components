@@ -1,0 +1,21 @@
+/**
+ * TypeScript Build Configuration for NestJS
+ * 
+ * This file configures the TypeScript build options.
+ * 
+ * Source: https://docs.nestjs.com/first-steps
+ * Verified: 2026-09-06
+ */
+
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2021"
+  },
+  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+}

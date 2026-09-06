@@ -1,0 +1,17 @@
+"""
+App configuration for myapp application.
+
+Source: https://docs.djangoproject.com/en/5.0/ref/applications/
+Verified: 2026-09-06
+"""
+
+from django.apps import AppConfig
+
+
+class MyappConfig(AppConfig):
+    """
+    App configuration for myapp.
+    """
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'myapp'
+    verbose_name = 'My App'

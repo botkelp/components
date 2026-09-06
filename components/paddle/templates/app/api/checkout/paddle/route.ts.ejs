@@ -1,0 +1,77 @@
+/**
+ * Paddle Checkout API Route
+ * 
+ * Creates a Paddle Checkout session for one-time or subscription payments.
+ * 
+ * Source: https://developer.paddle.com/reference/client-side-javascript
+ * Verified: 2026-09-06
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+import { getPaddleVendorId, getPaddleEnvironment } from '@/lib/paddle';
+
+export async function POST(request: NextRequest) {
+  try {
+    const { priceId, productId, quantity = 1, successUrl, cancelUrl } = await request.json();
+
+    if (!priceId && !productId) {
+      return NextResponse.json(
+        { error: 'Either priceId or productId must be provided' },
+        { status: 400 }
+      );
+    }
+
+    const vendorId = getPaddleVendorId();
+    const environment = getPaddleEnvironment();
+
+    // Generate a unique passthrough ID for tracking
+    const passthrough = crypto.randomUUID();
+
+    // Build Paddle Checkout URL
+    const checkoutUrl = new URL('https://checkout.paddle.com/v2/checkout');
+    
+    // Set Paddle environment
+    if (environment === 'sandbox') {
+      checkoutUrl.hostname = 'sandbox-checkout.paddle.com';
+    }
+
+    // Add query parameters
+    checkoutUrl.searchParams.set('vendor_id', vendorId);
+    checkoutUrl.searchParams.set('product_id', productId || '');
+    checkoutUrl.searchParams.set('price_id', priceId || '');
+    checkoutUrl.searchParams.set('quantity', quantity.toString());
+    checkoutUrl.searchParams.set('passthrough', passthrough);
+    
+    if (successUrl) {
+      checkoutUrl.searchParams.set('success_url', successUrl);
+    }
+    
+    if (cancelUrl) {
+      checkoutUrl.searchParams.set('cancel_url', cancelUrl);
+    }
+
+    // In a real implementation, you would also:
+    // - Validate the request
+    // - Create a database record for tracking
+    // - Add customer email if authenticated
+    // - Handle discounts or coupons
+
+    return NextResponse.json({
+      checkoutUrl: checkoutUrl.toString(),
+      passthrough,
+    });
+  } catch (error) {
+    console.error('Paddle checkout error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create checkout session' },
+      { status: 500 }
+    );
+  }
+}
+
+// Allow GET requests for testing
+export async function GET() {
+  return NextResponse.json({
+    message: 'Paddle Checkout API - Use POST to create a checkout session',
+  });
+}

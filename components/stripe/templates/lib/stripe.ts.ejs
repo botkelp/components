@@ -1,0 +1,9 @@
+/**
+ * Server-only Stripe client.
+ * Source: https://github.com/stripe/stripe-node/releases/tag/v22.6.1
+ * Docs: https://docs.stripe.com/checkout/quickstart?client=next
+ * Verified 2026-09-06. Do not import this file in a Client Component.
+ */
+import Stripe from 'stripe';
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);

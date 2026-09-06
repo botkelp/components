@@ -1,0 +1,35 @@
+/**
+ * Counter Store
+ * 
+ * Pinia store for managing counter state.
+ * 
+ * Source: https://pinia.vuejs.org/introduction.html
+ * Verified: 2026-09-06
+ */
+
+import { defineStore } from 'pinia';
+
+export const useCounterStore = defineStore('counter', {
+  state: () => ({
+    count: 0,
+  }),
+  actions: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    },
+    reset() {
+      this.count = 0;
+    },
+    setCount(value: number) {
+      this.count = value;
+    },
+  },
+  getters: {
+    doubleCount: (state) => state.count * 2,
+    isEven: (state) => state.count % 2 === 0,
+    isOdd: (state) => state.count % 2 !== 0,
+  },
+});

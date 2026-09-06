@@ -1,0 +1,28 @@
+/**
+ * Counter Store
+ * 
+ * Svelte store for managing counter state.
+ * 
+ * Source: https://svelte.dev/docs/svelte-store
+ * Verified: 2026-09-06
+ */
+
+import { writable } from 'svelte/store';
+
+// Create a writable store with initial value
+function createCounter() {
+	const { subscribe, set, update } = writable({
+		count: 0
+	});
+
+	return {
+		subscribe,
+		increment: () => update(n => ({ count: n.count + 1 })),
+		decrement: () => update(n => ({ count: n.count - 1 })),
+		reset: () => set({ count: 0 }),
+		setCount: (value: number) => set({ count: value })
+	};
+}
+
+// Export a single instance of the counter store
+export const counter = createCounter();

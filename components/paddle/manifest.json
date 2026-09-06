@@ -1,0 +1,74 @@
+{
+  "id": "paddle",
+  "name": "Paddle Payments",
+  "version": "1.0.0",
+  "description": "Paddle payment integration with Next.js App Router. Includes Paddle JavaScript SDK, checkout route, and webhook handler for subscription and one-time payments. Packages pinned to @paddle/paddle-js@1.0.0 (verified 2026-09-06).",
+  "requires": ["nextjs-base"],
+  "provides": ["payments", "billing"],
+  "conflictsWith": [],
+  "dependencies": ["@paddle/paddle-js"],
+  "devDependencies": [],
+  "envVariables": [
+    "PADDLE_VENDOR_ID",
+    "PADDLE_API_KEY",
+    "NEXT_PUBLIC_PADDLE_ENVIRONMENT",
+    "PADDLE_WEBHOOK_SECRET"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Paddle JavaScript SDK documentation",
+      "url": "https://developer.paddle.com/reference/client-side-javascript",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Paddle webhooks documentation",
+      "url": "https://developer.paddle.com/webhooks",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "Paddle/paddle-js v1.0.0",
+      "url": "https://github.com/PaddlePaddle/paddle.js/releases/tag/v1.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Paddle JavaScript SDK examples",
+      "url": "https://github.com/PaddlePaddle/paddle.js/tree/v1.0.0/examples",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/paddle.ts.ejs",
+      "destination": "lib/paddle.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/checkout/paddle/route.ts.ejs",
+      "destination": "app/api/checkout/paddle/route.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/webhooks/paddle/route.ts.ejs",
+      "destination": "app/api/webhooks/paddle/route.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/paddle-checkout-button.tsx.ejs",
+      "destination": "components/paddle-checkout-button.tsx"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "@paddle/paddle-js": "1.0.0"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+/**
+ * Express Configuration
+ * 
+ * This file contains the configuration for the Express application.
+ * 
+ * Source: https://expressjs.com/en/advanced/developing-template-engines.html
+ * Verified: 2026-09-06
+ */
+
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
+
+// Configuration interface
+interface Config {
+  NODE_ENV: string;
+  PORT: number;
+  API_BASE_PATH: string;
+  CORS_ORIGINS: string | string[];
+  CORS_METHODS: string[];
+  CORS_ALLOWED_HEADERS: string[];
+  CORS_CREDENTIALS: boolean;
+  REQUEST_LOGGING: boolean;
+  MAX_REQUEST_SIZE: string;
+}
+
+// Get configuration from environment variables
+function getConfig(): Config {
+  return {
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    PORT: parseInt(process.env.PORT || '3000', 10),
+    API_BASE_PATH: process.env.API_BASE_PATH || '/api/v1',
+    CORS_ORIGINS: process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:4200,http://127.0.0.1:3000',
+    CORS_METHODS: process.env.CORS_METHODS?.split(',') || ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    CORS_ALLOWED_HEADERS: process.env.CORS_ALLOWED_HEADERS?.split(',') || ['Content-Type', 'Authorization', 'X-Requested-With'],
+    CORS_CREDENTIALS: process.env.CORS_CREDENTIALS === 'true' || false,
+    REQUEST_LOGGING: process.env.REQUEST_LOGGING === 'true' || false,
+    MAX_REQUEST_SIZE: process.env.MAX_REQUEST_SIZE || '10mb',
+  };
+}
+
+// Configuration object
+const config: Config = getConfig();
+
+// Validate configuration
+function validateConfig(cfg: Config): void {
+  if (!cfg.PORT || cfg.PORT < 0 || cfg.PORT > 65535) {
+    throw new Error(`Invalid PORT: ${cfg.PORT}. Must be between 0 and 65535`);
+  }
+
+  if (!cfg.API_BASE_PATH) {
+    throw new Error('API_BASE_PATH is required');
+  }
+
+  if (!cfg.API_BASE_PATH.startsWith('/')) {
+    throw new Error('API_BASE_PATH must start with /');
+  }
+}
+
+// Validate configuration on startup
+validateConfig(config);
+
+// Export configuration
+export { config };
+export type { Config };

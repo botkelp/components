@@ -1,0 +1,25 @@
+/**
+ * TypeScript Node Configuration for Vue
+ * 
+ * This file configures TypeScript for Node.js usage.
+ * 
+ * Source: https://vitejs.dev/config/
+ * Verified: 2026-09-06
+ */
+
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": ["vite.config.ts", "vitest.config.ts"]
+}

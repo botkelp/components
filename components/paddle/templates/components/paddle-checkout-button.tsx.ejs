@@ -1,0 +1,103 @@
+/**
+ * Paddle Checkout Button Component
+ * 
+ * A React component that renders a Paddle checkout button.
+ * 
+ * Source: https://developer.paddle.com/reference/client-side-javascript
+ * Verified: 2026-09-06
+ */
+
+'use client';
+
+import { useEffect, useState } from 'react';
+
+declare global {
+  interface Window {
+    Paddle: any;
+  }
+}
+
+interface PaddleCheckoutButtonProps {
+  productId?: string;
+  priceId?: string;
+  quantity?: number;
+  successUrl?: string;
+  cancelUrl?: string;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function PaddleCheckoutButton({
+  productId,
+  priceId,
+  quantity = 1,
+  successUrl,
+  cancelUrl,
+  className = '',
+  children = 'Buy Now',
+}: PaddleCheckoutButtonProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [paddleLoaded, setPaddleLoaded] = useState(false);
+
+  // Load Paddle SDK
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+    script.async = true;
+    script.onload = () => {
+      setPaddleLoaded(true);
+      // Initialize Paddle with vendor ID
+      if (window.Paddle) {
+        window.Paddle.Initialize({
+          vendor: process.env.NEXT_PUBLIC_PADDLE_VENDOR_ID || '<%= componentDetails.find(c => c.id === 'paddle')?.sources?.[0]?.url || 'YOUR_VENDOR_ID' %>',
+        });
+      }
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handleCheckout = async () => {
+    if (!paddleLoaded || !window.Paddle) {
+      console.error('Paddle SDK not loaded');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Open Paddle checkout
+      window.Paddle.Checkout.open({
+        product: productId,
+        price: priceId,
+        quantity: quantity,
+        successUrl: successUrl,
+        cancelUrl: cancelUrl,
+      });
+    } catch (error) {
+      console.error('Failed to open Paddle checkout:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCheckout}
+      disabled={isLoading || !paddleLoaded}
+      className={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-outline-none focus:ring-2 focus:ring-offset-2 ${className}`}
+    >
+      {isLoading ? (
+        <span className="flex items-center gap-2">
+          <span className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full" />
+          Loading...
+        </span>
+      ) : (
+        children
+      )}
+    </button>
+  );
+}

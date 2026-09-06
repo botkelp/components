@@ -1,0 +1,55 @@
+/**
+ * Vite Configuration for Vue
+ * 
+ * This file configures Vite for the Vue application.
+ * 
+ * Source: https://vitejs.dev/config/
+ * Verified: 2026-09-06
+ */
+
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { fileURLToPath, URL } from 'node:url';
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@router': fileURLToPath(new URL('./src/router', import.meta.url)),
+      '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
+      '@views': fileURLToPath(new URL('./src/views', import.meta.url)),
+    },
+  },
+  server: {
+    host: true,
+    port: parseInt(process.env.PORT || '5173', 10),
+    proxy: {
+      '/api': {
+        target: process.env.VITE_API_URL || 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router', 'pinia'],
+        },
+      },
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+      exclude: ['node_modules/', 'dist/', '**/*.config.*'],
+    },
+  },
+});

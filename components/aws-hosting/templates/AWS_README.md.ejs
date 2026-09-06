@@ -1,0 +1,263 @@
+# AWS Hosting Deployment Guide
+
+This project is configured for deployment on [AWS (Amazon Web Services)](https://aws.amazon.com).
+
+## Quick Start
+
+1. **Sign up for AWS**: [https://aws.amazon.com](https://aws.amazon.com)
+2. **Install AWS CLI**:
+   ```bash
+   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   unzip awscliv2.zip
+   sudo ./aws/install
+   ```
+   Or on macOS:
+   ```bash
+   brew install awscli
+   ```
+3. **Configure AWS CLI**:
+   ```bash
+   aws configure
+   ```
+   Enter your AWS Access Key ID, Secret Access Key, region, and output format.
+
+## Deployment Options
+
+### Option 1: AWS Elastic Beanstalk (Recommended for Next.js)
+
+Elastic Beanstalk provides an easy way to deploy and scale Next.js applications.
+
+#### Prerequisites
+
+1. Install the EB CLI:
+   ```bash
+   pip install awsebcli --upgrade --user
+   ```
+
+2. Add the EB CLI to your PATH:
+   ```bash
+   export PATH=$PATH:$HOME/.local/bin
+   ```
+
+#### Deploy to Elastic Beanstalk
+
+```bash
+# Initialize EB in your project directory
+ eb init -p node.js nextjs-app --region us-west-2
+
+# Create an environment and deploy
+ eb create nextjs-env
+
+# Open the application in your browser
+ eb open
+
+# View logs
+ eb logs
+```
+
+#### Configuration
+
+The `.ebextensions/nextjs.config` file contains Elastic Beanstalk configuration for Next.js:
+
+- **Node.js version**: 20.x
+- **Environment variables**: Set via EB CLI or AWS Console
+- **Port**: 3000 (default Next.js port)
+
+### Option 2: AWS Amplify
+
+AWS Amplify provides a simpler deployment experience for Next.js applications.
+
+#### Deploy to Amplify
+
+1. Go to the [AWS Amplify Console](https://console.aws.amazon.com/amplify/)
+2. Click "Connect app" -> "GitHub"
+3. Select your repository
+4. Configure the build settings:
+   - **Build command**: `npm run build`
+   - **Start command**: `npm start`
+   - **Base directory**: Leave blank if your app is in the root
+5. Click "Save and deploy"
+
+#### Environment Variables
+
+Set environment variables in the Amplify Console:
+
+1. Go to your Amplify app
+2. Navigate to "App settings" -> "Environment variables"
+3. Add your variables:
+   - `NODE_ENV=production`
+   - `NEXT_PUBLIC_BASE_URL=https://your-app.amplifyapp.com`
+   - Any other application-specific variables
+
+### Option 3: AWS EC2 (Advanced)
+
+For more control, deploy to EC2 instances.
+
+#### Launch an EC2 Instance
+
+1. Go to the [EC2 Dashboard](https://console.aws.amazon.com/ec2/)
+2. Click "Launch Instance"
+3. Choose an Amazon Linux 2 AMI
+4. Select an instance type (t3.micro for testing)
+5. Configure the instance and launch
+
+#### Deploy to EC2
+
+```bash
+# Connect to your EC2 instance
+ssh -i your-key.pem ec2-user@your-ec2-ip
+
+# Install Node.js and npm
+curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
+sudo yum install -y nodejs
+
+# Clone your repository
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+
+# Install dependencies
+npm install
+
+# Build the application
+npm run build
+
+# Start the application
+npm start &
+```
+
+## AWS Services
+
+### Amazon RDS (Managed Databases)
+
+Add a managed database to your AWS environment:
+
+1. Go to the [RDS Dashboard](https://console.aws.amazon.com/rds/)
+2. Click "Create database"
+3. Choose your database engine (PostgreSQL, MySQL, etc.)
+4. Configure the database settings
+5. Connect to your application using the provided endpoint
+
+### Amazon S3 (Object Storage)
+
+Use S3 for storing static assets or user uploads:
+
+```javascript
+import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+
+const s3 = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
+});
+```
+
+### Amazon CloudFront (CDN)
+
+Add CloudFront to cache your application globally:
+
+1. Go to the [CloudFront Dashboard](https://console.aws.amazon.com/cloudfront/)
+2. Click "Create distribution"
+3. Set your origin (Elastic Beanstalk, EC2, or S3)
+4. Configure caching and behavior settings
+
+## Custom Domains
+
+Add a custom domain to your AWS deployment:
+
+### For Elastic Beanstalk
+
+1. Go to your Elastic Beanstalk environment
+2. Navigate to "Configuration" -> "Load balancer"
+3. Add a listener for your custom domain
+4. Configure DNS in Route 53 or your DNS provider
+
+### For Amplify
+
+1. Go to your Amplify app
+2. Navigate to "App settings" -> "Domain management"
+3. Click "Add domain"
+4. Follow the DNS configuration instructions
+
+## Monitoring
+
+AWS provides extensive monitoring:
+
+- **CloudWatch**: Logs, metrics, and alarms
+- **X-Ray**: Distributed tracing
+- **Health checks**: Application health monitoring
+
+## CI/CD
+
+### AWS CodePipeline
+
+Set up continuous deployment with CodePipeline:
+
+1. Go to the [CodePipeline Console](https://console.aws.amazon.com/codesuite/codepipeline/)
+2. Click "Create pipeline"
+3. Connect your GitHub repository
+4. Configure build and deploy stages
+
+### GitHub Actions
+
+Use GitHub Actions for CI/CD:
+
+```yaml
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - run: aws s3 sync .next/standalone s3://your-bucket-name
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+```
+
+## Troubleshooting
+
+### Build Failures
+
+Check the build logs in the AWS Console for error messages.
+
+### Runtime Errors
+
+View application logs:
+
+```bash
+# For Elastic Beanstalk
+eb logs
+
+# For EC2
+ssh -i your-key.pem ec2-user@your-ec2-ip
+tail -f /var/log/nodejs.log
+```
+
+### Database Connection Issues
+
+Verify your database connection strings and security group settings.
+
+## Resources
+
+- [AWS Documentation](https://docs.aws.amazon.com)
+- [AWS Elastic Beanstalk Documentation](https://docs.aws.amazon.com/elasticbeanstalk/)
+- [AWS Amplify Documentation](https://docs.amplify.aws/)
+- [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/)
+- [AWS Next.js Guide](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-next-js-applications-on-aws.html)
+- [AWS Community](https://repost.aws/)
+- [AWS Status](https://status.aws.amazon.com)

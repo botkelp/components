@@ -1,0 +1,71 @@
+{
+  "id": "gcp-hosting",
+  "name": "Google Cloud Platform Hosting",
+  "version": "1.0.0",
+  "description": "Google Cloud Platform hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for Cloud Run, App Engine, or Vertex AI. GCP provides scalable cloud hosting with extensive services.",
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "vercel-hosting",
+    "railway-hosting",
+    "render-hosting",
+    "cloudflare-hosting",
+    "aws-hosting",
+    "azure-hosting"
+  ],
+  "provides": [
+    "hosting"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [
+    "GCP_PROJECT_ID",
+    "GCP_REGION",
+    "GCP_SERVICE_ACCOUNT_EMAIL",
+    "GCP_SERVICE_ACCOUNT_KEY"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "GCP Next.js deployment documentation",
+      "url": "https://cloud.google.com/run/docs/quickstarts/build-and-deploy/nodejs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "GCP Cloud Run Next.js guide",
+      "url": "https://cloud.google.com/run/docs/deploying-source-code",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "GCP Next.js sample application",
+      "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/main/run/nextjs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "google-github-actions/deploy-cloudrun v3.0.1",
+      "url": "https://github.com/google-github-actions/deploy-cloudrun/releases/tag/v3.0.1",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/GCP_README.md.ejs",
+      "destination": "GCP_README.md"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Dockerfile.ejs",
+      "destination": "Dockerfile"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.dockerignore.ejs",
+      "destination": ".dockerignore"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+/**
+ * Angular Root Component Template
+ * 
+ * This is the HTML template for the root component.
+ * 
+ * Source: https://angular.dev/cli/new
+ * Verified: 2026-09-06
+ */
+
+<main>
+  <header class="header">
+    <div class="container header-content">
+      <a href="/" class="logo">
+        <span class="logo-text">{{ title }}</span>
+      </a>
+      <nav class="nav">
+        <a href="/" class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        <a href="/about" class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; {{ getCurrentYear() }} <%= projectName || 'Angular App' %>. All rights reserved.</p>
+    </div>
+  </footer>
+</main>

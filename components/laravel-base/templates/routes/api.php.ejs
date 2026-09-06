@@ -1,0 +1,46 @@
+/**
+ * Laravel API Routes
+ * 
+ * This file defines the API routes for the Laravel application.
+ * 
+ * Source: https://laravel.com/docs/11.x/routing
+ * Verified: 2026-09-06
+ */
+
+<?php
+
+use App\Http\Controllers\ExampleController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
+|
+*/
+
+// Health check endpoint
+Route::get('/health', [ExampleController::class, 'health']);
+
+// Example resource routes
+Route::prefix('/examples')->group(function () {
+    Route::get('/', [ExampleController::class, 'index']);
+    Route::post('/', [ExampleController::class, 'store']);
+    Route::get('/{id}', [ExampleController::class, 'show']);
+    Route::put('/{id}', [ExampleController::class, 'update']);
+    Route::delete('/{id}', [ExampleController::class, 'destroy']);
+    Route::patch('/{id}/toggle-active', [ExampleController::class, 'toggleActive']);
+});
+
+// Fallback route for API
+Route::fallback(function (Request $request) {
+    return response()->json([
+        'error' => 'Not Found',
+        'message' => 'The requested API endpoint was not found.',
+    ], 404);
+});

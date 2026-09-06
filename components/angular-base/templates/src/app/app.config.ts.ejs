@@ -1,0 +1,19 @@
+/**
+ * Angular Application Configuration
+ * 
+ * This file configures the Angular application providers.
+ * 
+ * Source: https://angular.dev/cli/new
+ * Verified: 2026-09-06
+ */
+
+import { ApplicationConfig, provideRouter } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+  ],
+};

@@ -1,0 +1,22 @@
+/**
+ * Redirects the browser to the Stripe-hosted Checkout page returned by
+ * POST /api/checkout.
+ * Docs: https://docs.stripe.com/checkout/quickstart?client=next
+ * @stripe/stripe-js@9.15.0 — https://www.npmjs.com/package/@stripe/stripe-js
+ * Verified 2026-09-06.
+ */
+'use client';
+
+export function CheckoutButton() {
+  async function startCheckout() {
+    const response = await fetch('/api/checkout', { method: 'POST' });
+    const payload = (await response.json()) as { url?: string };
+    if (payload.url) window.location.assign(payload.url);
+  }
+
+  return (
+    <button type="button" onClick={() => void startCheckout()}>
+      Checkout with Stripe
+    </button>
+  );
+}

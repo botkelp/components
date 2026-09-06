@@ -1,0 +1,19 @@
+/**
+ * Vite Configuration for SvelteKit
+ * 
+ * This file configures Vite for SvelteKit development.
+ * 
+ * Source: https://kit.svelte.dev/docs/vite
+ * Verified: 2026-09-06
+ */
+
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [sveltekit()],
+	server: {
+		port: 3000,
+		strictPort: true
+	}
+});

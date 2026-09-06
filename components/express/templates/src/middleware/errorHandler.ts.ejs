@@ -1,0 +1,142 @@
+/**
+ * Express Error Handler Middleware
+ * 
+ * This middleware handles errors and sends appropriate responses.
+ * 
+ * Source: https://expressjs.com/en/guide/error-handling.html
+ * Verified: 2026-09-06
+ */
+
+import { Request, Response, NextFunction } from 'express';
+import { config } from '../config';
+
+// Define custom error types
+export class AppError extends Error {
+  constructor(
+    public readonly statusCode: number,
+    message: string,
+    public readonly errors?: Error[],
+    public readonly isOperational = true
+  ) {
+    super(message);
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
+export class NotFoundError extends AppError {
+  constructor(resource: string, identifier?: string | number) {
+    const message = identifier
+      ? `${resource} with identifier ${identifier} not found`
+      : `${resource} not found`;
+    super(404, message);
+  }
+}
+
+export class ValidationError extends AppError {
+  constructor(message: string, errors?: Error[]) {
+    super(400, message, errors);
+  }
+}
+
+export class UnauthorizedError extends AppError {
+  constructor(message = 'Unauthorized') {
+    super(401, message);
+  }
+}
+
+export class ForbiddenError extends AppError {
+  constructor(message = 'Forbidden') {
+    super(403, message);
+  }
+}
+
+export class RateLimitError extends AppError {
+  constructor(message = 'Too Many Requests') {
+    super(429, message);
+  }
+}
+
+// Error response interface
+interface ErrorResponse {
+  error: string;
+  message: string;
+  statusCode: number;
+  timestamp: string;
+  path: string;
+  method: string;
+  stack?: string;
+  errors?: unknown;
+}
+
+// Error handler middleware
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function errorHandler(
+  error: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const statusCode = error instanceof AppError ? error.statusCode : 500;
+  const message = error.message || 'Internal Server Error';
+  const stack = config.NODE_ENV === 'development' ? error.stack : undefined;
+
+  // Log the error
+  console.error(`[${new Date().toISOString()}] Error:`, {
+    statusCode,
+    message,
+    path: req.path,
+    method: req.method,
+    stack,
+  });
+
+  // Prepare error response
+  const errorResponse: ErrorResponse = {
+    error: getErrorType(statusCode),
+    message,
+    statusCode,
+    timestamp: new Date().toISOString(),
+    path: req.path,
+    method: req.method,
+  };
+
+  // Add stack trace in development
+  if (stack) {
+    errorResponse.stack = stack;
+  }
+
+  // Add additional errors if available
+  if (error instanceof AppError && error.errors) {
+    errorResponse.errors = error.errors.map((e) => e.message);
+  }
+
+  // Send error response
+  res.status(statusCode).json(errorResponse);
+}
+
+// Helper function to get error type
+function getErrorType(statusCode: number): string {
+  switch (statusCode) {
+    case 400:
+      return 'Bad Request';
+    case 401:
+      return 'Unauthorized';
+    case 403:
+      return 'Forbidden';
+    case 404:
+      return 'Not Found';
+    case 409:
+      return 'Conflict';
+    case 422:
+      return 'Unprocessable Entity';
+    case 429:
+      return 'Too Many Requests';
+    case 500:
+      return 'Internal Server Error';
+    case 502:
+      return 'Bad Gateway';
+    case 503:
+      return 'Service Unavailable';
+    default:
+      return 'Error';
+  }
+}

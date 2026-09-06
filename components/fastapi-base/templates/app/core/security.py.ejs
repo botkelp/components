@@ -1,0 +1,186 @@
+"""
+Security Utilities
+
+This module provides security-related utilities and dependencies.
+
+Source: https://fastapi.tiangolo.com/tutorial/security/
+Verified: 2026-09-06
+"""
+
+from datetime import datetime, timedelta
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+from typing import Optional
+from app.core.config import settings
+
+# Security schemes
+http_bearer = HTTPBearer()
+oauth2_scheme = HTTPBearer()
+
+# Password hashing
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# JWT configuration
+JWT_ALGORITHM = "HS256"
+JWT_SECRET_KEY = settings.SECRET_KEY
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 30
+JWT_REFRESH_TOKEN_EXPIRE_DAYS = 7
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """
+    Verify a password against its hash.
+    
+    Args:
+        plain_password: The plain text password to verify
+        hashed_password: The hashed password to verify against
+    
+    Returns:
+        True if the password matches, False otherwise
+    """
+    return pwd_context.verify(plain_password, hashed_password)
+
+
+def get_password_hash(password: str) -> str:
+    """
+    Hash a password for storing.
+    
+    Args:
+        password: The plain text password to hash
+    
+    Returns:
+        The hashed password
+    """
+    return pwd_context.hash(password)
+
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    """
+    Create a JWT access token.
+    
+    Args:
+        data: Dictionary containing the token payload
+        expires_delta: Optional timedelta for token expiration
+    
+    Returns:
+        The encoded JWT token
+    """
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
+    
+    to_encode.update({
+        "exp": expire,
+        "iat": datetime.utcnow(),
+    })
+    
+    encoded_jwt = jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
+    return encoded_jwt
+
+
+def create_refresh_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    """
+    Create a JWT refresh token with longer expiration.
+    
+    Args:
+        data: Dictionary containing the token payload
+        expires_delta: Optional timedelta for token expiration
+    
+    Returns:
+        The encoded JWT token
+    """
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(days=JWT_REFRESH_TOKEN_EXPIRE_DAYS)
+    
+    to_encode.update({
+        "exp": expire,
+        "iat": datetime.utcnow(),
+        "type": "refresh",
+    })
+    
+    encoded_jwt = jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
+    return encoded_jwt
+
+
+def decode_token(token: str) -> dict:
+    """
+    Decode and verify a JWT token.
+    
+    Args:
+        token: The JWT token to decode
+    
+    Returns:
+        The decoded token payload
+    
+    Raises:
+        HTTPException: If the token is invalid or expired
+    """
+    try:
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        return payload
+    except JWTError as e:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Invalid token: {str(e)}",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(http_bearer)) -> dict:
+    """
+    Dependency for getting the current user from a JWT token.
+    
+    Args:
+        credentials: The HTTP authorization credentials
+    
+    Returns:
+        The user information from the token
+    
+    Raises:
+        HTTPException: If the token is invalid or expired
+    """
+    try:
+        token = credentials.credentials
+        payload = decode_token(token)
+        
+        # In a real application, you would validate the user exists
+        # and fetch additional user information from the database
+        
+        return payload
+    except JWTError as e:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Invalid authentication credentials: {str(e)}",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+
+async def get_optional_user(credentials: Optional[HTTPAuthorizationCredentials] = Depends(HTTPBearer(auto_error=False))) -> Optional[dict]:
+    """
+    Dependency for getting the current user if available.
+    
+    This is useful for endpoints that work for both authenticated and
+    unauthenticated users but provide additional features for authenticated ones.
+    
+    Args:
+        credentials: The HTTP authorization credentials (optional)
+    
+    Returns:
+        The user information from the token, or None if not authenticated
+    """
+    if credentials is None:
+        return None
+    
+    try:
+        token = credentials.credentials
+        payload = decode_token(token)
+        return payload
+    except JWTError:
+        return None

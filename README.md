@@ -13,7 +13,7 @@ Each folder under [`components/`](components/) is one component:
 
 The same list is in [`CATALOG.md`](CATALOG.md) and [`catalog.json`](catalog.json).
 
-This is the source the BotKelp registry and MCP generator use. It is not a demo and not a cleaned-up excerpt.
+This repository is the **source of truth** for BotKelp's component catalog. The MCP generator and website load these files (not a private copy). It is not a demo and not a cleaned-up excerpt.
 
 ## What we are not providing
 

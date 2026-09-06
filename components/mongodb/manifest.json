@@ -1,0 +1,64 @@
+{
+  "id": "mongodb",
+  "name": "MongoDB Database",
+  "version": "1.0.0",
+  "description": "MongoDB database integration via Docker and native driver. Includes Docker Compose configuration and connection utilities. No-ORM approach for maximum flexibility.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["postgres", "mysql", "sqlite", "sqlserver"],
+  "provides": ["database"],
+  "dependencies": ["mongodb"],
+  "devDependencies": [],
+  "envVariables": ["MONGODB_URI", "MONGODB_DB"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "MongoDB Node.js driver documentation",
+      "url": "https://www.mongodb.com/docs/drivers/node/current/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Official MongoDB Docker image (Docker Hub)",
+      "url": "https://hub.docker.com/_/mongo",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "mongodb/node-mongodb-driver v6.0.0",
+      "url": "https://github.com/mongodb/node-mongodb-driver/releases/tag/v6.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official MongoDB Node.js examples",
+      "url": "https://github.com/mongodb/node-mongodb-driver/tree/v6.0.0/examples",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/mongodb.ts.ejs",
+      "destination": "lib/mongodb.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "mongodb": "6.0.0"
+        }
+      }
+    }
+  ]
+}

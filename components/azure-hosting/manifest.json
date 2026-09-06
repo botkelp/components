@@ -1,0 +1,62 @@
+{
+  "id": "azure-hosting",
+  "name": "Azure Hosting",
+  "version": "1.0.0",
+  "description": "Azure hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for Azure App Service, Static Web Apps, or Container Instances. Azure provides scalable cloud hosting with extensive services.",
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "vercel-hosting",
+    "railway-hosting",
+    "render-hosting",
+    "cloudflare-hosting",
+    "aws-hosting",
+    "gcp-hosting"
+  ],
+  "provides": [
+    "hosting"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [
+    "AZURE_REGION",
+    "AZURE_CLIENT_ID",
+    "AZURE_CLIENT_SECRET",
+    "AZURE_TENANT_ID",
+    "AZURE_SUBSCRIPTION_ID"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Azure Next.js deployment documentation",
+      "url": "https://learn.microsoft.com/en-us/azure/app-service/quickstart-nodejs?pivots=platform-linux",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Azure Static Web Apps Next.js guide",
+      "url": "https://learn.microsoft.com/en-us/azure/static-web-apps/publish-nextjs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Azure Next.js sample application",
+      "url": "https://github.com/Azure-Samples/nextjs-static-web-app",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "Azure/static-web-apps-cli v2.0.10",
+      "url": "https://github.com/Azure/static-web-apps-cli/releases/tag/v2.0.10",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/AZURE_README.md.ejs",
+      "destination": "AZURE_README.md"
+    }
+  ]
+}

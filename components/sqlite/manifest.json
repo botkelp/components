@@ -1,0 +1,50 @@
+{
+  "id": "sqlite",
+  "name": "SQLite Database",
+  "version": "1.0.0",
+  "description": "SQLite database integration for development. Includes Prisma schema configured for SQLite. Lightweight, file-based database perfect for development and testing. Pair with the existing prisma component for the ORM.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["postgres", "mysql", "mongodb", "sqlserver"],
+  "provides": ["database"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["DATABASE_URL"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Prisma SQLite connection string",
+      "url": "https://www.prisma.io/docs/prisma-orm/quickstart/sqlite",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Prisma SQLite documentation",
+      "url": "https://www.prisma.io/docs/concepts/database-connectors/sqlite",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "prisma/prisma 7.10.0 (SQLite adapter)",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Prisma SQLite example",
+      "url": "https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-sqlite",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/prisma-sqlite-schema.prisma.ejs",
+      "destination": "prisma/schema.prisma"
+    }
+  ]
+}

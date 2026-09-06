@@ -1,5 +1,113 @@
 [
   {
+    "id": "angular-base",
+    "name": "Angular Base",
+    "version": "1.0.0",
+    "description": "Minimal Angular application with Angular CLI, TypeScript, and RxJS. Provides a foundation for Angular applications with component-based architecture. Packages pinned to @angular/core@18.0.0, @angular/cli@18.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "framework"
+    ],
+    "dependencies": [
+      "@angular/animations",
+      "@angular/common",
+      "@angular/compiler",
+      "@angular/core",
+      "@angular/forms",
+      "@angular/platform-browser",
+      "@angular/platform-browser-dynamic",
+      "@angular/router",
+      "rxjs",
+      "tslib",
+      "zone.js"
+    ],
+    "devDependencies": [
+      "@angular/cli",
+      "@angular-devkit/build-angular",
+      "@angular/compiler-cli",
+      "@types/jasmine",
+      "@types/node",
+      "jasmine-core",
+      "karma",
+      "karma-chrome-launcher",
+      "karma-coverage",
+      "karma-jasmine",
+      "karma-jasmine-html-reporter",
+      "typescript"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "angular.json",
+        "template": "templates/angular.json.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "tsconfig.app.json",
+        "template": "templates/tsconfig.app.json.ejs"
+      },
+      {
+        "destination": "tsconfig.spec.json",
+        "template": "templates/tsconfig.spec.json.ejs"
+      },
+      {
+        "destination": "src/index.html",
+        "template": "templates/src/index.html.ejs"
+      },
+      {
+        "destination": "src/main.ts",
+        "template": "templates/src/main.ts.ejs"
+      },
+      {
+        "destination": "src/styles.css",
+        "template": "templates/src/styles.css.ejs"
+      },
+      {
+        "destination": "src/app/app.component.ts",
+        "template": "templates/src/app/app.component.ts.ejs"
+      },
+      {
+        "destination": "src/app/app.component.html",
+        "template": "templates/src/app/app.component.html.ejs"
+      },
+      {
+        "destination": "src/app/app.config.ts",
+        "template": "templates/src/app/app.config.ts.ejs"
+      },
+      {
+        "destination": "src/app/app.routes.ts",
+        "template": "templates/src/app/app.routes.ts.ejs"
+      },
+      {
+        "destination": "src/environments/environment.ts",
+        "template": "templates/src/environments/environment.ts.ejs"
+      },
+      {
+        "destination": "src/environments/environment.prod.ts",
+        "template": "templates/src/environments/environment.prod.ts.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": ".browserslistrc",
+        "template": "templates/.browserslistrc.ejs"
+      }
+    ]
+  },
+  {
     "id": "aos",
     "name": "Animate On Scroll (AOS)",
     "version": "1.0.0",
@@ -28,6 +136,215 @@
       {
         "destination": "components/aos-init.tsx",
         "template": "templates/components/aos-init.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "aspnet-base",
+    "name": "ASP.NET Core Base",
+    "version": "1.0.0",
+    "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "ASPNETCORE_ENVIRONMENT",
+      "ASPNETCORE_URLS",
+      "CONNECTIONSTRINGS__DEFAULT",
+      "JWT__SECRET",
+      "JWT__ISSUER",
+      "JWT__AUDIENCE"
+    ],
+    "files": [
+      {
+        "destination": "<%= projectName || 'AspNetCoreApp' %>.csproj",
+        "template": "templates/aspnet-base.csproj.ejs"
+      },
+      {
+        "destination": "Program.cs",
+        "template": "templates/Program.cs.ejs"
+      },
+      {
+        "destination": "appsettings.json",
+        "template": "templates/appsettings.json.ejs"
+      },
+      {
+        "destination": "appsettings.Development.json",
+        "template": "templates/appsettings.Development.json.ejs"
+      },
+      {
+        "destination": "Controllers/ExampleController.cs",
+        "template": "templates/Controllers/ExampleController.cs.ejs"
+      },
+      {
+        "destination": "Models/AppDbContext.cs",
+        "template": "templates/Models/AppDbContext.cs.ejs"
+      },
+      {
+        "destination": "Models/Example.cs",
+        "template": "templates/Models/Example.cs.ejs"
+      },
+      {
+        "destination": "Properties/launchSettings.json",
+        "template": "templates/Properties/launchSettings.json.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      }
+    ]
+  },
+  {
+    "id": "auth0",
+    "name": "Auth0 Authentication",
+    "version": "1.0.0",
+    "description": "Auth0 authentication integration for Next.js App Router. Includes Auth0 provider, SDK configuration, and callback routes. Packages pinned to @auth0/auth0-nextjs@4.0.0 (verified 2026-09-06).",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "authentication"
+    ],
+    "dependencies": [
+      "@auth0/auth0-nextjs"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "AUTH0_SECRET",
+      "AUTH0_BASE_URL",
+      "AUTH0_ISSUER_BASE_URL",
+      "AUTH0_CLIENT_ID",
+      "AUTH0_CLIENT_SECRET",
+      "NEXT_PUBLIC_AUTH0_DOMAIN"
+    ],
+    "files": [
+      {
+        "destination": "lib/auth0.ts",
+        "template": "templates/lib/auth0.ts.ejs"
+      },
+      {
+        "destination": "app/api/auth/[...auth0]/route.ts",
+        "template": "templates/app/api/auth/[...auth0]/route.ts.ejs"
+      },
+      {
+        "destination": "app/login/page.tsx",
+        "template": "templates/app/login/page.tsx.ejs"
+      },
+      {
+        "destination": "app/api/auth/user/route.ts",
+        "template": "templates/app/api/auth/user/route.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "authjs",
+    "name": "Auth.js (NextAuth v5)",
+    "version": "1.0.0",
+    "description": "Auth.js / next-auth@5.0.0-beta.32 on Next.js App Router: auth.ts, /api/auth/[...nextauth], proxy.ts, GitHub provider. Pinned to the 20 Jul 2026 beta that includes @auth/core@0.41.3 security fixes.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "authentication"
+    ],
+    "dependencies": [
+      "next-auth"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "AUTH_SECRET",
+      "AUTH_GITHUB_ID",
+      "AUTH_GITHUB_SECRET",
+      "AUTH_TRUST_HOST"
+    ],
+    "files": [
+      {
+        "destination": "auth.ts",
+        "template": "templates/auth.ts.ejs"
+      },
+      {
+        "destination": "app/api/auth/[...nextauth]/route.ts",
+        "template": "templates/app/api/auth/[...nextauth]/route.ts.ejs"
+      },
+      {
+        "destination": "proxy.ts",
+        "template": "templates/proxy.ts.ejs"
+      },
+      {
+        "destination": "app/login/page.tsx",
+        "template": "templates/app/login/page.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "aws-hosting",
+    "name": "AWS Hosting",
+    "version": "1.0.0",
+    "description": "AWS hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for AWS Elastic Beanstalk, EC2, or Amplify. AWS provides scalable cloud hosting with extensive services.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "AWS_REGION",
+      "AWS_ACCESS_KEY_ID",
+      "AWS_SECRET_ACCESS_KEY",
+      "AWS_ACCOUNT_ID"
+    ],
+    "files": [
+      {
+        "destination": "AWS_README.md",
+        "template": "templates/AWS_README.md.ejs"
+      },
+      {
+        "destination": ".ebextensions/nextjs.config",
+        "template": "templates/.ebextensions/nextjs.config.ejs"
+      }
+    ]
+  },
+  {
+    "id": "azure-hosting",
+    "name": "Azure Hosting",
+    "version": "1.0.0",
+    "description": "Azure hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for Azure App Service, Static Web Apps, or Container Instances. Azure provides scalable cloud hosting with extensive services.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "AZURE_REGION",
+      "AZURE_CLIENT_ID",
+      "AZURE_CLIENT_SECRET",
+      "AZURE_TENANT_ID",
+      "AZURE_SUBSCRIPTION_ID"
+    ],
+    "files": [
+      {
+        "destination": "AZURE_README.md",
+        "template": "templates/AZURE_README.md.ejs"
       }
     ]
   },
@@ -66,10 +383,92 @@
     ]
   },
   {
+    "id": "clerk",
+    "name": "Clerk Authentication",
+    "version": "1.0.0",
+    "description": "Clerk authentication integration for Next.js App Router. Includes Clerk provider, middleware, and sign-in/sign-out pages. Packages pinned to @clerk/nextjs@5.0.0 (verified 2026-09-06).",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "authentication"
+    ],
+    "dependencies": [
+      "@clerk/nextjs"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+      "CLERK_SECRET_KEY",
+      "CLERK_WEBHOOK_SECRET",
+      "NEXT_PUBLIC_CLERK_SIGN_IN_URL",
+      "NEXT_PUBLIC_CLERK_SIGN_UP_URL",
+      "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL",
+      "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL"
+    ],
+    "files": [
+      {
+        "destination": "providers.tsx",
+        "template": "templates/providers.tsx.ejs"
+      },
+      {
+        "destination": "middleware.ts",
+        "template": "templates/middleware/middleware.ts.ejs"
+      },
+      {
+        "destination": "app/sign-in/[[...sign-in]]/page.tsx",
+        "template": "templates/app/sign-in/[[...sign-in]]/page.tsx.ejs"
+      },
+      {
+        "destination": "app/sign-up/[[...sign-up]]/page.tsx",
+        "template": "templates/app/sign-up/[[...sign-up]]/page.tsx.ejs"
+      },
+      {
+        "destination": "app/api/webhooks/clerk/route.ts",
+        "template": "templates/app/api/webhooks/clerk/route.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "cloudflare-hosting",
+    "name": "Cloudflare Hosting",
+    "version": "1.0.0",
+    "description": "Cloudflare Pages and Workers hosting configuration for Next.js applications. Includes wrangler.toml configuration and deployment documentation. Cloudflare provides global CDN hosting with edge functions and serverless databases.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [
+      "wrangler"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "CLOUDFLARE_API_TOKEN",
+      "CLOUDFLARE_ACCOUNT_ID",
+      "CLOUDFLARE_PROJECT_NAME"
+    ],
+    "files": [
+      {
+        "destination": "wrangler.toml",
+        "template": "templates/wrangler.toml.ejs"
+      },
+      {
+        "destination": ".wranglerignore",
+        "template": "templates/.wranglerignore.ejs"
+      },
+      {
+        "destination": "CLOUDFLARE_README.md",
+        "template": "templates/CLOUDFLARE_README.md.ejs"
+      }
+    ]
+  },
+  {
     "id": "core-js",
     "name": "Core JS Polyfill",
-    "version": "1.0.0",
-    "description": "Adds Core.js (v3.50.0), a modular standard library polyfill for ECMAScript features. Provides polyfills for ES6+ features including Promise, Array methods, Object methods, String methods, and more. Required for supporting older browsers in Next.js applications.",
+    "version": "1.0.1",
+    "description": "Opt-in Core.js (v3.50.0) polyfills for older browsers. Not selected by default and not required for Next.js 16 on current browsers. profile=minimal emits only import 'core-js/stable'; profile=complete also emits per-feature side-effect imports. Tree shaking cannot remove those imports.",
     "requires": [
       "nextjs-base"
     ],
@@ -114,6 +513,289 @@
       {
         "destination": "types/dayjs.d.ts",
         "template": "templates/types/dayjs.d.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "django-base",
+    "name": "Django Base",
+    "version": "1.0.0",
+    "description": "Django backend project with Python 3.11+. Provides a foundation for Django applications with models, views, URLs, and settings. Includes Docker configuration for PostgreSQL. Packages pinned to Django==5.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "DJANGO_SECRET_KEY",
+      "DJANGO_DEBUG",
+      "DJANGO_ALLOWED_HOSTS",
+      "DATABASE_URL"
+    ],
+    "files": [
+      {
+        "destination": "requirements.txt",
+        "template": "templates/requirements.txt.ejs"
+      },
+      {
+        "destination": "requirements-dev.txt",
+        "template": "templates/requirements-dev.txt.ejs"
+      },
+      {
+        "destination": "manage.py",
+        "template": "templates/manage.py.ejs"
+      },
+      {
+        "destination": "myproject/settings.py",
+        "template": "templates/myproject/settings.py.ejs"
+      },
+      {
+        "destination": "myproject/urls.py",
+        "template": "templates/myproject/urls.py.ejs"
+      },
+      {
+        "destination": "myproject/wsgi.py",
+        "template": "templates/myproject/wsgi.py.ejs"
+      },
+      {
+        "destination": "myproject/asgi.py",
+        "template": "templates/myproject/asgi.py.ejs"
+      },
+      {
+        "destination": "myapp/models.py",
+        "template": "templates/myapp/models.py.ejs"
+      },
+      {
+        "destination": "myapp/views.py",
+        "template": "templates/myapp/views.py.ejs"
+      },
+      {
+        "destination": "myapp/urls.py",
+        "template": "templates/myapp/urls.py.ejs"
+      },
+      {
+        "destination": "myapp/apps.py",
+        "template": "templates/myapp/apps.py.ejs"
+      },
+      {
+        "destination": "myapp/admin.py",
+        "template": "templates/myapp/admin.py.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      }
+    ]
+  },
+  {
+    "id": "express",
+    "name": "Express Backend",
+    "version": "1.0.0",
+    "description": "Express.js backend server with TypeScript. Provides a REST API foundation with middleware support, error handling, and environment configuration. Packages pinned to express@4.18.0, @types/express@4.17.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [
+      "express",
+      "cors",
+      "dotenv",
+      "helmet",
+      "morgan"
+    ],
+    "devDependencies": [
+      "@types/cors",
+      "@types/express",
+      "@types/morgan",
+      "@types/node",
+      "typescript",
+      "ts-node",
+      "nodemon"
+    ],
+    "envVariables": [
+      "NODE_ENV",
+      "PORT",
+      "API_BASE_PATH"
+    ],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "src/server.ts",
+        "template": "templates/src/server.ts.ejs"
+      },
+      {
+        "destination": "src/routes/index.ts",
+        "template": "templates/src/routes/index.ts.ejs"
+      },
+      {
+        "destination": "src/routes/health.ts",
+        "template": "templates/src/routes/health.ts.ejs"
+      },
+      {
+        "destination": "src/middleware/errorHandler.ts",
+        "template": "templates/src/middleware/errorHandler.ts.ejs"
+      },
+      {
+        "destination": "src/middleware/requestLogger.ts",
+        "template": "templates/src/middleware/requestLogger.ts.ejs"
+      },
+      {
+        "destination": "src/config/index.ts",
+        "template": "templates/src/config/index.ts.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      }
+    ]
+  },
+  {
+    "id": "fastapi-base",
+    "name": "FastAPI Base",
+    "version": "1.0.0",
+    "description": "FastAPI backend project with Python 3.11+. Provides a modern, async-ready API foundation with automatic docs, dependency injection, and environment configuration. Packages pinned to fastapi==0.109.0, uvicorn==0.27.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "APP_NAME",
+      "APP_VERSION",
+      "DEBUG",
+      "SECRET_KEY",
+      "DATABASE_URL",
+      "API_V1_PREFIX"
+    ],
+    "files": [
+      {
+        "destination": "requirements.txt",
+        "template": "templates/requirements.txt.ejs"
+      },
+      {
+        "destination": "requirements-dev.txt",
+        "template": "templates/requirements-dev.txt.ejs"
+      },
+      {
+        "destination": "main.py",
+        "template": "templates/main.py.ejs"
+      },
+      {
+        "destination": "app/__init__.py",
+        "template": "templates/app/__init__.py.ejs"
+      },
+      {
+        "destination": "app/api/__init__.py",
+        "template": "templates/app/api/__init__.py.ejs"
+      },
+      {
+        "destination": "app/api/v1/__init__.py",
+        "template": "templates/app/api/v1/__init__.py.ejs"
+      },
+      {
+        "destination": "app/api/v1/endpoints/__init__.py",
+        "template": "templates/app/api/v1/endpoints/__init__.py.ejs"
+      },
+      {
+        "destination": "app/api/v1/endpoints/health.py",
+        "template": "templates/app/api/v1/endpoints/health.py.ejs"
+      },
+      {
+        "destination": "app/api/v1/endpoints/examples.py",
+        "template": "templates/app/api/v1/endpoints/examples.py.ejs"
+      },
+      {
+        "destination": "app/core/__init__.py",
+        "template": "templates/app/core/__init__.py.ejs"
+      },
+      {
+        "destination": "app/core/config.py",
+        "template": "templates/app/core/config.py.ejs"
+      },
+      {
+        "destination": "app/core/security.py",
+        "template": "templates/app/core/security.py.ejs"
+      },
+      {
+        "destination": "app/models/__init__.py",
+        "template": "templates/app/models/__init__.py.ejs"
+      },
+      {
+        "destination": "app/models/base.py",
+        "template": "templates/app/models/base.py.ejs"
+      },
+      {
+        "destination": "app/models/example.py",
+        "template": "templates/app/models/example.py.ejs"
+      },
+      {
+        "destination": "app/routers/__init__.py",
+        "template": "templates/app/routers/__init__.py.ejs"
+      },
+      {
+        "destination": "app/routers/v1.py",
+        "template": "templates/app/routers/v1.py.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
       }
     ]
   },
@@ -172,6 +854,40 @@
     ]
   },
   {
+    "id": "gcp-hosting",
+    "name": "Google Cloud Platform Hosting",
+    "version": "1.0.0",
+    "description": "Google Cloud Platform hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for Cloud Run, App Engine, or Vertex AI. GCP provides scalable cloud hosting with extensive services.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "GCP_PROJECT_ID",
+      "GCP_REGION",
+      "GCP_SERVICE_ACCOUNT_EMAIL",
+      "GCP_SERVICE_ACCOUNT_KEY"
+    ],
+    "files": [
+      {
+        "destination": "GCP_README.md",
+        "template": "templates/GCP_README.md.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": ".dockerignore",
+        "template": "templates/.dockerignore.ejs"
+      }
+    ]
+  },
+  {
     "id": "jquery",
     "name": "jQuery",
     "version": "1.0.0",
@@ -198,6 +914,186 @@
     ]
   },
   {
+    "id": "laravel-base",
+    "name": "Laravel Base",
+    "version": "1.0.0",
+    "description": "Laravel PHP framework project. Provides a foundation for Laravel applications with MVC architecture, Eloquent ORM, and Blade templating. Packages pinned to laravel/framework v11.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "APP_NAME",
+      "APP_ENV",
+      "APP_KEY",
+      "APP_DEBUG",
+      "APP_URL",
+      "DB_CONNECTION",
+      "DB_HOST",
+      "DB_PORT",
+      "DB_DATABASE",
+      "DB_USERNAME",
+      "DB_PASSWORD"
+    ],
+    "files": [
+      {
+        "destination": "composer.json",
+        "template": "templates/composer.json.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": "artisan",
+        "template": "templates/artisan.ejs"
+      },
+      {
+        "destination": "bootstrap/app.php",
+        "template": "templates/bootstrap/app.php.ejs"
+      },
+      {
+        "destination": "bootstrap/providers.php",
+        "template": "templates/bootstrap/providers.php.ejs"
+      },
+      {
+        "destination": "config/app.php",
+        "template": "templates/config/app.php.ejs"
+      },
+      {
+        "destination": "config/database.php",
+        "template": "templates/config/database.php.ejs"
+      },
+      {
+        "destination": "config/cors.php",
+        "template": "templates/config/cors.php.ejs"
+      },
+      {
+        "destination": "app/Http/Controllers/Controller.php",
+        "template": "templates/app/Http/Controllers/Controller.php.ejs"
+      },
+      {
+        "destination": "app/Http/Controllers/ExampleController.php",
+        "template": "templates/app/Http/Controllers/ExampleController.php.ejs"
+      },
+      {
+        "destination": "app/Models/Example.php",
+        "template": "templates/app/Models/Example.php.ejs"
+      },
+      {
+        "destination": "app/Providers/AppServiceProvider.php",
+        "template": "templates/app/Providers/AppServiceProvider.php.ejs"
+      },
+      {
+        "destination": "app/Providers/RouteServiceProvider.php",
+        "template": "templates/app/Providers/RouteServiceProvider.php.ejs"
+      },
+      {
+        "destination": "database/migrations/2024_01_01_000000_create_examples_table.php",
+        "template": "templates/database/migrations/2024_01_01_000000_create_examples_table.php.ejs"
+      },
+      {
+        "destination": "routes/api.php",
+        "template": "templates/routes/api.php.ejs"
+      },
+      {
+        "destination": "routes/web.php",
+        "template": "templates/routes/web.php.ejs"
+      },
+      {
+        "destination": "public/index.php",
+        "template": "templates/public/index.php.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      }
+    ]
+  },
+  {
+    "id": "mongodb",
+    "name": "MongoDB Database",
+    "version": "1.0.0",
+    "description": "MongoDB database integration via Docker and native driver. Includes Docker Compose configuration and connection utilities. No-ORM approach for maximum flexibility.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database"
+    ],
+    "dependencies": [
+      "mongodb"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "MONGODB_URI",
+      "MONGODB_DB"
+    ],
+    "files": [
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/env.example.ejs"
+      },
+      {
+        "destination": "lib/mongodb.ts",
+        "template": "templates/lib/mongodb.ts.ejs"
+      }
+    ]
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL Database",
+    "version": "1.0.0",
+    "description": "MySQL database integration via Docker and Prisma ORM. Includes Docker Compose configuration and Prisma schema for MySQL. Pair with the existing prisma component for the ORM.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "DATABASE_URL",
+      "MYSQL_USER",
+      "MYSQL_PASSWORD",
+      "MYSQL_DATABASE",
+      "MYSQL_ROOT_PASSWORD"
+    ],
+    "files": [
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/env.example.ejs"
+      },
+      {
+        "destination": "prisma/schema.prisma",
+        "template": "templates/prisma-mysql-schema.prisma.ejs"
+      }
+    ]
+  },
+  {
     "id": "navbar",
     "name": "Navbar",
     "version": "1.0.0",
@@ -219,10 +1115,117 @@
     ]
   },
   {
+    "id": "nestjs",
+    "name": "NestJS Backend",
+    "version": "1.0.0",
+    "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "backend"
+    ],
+    "dependencies": [
+      "@nestjs/common",
+      "@nestjs/core",
+      "@nestjs/platform-express",
+      "reflect-metadata",
+      "rxjs"
+    ],
+    "devDependencies": [
+      "@nestjs/cli",
+      "@nestjs/schematics",
+      "@nestjs/testing",
+      "@types/express",
+      "@types/jest",
+      "@types/node",
+      "jest",
+      "ts-jest",
+      "ts-loader",
+      "ts-node",
+      "tsconfig-paths",
+      "typescript"
+    ],
+    "envVariables": [
+      "NODE_ENV",
+      "PORT",
+      "API_PREFIX",
+      "APP_NAME"
+    ],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "tsconfig.build.json",
+        "template": "templates/tsconfig.build.json.ejs"
+      },
+      {
+        "destination": "nest-cli.json",
+        "template": "templates/nest-cli.json.ejs"
+      },
+      {
+        "destination": "src/main.ts",
+        "template": "templates/src/main.ts.ejs"
+      },
+      {
+        "destination": "src/app.module.ts",
+        "template": "templates/src/app.module.ts.ejs"
+      },
+      {
+        "destination": "src/app.controller.ts",
+        "template": "templates/src/app.controller.ts.ejs"
+      },
+      {
+        "destination": "src/app.service.ts",
+        "template": "templates/src/app.service.ts.ejs"
+      },
+      {
+        "destination": "src/common/filter/http-exception.filter.ts",
+        "template": "templates/src/common/filter/http-exception.filter.ts.ejs"
+      },
+      {
+        "destination": "src/config/configuration.ts",
+        "template": "templates/src/config/configuration.ts.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": ".eslintrc.json",
+        "template": "templates/.eslintrc.json.ejs"
+      },
+      {
+        "destination": ".prettierrc",
+        "template": "templates/.prettierrc.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      }
+    ]
+  },
+  {
     "id": "nextjs-base",
     "name": "Next.js App Router Base",
-    "version": "2.0.0",
-    "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Every other component requires this one, directly or transitively.",
+    "version": "2.0.2",
+    "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects and enables optimizePackageImports for icon barrels. Every other component requires this one, directly or transitively.",
     "requires": [],
     "provides": [
       "framework"
@@ -281,6 +1284,51 @@
       {
         "destination": "app/globals.css",
         "template": "templates/app/globals.css.ejs"
+      },
+      {
+        "destination": ".github/workflows/ci.yml",
+        "template": "templates/github-workflows-ci.yml.ejs"
+      }
+    ]
+  },
+  {
+    "id": "paddle",
+    "name": "Paddle Payments",
+    "version": "1.0.0",
+    "description": "Paddle payment integration with Next.js App Router. Includes Paddle JavaScript SDK, checkout route, and webhook handler for subscription and one-time payments. Packages pinned to @paddle/paddle-js@1.0.0 (verified 2026-09-06).",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "payments",
+      "billing"
+    ],
+    "dependencies": [
+      "@paddle/paddle-js"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "PADDLE_VENDOR_ID",
+      "PADDLE_API_KEY",
+      "NEXT_PUBLIC_PADDLE_ENVIRONMENT",
+      "PADDLE_WEBHOOK_SECRET"
+    ],
+    "files": [
+      {
+        "destination": "lib/paddle.ts",
+        "template": "templates/lib/paddle.ts.ejs"
+      },
+      {
+        "destination": "app/api/checkout/paddle/route.ts",
+        "template": "templates/app/api/checkout/paddle/route.ts.ejs"
+      },
+      {
+        "destination": "app/api/webhooks/paddle/route.ts",
+        "template": "templates/app/api/webhooks/paddle/route.ts.ejs"
+      },
+      {
+        "destination": "components/paddle-checkout-button.tsx",
+        "template": "templates/components/paddle-checkout-button.tsx.ejs"
       }
     ]
   },
@@ -315,6 +1363,36 @@
       {
         "destination": "components/paypal-buttons.tsx",
         "template": "templates/components/paypal-buttons.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "postgres",
+    "name": "PostgreSQL",
+    "version": "1.0.0",
+    "description": "Local PostgreSQL via the official Docker image (tag 18) plus a DATABASE_URL that matches Prisma's documented postgresql:// form. Pair with the existing prisma component for the ORM.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "DATABASE_URL",
+      "POSTGRES_USER",
+      "POSTGRES_PASSWORD",
+      "POSTGRES_DB"
+    ],
+    "files": [
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/env.example.ejs"
       }
     ]
   },
@@ -389,6 +1467,39 @@
     ]
   },
   {
+    "id": "railway-hosting",
+    "name": "Railway Hosting",
+    "version": "1.0.0",
+    "description": "Railway hosting configuration for Next.js applications. Includes railway.toml configuration and deployment documentation. Railway provides simple, scalable hosting with built-in databases, monitoring, and CI/CD.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "RAILWAY_ENVIRONMENT",
+      "RAILWAY_PROJECT_ID",
+      "RAILWAY_SERVICE_ID"
+    ],
+    "files": [
+      {
+        "destination": "railway.toml",
+        "template": "templates/railway.toml.ejs"
+      },
+      {
+        "destination": ".railwayignore",
+        "template": "templates/.railwayignore.ejs"
+      },
+      {
+        "destination": "RAILWAY_README.md",
+        "template": "templates/RAILWAY_README.md.ejs"
+      }
+    ]
+  },
+  {
     "id": "recaptcha",
     "name": "reCAPTCHA Widget",
     "version": "1.0.0",
@@ -413,6 +1524,38 @@
       {
         "destination": "components/recaptcha-script.tsx",
         "template": "templates/components/recaptcha-script.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "render-hosting",
+    "name": "Render Hosting",
+    "version": "1.0.0",
+    "description": "Render hosting configuration for Next.js applications. Includes render.yaml configuration and deployment documentation. Render provides simple, scalable cloud hosting with built-in databases, caching, and CI/CD.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "hosting"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "RENDER_ENVIRONMENT",
+      "RENDER_SERVICE_ID"
+    ],
+    "files": [
+      {
+        "destination": "render.yaml",
+        "template": "templates/render.yaml.ejs"
+      },
+      {
+        "destination": ".renderignore",
+        "template": "templates/.renderignore.ejs"
+      },
+      {
+        "destination": "RENDER_README.md",
+        "template": "templates/RENDER_README.md.ejs"
       }
     ]
   },
@@ -446,6 +1589,106 @@
       {
         "destination": "components/ui/card.tsx",
         "template": "templates/components/ui/card.tsx.ejs"
+      }
+    ]
+  },
+  {
+    "id": "sqlite",
+    "name": "SQLite Database",
+    "version": "1.0.0",
+    "description": "SQLite database integration for development. Includes Prisma schema configured for SQLite. Lightweight, file-based database perfect for development and testing. Pair with the existing prisma component for the ORM.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "DATABASE_URL"
+    ],
+    "files": [
+      {
+        "destination": ".env.example",
+        "template": "templates/env.example.ejs"
+      },
+      {
+        "destination": "prisma/schema.prisma",
+        "template": "templates/prisma-sqlite-schema.prisma.ejs"
+      }
+    ]
+  },
+  {
+    "id": "sqlserver",
+    "name": "SQL Server Database",
+    "version": "1.0.0",
+    "description": "Microsoft SQL Server database integration via Docker. Includes Docker Compose configuration and connection utilities. Use with Prisma or other ORMs that support SQL Server.",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "database"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "DATABASE_URL",
+      "SA_PASSWORD",
+      "SQLSERVER_USER",
+      "SQLSERVER_PASSWORD",
+      "SQLSERVER_DATABASE"
+    ],
+    "files": [
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/env.example.ejs"
+      }
+    ]
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe Checkout",
+    "version": "1.0.0",
+    "description": "Stripe-hosted Checkout Session plus a signed webhook Route Handler for Next.js App Router. Packages pinned to stripe@22.6.1 and @stripe/stripe-js@9.15.0 (verified 2026-09-06).",
+    "requires": [
+      "nextjs-base"
+    ],
+    "provides": [
+      "payments",
+      "billing"
+    ],
+    "dependencies": [
+      "stripe",
+      "@stripe/stripe-js"
+    ],
+    "devDependencies": [],
+    "envVariables": [
+      "STRIPE_SECRET_KEY",
+      "STRIPE_WEBHOOK_SECRET",
+      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+      "STRIPE_PRICE_ID"
+    ],
+    "files": [
+      {
+        "destination": "lib/stripe.ts",
+        "template": "templates/lib/stripe.ts.ejs"
+      },
+      {
+        "destination": "app/api/checkout/route.ts",
+        "template": "templates/app/api/checkout/route.ts.ejs"
+      },
+      {
+        "destination": "app/api/webhooks/stripe/route.ts",
+        "template": "templates/app/api/webhooks/stripe/route.ts.ejs"
+      },
+      {
+        "destination": "components/checkout-button.tsx",
+        "template": "templates/components/checkout-button.tsx.ejs"
       }
     ]
   },
@@ -512,6 +1755,77 @@
     ]
   },
   {
+    "id": "svelte-base",
+    "name": "SvelteKit Base",
+    "version": "1.0.0",
+    "description": "Minimal SvelteKit project with TypeScript. Provides a foundation for Svelte applications with file-based routing and server-side rendering. Packages pinned to svelte@5.0.0, @sveltejs/kit@2.0.0 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "framework"
+    ],
+    "dependencies": [
+      "@sveltejs/kit"
+    ],
+    "devDependencies": [
+      "svelte",
+      "typescript",
+      "@sveltejs/vite-plugin-svelte",
+      "@sveltejs/adapter-node",
+      "vite"
+    ],
+    "envVariables": [],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "svelte.config.js",
+        "template": "templates/svelte.config.js.ejs"
+      },
+      {
+        "destination": "vite.config.ts",
+        "template": "templates/vite.config.ts.ejs"
+      },
+      {
+        "destination": "src/app.html",
+        "template": "templates/src/app.html.ejs"
+      },
+      {
+        "destination": "src/app.css",
+        "template": "templates/src/app.css.ejs"
+      },
+      {
+        "destination": "src/routes/+page.svelte",
+        "template": "templates/src/routes/+page.svelte.ejs"
+      },
+      {
+        "destination": "src/routes/+layout.svelte",
+        "template": "templates/src/routes/+layout.svelte.ejs"
+      },
+      {
+        "destination": "src/lib/counter.ts",
+        "template": "templates/src/lib/counter.ts.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      }
+    ]
+  },
+  {
     "id": "swiper",
     "name": "Swiper Slider",
     "version": "1.0.0",
@@ -565,6 +1879,127 @@
       {
         "destination": "app/globals.css",
         "template": "templates/globals.css.ejs"
+      }
+    ]
+  },
+  {
+    "id": "vue-base",
+    "name": "Vue Base",
+    "version": "1.0.0",
+    "description": "Vue.js frontend project with Vue 3, Vite, Pinia, and Vue Router. Provides a modern, reactive foundation for Vue applications with composition API. Packages pinned to vue@3.4.0, vite@5.0.0, pinia@2.1.7, vue-router@4.2.5 (verified 2026-09-06).",
+    "requires": [],
+    "provides": [
+      "framework"
+    ],
+    "dependencies": [
+      "vue",
+      "pinia",
+      "vue-router"
+    ],
+    "devDependencies": [
+      "@vitejs/plugin-vue",
+      "vite",
+      "@types/node",
+      "typescript",
+      "prettier",
+      "eslint",
+      "eslint-plugin-vue",
+      "@vue/test-utils",
+      "vitest",
+      "jsdom"
+    ],
+    "envVariables": [
+      "VITE_APP_NAME",
+      "VITE_API_URL"
+    ],
+    "files": [
+      {
+        "destination": "package.json",
+        "template": "templates/package.json.ejs"
+      },
+      {
+        "destination": "vite.config.ts",
+        "template": "templates/vite.config.ts.ejs"
+      },
+      {
+        "destination": "tsconfig.json",
+        "template": "templates/tsconfig.json.ejs"
+      },
+      {
+        "destination": "tsconfig.node.json",
+        "template": "templates/tsconfig.node.json.ejs"
+      },
+      {
+        "destination": "tsconfig.app.json",
+        "template": "templates/tsconfig.app.json.ejs"
+      },
+      {
+        "destination": "index.html",
+        "template": "templates/index.html.ejs"
+      },
+      {
+        "destination": "src/main.ts",
+        "template": "templates/src/main.ts.ejs"
+      },
+      {
+        "destination": "src/App.vue",
+        "template": "templates/src/App.vue.ejs"
+      },
+      {
+        "destination": "src/style.css",
+        "template": "templates/src/style.css.ejs"
+      },
+      {
+        "destination": "src/router/index.ts",
+        "template": "templates/src/router/index.ts.ejs"
+      },
+      {
+        "destination": "src/stores/index.ts",
+        "template": "templates/src/stores/index.ts.ejs"
+      },
+      {
+        "destination": "src/views/Home/HomeView.vue",
+        "template": "templates/src/views/Home/HomeView.vue.ejs"
+      },
+      {
+        "destination": "src/views/About/AboutView.vue",
+        "template": "templates/src/views/About/AboutView.vue.ejs"
+      },
+      {
+        "destination": ".env.example",
+        "template": "templates/.env.example.ejs"
+      },
+      {
+        "destination": ".env",
+        "template": "templates/.env.ejs"
+      },
+      {
+        "destination": ".gitignore",
+        "template": "templates/.gitignore.ejs"
+      },
+      {
+        "destination": ".prettierrc",
+        "template": "templates/.prettierrc.ejs"
+      },
+      {
+        "destination": ".eslintrc.cjs",
+        "template": "templates/.eslintrc.cjs.ejs"
+      },
+      {
+        "destination": "vitest.config.ts",
+        "template": "templates/vitest.config.ts.ejs"
+      },
+      {
+        "destination": "Dockerfile",
+        "template": "templates/Dockerfile.ejs"
+      },
+      {
+        "destination": "docker-compose.yml",
+        "template": "templates/docker-compose.yml.ejs"
+      },
+      {
+        "destination": "README.md",
+        "template": "templates/README.md.ejs"
       }
     ]
   }

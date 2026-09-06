@@ -1,0 +1,55 @@
+{
+  "id": "render-hosting",
+  "name": "Render Hosting",
+  "version": "1.0.0",
+  "description": "Render hosting configuration for Next.js applications. Includes render.yaml configuration and deployment documentation. Render provides simple, scalable cloud hosting with built-in databases, caching, and CI/CD.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["vercel-hosting", "railway-hosting", "cloudflare-hosting", "aws-hosting", "azure-hosting", "gcp-hosting"],
+  "provides": ["hosting"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["RENDER_ENVIRONMENT", "RENDER_SERVICE_ID"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Render Next.js deployment documentation",
+      "url": "https://render.com/docs/deploy-nextjs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Render configuration reference",
+      "url": "https://render.com/docs/render-yaml",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "rendercom/render-cli v1.0.0",
+      "url": "https://github.com/rendercom/render-cli/releases/tag/v1.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Render Next.js starter template",
+      "url": "https://github.com/rendercom/render-examples/tree/main/nextjs",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/render.yaml.ejs",
+      "destination": "render.yaml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.renderignore.ejs",
+      "destination": ".renderignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/RENDER_README.md.ejs",
+      "destination": "RENDER_README.md"
+    }
+  ]
+}

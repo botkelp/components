@@ -1,0 +1,18 @@
+/**
+ * Auth.js config (NextAuth v5).
+ * Docs:
+ *   https://authjs.dev/getting-started/installation?framework=next.js
+ *   https://authjs.dev/getting-started/providers/github
+ * Release: https://github.com/nextauthjs/next-auth/releases/tag/next-auth%405.0.0-beta.32
+ * Homepage snippet (2026-09-06):
+ *   import NextAuth from "next-auth"
+ *   import GitHub from "next-auth/providers/github"
+ * Env (inferred by Auth.js): AUTH_SECRET, AUTH_GITHUB_ID, AUTH_GITHUB_SECRET
+ * Callback URL: {origin}/api/auth/callback/github
+ */
+import NextAuth from 'next-auth';
+import GitHub from 'next-auth/providers/github';
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [GitHub],
+});

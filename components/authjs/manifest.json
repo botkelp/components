@@ -1,0 +1,80 @@
+{
+  "id": "authjs",
+  "name": "Auth.js (NextAuth v5)",
+  "version": "1.0.0",
+  "description": "Auth.js / next-auth@5.0.0-beta.32 on Next.js App Router: auth.ts, /api/auth/[...nextauth], proxy.ts, GitHub provider. Pinned to the 20 Jul 2026 beta that includes @auth/core@0.41.3 security fixes.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["supabase-auth-ui"],
+  "provides": ["authentication"],
+  "dependencies": ["next-auth"],
+  "devDependencies": [],
+  "envVariables": [
+    "AUTH_SECRET",
+    "AUTH_GITHUB_ID",
+    "AUTH_GITHUB_SECRET",
+    "AUTH_TRUST_HOST"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Auth.js installation (Next.js)",
+      "url": "https://authjs.dev/getting-started/installation?framework=next.js",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Auth.js GitHub provider",
+      "url": "https://authjs.dev/getting-started/providers/github",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Auth.js protecting pages with auth()",
+      "url": "https://authjs.dev/getting-started/session-management/protecting",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "nextauthjs/next-auth next-auth@5.0.0-beta.32",
+      "url": "https://github.com/nextauthjs/next-auth/releases/tag/next-auth%405.0.0-beta.32",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "next-auth package.json on main (version 5.0.0-beta.32, Next 16 peer)",
+      "url": "https://github.com/nextauthjs/next-auth/blob/next-auth%405.0.0-beta.32/packages/next-auth/package.json",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/auth.ts.ejs",
+      "destination": "auth.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/auth/[...nextauth]/route.ts.ejs",
+      "destination": "app/api/auth/[...nextauth]/route.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/proxy.ts.ejs",
+      "destination": "proxy.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/login/page.tsx.ejs",
+      "destination": "app/login/page.tsx"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "next-auth": "5.0.0-beta.32"
+        }
+      }
+    }
+  ]
+}

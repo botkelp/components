@@ -1,0 +1,42 @@
+/**
+ * Laravel Web Routes
+ * 
+ * This file defines the web routes for the Laravel application.
+ * 
+ * Source: https://laravel.com/docs/11.x/routing
+ * Verified: 2026-09-06
+ */
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Home page route
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Health check route for web
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Laravel is running',
+        'timestamp' => now()->toDateTimeString(),
+    ]);
+});
+
+// Fallback route for web
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});

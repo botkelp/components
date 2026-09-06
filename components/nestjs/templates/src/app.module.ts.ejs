@@ -1,0 +1,20 @@
+/**
+ * NestJS Root Application Module
+ * 
+ * This is the root module of the NestJS application.
+ * 
+ * Source: https://docs.nestjs.com/first-steps
+ * Verified: 2026-09-06
+ */
+
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule } from './config/configuration';
+
+@Module({
+  imports: [ConfigModule],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}

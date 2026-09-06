@@ -1,0 +1,419 @@
+/**
+ * ASP.NET Core Example Controller
+ * 
+ * This controller provides example endpoints for demonstration purposes.
+ * 
+ * Source: https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
+ * Verified: 2026-09-06
+ */
+
+using <%= projectName || 'AspNetCoreApp' %>.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace <%= projectName || 'AspNetCoreApp' %>.Controllers;
+
+/// <summary>
+/// Example controller for managing examples.
+/// </summary>
+[ApiController]
+[Route("api/v1/[controller]")]
+[Produces("application/json")]
+public class ExampleController : ControllerBase
+{
+    private readonly AppDbContext _context;
+    private readonly IConfiguration _configuration;
+
+    /// <summary>
+    /// Initializes a new instance of the ExampleController class.
+    /// </summary>
+    /// <param name="context">The database context.</param>
+    /// <param name="configuration">The configuration.</param>
+    public ExampleController(AppDbContext context, IConfiguration configuration)
+    {
+        _context = context;
+        _configuration = configuration;
+    }
+
+    /// <summary>
+    /// Gets the health status of the API.
+    /// </summary>
+    /// <returns>A health status response.</returns>
+    [HttpGet("health")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult Health()
+    {
+        return Ok(new
+        {
+            Status = "ok",
+            Message = "ASP.NET Core v1 API is running",
+            Timestamp = DateTime.UtcNow.ToString("o")
+        });
+    }
+
+    /// <summary>
+    /// Gets a list of all examples.
+    /// </summary>
+    /// <param name="page">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
+    /// <param name="isActive">Filter by active status.</param>
+    /// <returns>A list of examples.</returns>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 15, [FromQuery] bool? isActive = null)
+    {
+        var query = _context.Examples.AsQueryable();
+
+        // Filter by active status if specified
+        if (isActive.HasValue)
+        {
+            query = query.Where(e => e.IsActive == isActive.Value);
+        }
+
+        // Get paginated results
+        var examples = await query
+            .OrderByDescending(e => e.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        var total = await query.CountAsync();
+
+        return Ok(new
+        {
+            Data = examples,
+            Meta = new
+            {
+                CurrentPage = page,
+                PageSize = pageSize,
+                Total = total,
+                TotalPages = (int)Math.Ceiling(total / (double)pageSize)
+            }
+        });
+    }
+
+    /// <summary>
+    /// Gets a specific example by ID.
+    /// </summary>
+    /// <param name="id">The ID of the example.</param>
+    /// <returns>The example.</returns>
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var example = await _context.Examples.FindAsync(id);
+
+        if (example == null)
+        {
+            return NotFound(new
+            {
+                Error = "Example not found",
+                Id = id
+            });
+        }
+
+        return Ok(example);
+    }
+
+    /// <summary>
+    /// Creates a new example.
+    /// </summary>
+    /// <param name="request">The create example request.</param>
+    /// <returns>The created example.</returns>
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Create([FromBody] CreateExampleRequest request)
+    {
+        // Validate the request
+        if (string.IsNullOrWhiteSpace(request.Name))
+        {
+            return BadRequest(new
+            {
+                Error = "Validation failed",
+                Errors = new Dictionary<string, string[]>
+                {
+                    ["name"] = new[] { "The name field is required." }
+                }
+            });
+        }
+
+        if (request.Name.Length > 255)
+        {
+            return BadRequest(new
+            {
+                Error = "Validation failed",
+                Errors = new Dictionary<string, string[]>
+                {
+                    ["name"] = new[] { "The name field must be less than 255 characters." }
+                }
+            });
+        }
+
+        if (request.Description != null && request.Description.Length > 1000)
+        {
+            return BadRequest(new
+            {
+                Error = "Validation failed",
+                Errors = new Dictionary<string, string[]>
+                {
+                    ["description"] = new[] { "The description field must be less than 1000 characters." }
+                }
+            });
+        }
+
+        // Create the example
+        var example = new Example
+        {
+            Name = request.Name,
+            Description = request.Description,
+            Count = request.Count,
+            IsActive = request.IsActive,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        _context.Examples.Add(example);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetById), new { id = example.Id }, example);
+    }
+
+    /// <summary>
+    /// Updates an existing example.
+    /// </summary>
+    /// <param name="id">The ID of the example.</param>
+    /// <param name="request">The update example request.</param>
+    /// <returns>The updated example.</returns>
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateExampleRequest request)
+    {
+        var example = await _context.Examples.FindAsync(id);
+
+        if (example == null)
+        {
+            return NotFound(new
+            {
+                Error = "Example not found",
+                Id = id
+            });
+        }
+
+        // Update the example
+        if (!string.IsNullOrWhiteSpace(request.Name))
+        {
+            if (request.Name.Length > 255)
+            {
+                return BadRequest(new
+                {
+                    Error = "Validation failed",
+                    Errors = new Dictionary<string, string[]>
+                    {
+                        ["name"] = new[] { "The name field must be less than 255 characters." }
+                    }
+                });
+            }
+            example.Name = request.Name;
+        }
+
+        if (request.Description != null)
+        {
+            if (request.Description.Length > 1000)
+            {
+                return BadRequest(new
+                {
+                    Error = "Validation failed",
+                    Errors = new Dictionary<string, string[]>
+                    {
+                        ["description"] = new[] { "The description field must be less than 1000 characters." }
+                    }
+                });
+            }
+            example.Description = request.Description;
+        }
+
+        if (request.Count.HasValue)
+        {
+            if (request.Count.Value < 0 || request.Count.Value > 1000)
+            {
+                return BadRequest(new
+                {
+                    Error = "Validation failed",
+                    Errors = new Dictionary<string, string[]>
+                    {
+                        ["count"] = new[] { "The count field must be between 0 and 1000." }
+                    }
+                });
+            }
+            example.Count = request.Count.Value;
+        }
+
+        if (request.IsActive.HasValue)
+        {
+            example.IsActive = request.IsActive.Value;
+        }
+
+        example.UpdatedAt = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
+
+        return Ok(example);
+    }
+
+    /// <summary>
+    /// Deletes an example.
+    /// </summary>
+    /// <param name="id">The ID of the example.</param>
+    /// <returns>A success message.</returns>
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var example = await _context.Examples.FindAsync(id);
+
+        if (example == null)
+        {
+            return NotFound(new
+            {
+                Error = "Example not found",
+                Id = id
+            });
+        }
+
+        _context.Examples.Remove(example);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Toggles the active status of an example.
+    /// </summary>
+    /// <param name="id">The ID of the example.</param>
+    /// <returns>The updated example.</returns>
+    [HttpPatch("{id}/toggle-active")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ToggleActive(int id)
+    {
+        var example = await _context.Examples.FindAsync(id);
+
+        if (example == null)
+        {
+            return NotFound(new
+            {
+                Error = "Example not found",
+                Id = id
+            });
+        }
+
+        example.IsActive = !example.IsActive;
+        example.UpdatedAt = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
+
+        return Ok(example);
+    }
+
+    /// <summary>
+    /// Generates a JWT token for testing purposes.
+    /// </summary>
+    /// <returns>A JWT token.</returns>
+    [HttpPost("token")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AllowAnonymous]
+    public IActionResult GenerateToken()
+    {
+        var jwtSecret = _configuration["JWT:Secret"] ?? "change-this-in-production-use-32-characters-or-more";
+        var jwtIssuer = _configuration["JWT:Issuer"] ?? "<%= projectName || 'AspNetCoreApp' %>";
+        var jwtAudience = _configuration["JWT:Audience"] ?? "<%= projectName || 'AspNetCoreApp' %>-client";
+        var expiryInMinutes = int.Parse(_configuration["JWT:ExpiryInMinutes"] ?? "60");
+
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new List<Claim>
+        {
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, "test-user"),
+            new Claim(JwtRegisteredClaimNames.Email, "test@example.com"),
+            new Claim(ClaimTypes.Role, "User")
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: jwtIssuer,
+            audience: jwtAudience,
+            claims: claims,
+            expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
+            signingCredentials: credentials
+        );
+
+        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+        return Ok(new
+        {
+            Token = tokenString,
+            ExpiresIn = expiryInMinutes * 60,
+            TokenType = "Bearer"
+        });
+    }
+
+    /// <summary>
+    /// Request model for creating an example.
+    /// </summary>
+    public class CreateExampleRequest
+    {
+        /// <summary>
+        /// Gets or sets the name of the example.
+        /// </summary>
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the example.
+        /// </summary>
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the count of the example.
+        /// </summary>
+        public int Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the example is active.
+        /// </summary>
+        public bool IsActive { get; set; } = true;
+    }
+
+    /// <summary>
+    /// Request model for updating an example.
+    /// </summary>
+    public class UpdateExampleRequest
+    {
+        /// <summary>
+        /// Gets or sets the name of the example.
+        /// </summary>
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the example.
+        /// </summary>
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the count of the example.
+        /// </summary>
+        public int? Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the example is active.
+        /// </summary>
+        public bool? IsActive { get; set; }
+    }
+}

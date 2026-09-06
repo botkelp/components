@@ -1,0 +1,63 @@
+"""
+Application Configuration
+
+This module contains all application configuration settings.
+
+Source: https://fastapi.tiangolo.com/tutorial/dependencies/
+Verified: 2026-09-06
+"""
+
+from pydantic_settings import BaseSettings
+from typing import List, Optional
+import os
+
+
+class Settings(BaseSettings):
+    """
+    Application settings loaded from environment variables.
+    
+    All settings can be overridden by environment variables.
+    """
+    # Application info
+    APP_NAME: str = os.environ.get("APP_NAME", "<%= projectName || 'FastAPI App' %>")
+    APP_VERSION: str = os.environ.get("APP_VERSION", "1.0.0")
+    
+    # Environment
+    ENVIRONMENT: str = os.environ.get("ENVIRONMENT", "development")
+    DEBUG: bool = os.environ.get("DEBUG", "True").lower() == "true"
+    
+    # Security
+    SECRET_KEY: str = os.environ.get("SECRET_KEY", "change-this-in-production")
+    
+    # API
+    API_V1_PREFIX: str = os.environ.get("API_V1_PREFIX", "/api/v1")
+    
+    # CORS
+    CORS_ORIGINS: List[str] = os.environ.get(
+        "CORS_ORIGINS", 
+        "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8080"
+    ).split(",")
+    CORS_ORIGIN_REGEX: Optional[str] = os.environ.get("CORS_ORIGIN_REGEX")
+    
+    # Database
+    DATABASE_URL: str = os.environ.get(
+        "DATABASE_URL", 
+        "sqlite+aiosqlite:///./sql_app.db"
+    )
+    
+    # Server
+    SERVER_HOST: str = os.environ.get("SERVER_HOST", "0.0.0.0")
+    SERVER_PORT: int = int(os.environ.get("SERVER_PORT", "8000"))
+    
+    # Logging
+    LOG_LEVEL: str = os.environ.get("LOG_LEVEL", "INFO")
+    
+    class Config:
+        """Pydantic settings configuration."""
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+        case_sensitive = True
+
+
+# Create settings instance
+settings = Settings()

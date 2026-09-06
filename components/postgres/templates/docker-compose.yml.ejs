@@ -1,0 +1,23 @@
+# Official image: https://hub.docker.com/_/postgres
+# Verified 2026-09-06 — Hub lists 18 / 18.6 as current stable, port 5432,
+# env POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB.
+# Compose shape follows the Hub example (services.db.image + environment).
+# Pair DATABASE_URL with Prisma:
+# https://www.prisma.io/docs/prisma-orm/quickstart/postgresql
+
+services:
+  db:
+    image: postgres:18
+    restart: always
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: <%= projectName.replace(/[^a-zA-Z0-9]/g, '') || 'app' %>
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: <%= projectName.replace(/[^a-zA-Z0-9]/g, '') || 'app' %>
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

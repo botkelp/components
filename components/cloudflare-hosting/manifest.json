@@ -1,0 +1,64 @@
+{
+  "id": "cloudflare-hosting",
+  "name": "Cloudflare Hosting",
+  "version": "1.0.0",
+  "description": "Cloudflare Pages and Workers hosting configuration for Next.js applications. Includes wrangler.toml configuration and deployment documentation. Cloudflare provides global CDN hosting with edge functions and serverless databases.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["vercel-hosting", "railway-hosting", "render-hosting", "aws-hosting", "azure-hosting", "gcp-hosting"],
+  "provides": ["hosting"],
+  "dependencies": ["wrangler"],
+  "devDependencies": [],
+  "envVariables": ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_PROJECT_NAME"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Cloudflare Pages Next.js documentation",
+      "url": "https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Wrangler configuration reference",
+      "url": "https://developers.cloudflare.com/workers/wrangler/configuration/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "cloudflare/wrangler v3.0.0",
+      "url": "https://github.com/cloudflare/workers-sdk/releases/tag/wrangler-v3.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Cloudflare Next.js template",
+      "url": "https://github.com/cloudflare/next-on-pages",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/wrangler.toml.ejs",
+      "destination": "wrangler.toml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.wranglerignore.ejs",
+      "destination": ".wranglerignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/CLOUDFLARE_README.md.ejs",
+      "destination": "CLOUDFLARE_README.md"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "devDependencies": {
+          "wrangler": "3.0.0"
+        }
+      }
+    }
+  ]
+}

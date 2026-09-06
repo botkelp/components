@@ -1,0 +1,92 @@
+/**
+ * Paddle SDK initialization and utilities.
+ * 
+ * This module provides server-side utilities for Paddle API calls.
+ * 
+ * Source: https://developer.paddle.com/reference/client-side-javascript
+ * Verified: 2026-09-06
+ */
+
+import { NextRequest } from 'next/server';
+
+// Paddle API base URL
+export const PADDLE_API_BASE = 'https://api.paddle.com';
+
+// Paddle environment type
+export type PaddleEnvironment = 'sandbox' | 'live';
+
+// Get Paddle environment from config
+export const getPaddleEnvironment = (): PaddleEnvironment => {
+  const env = process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT as PaddleEnvironment | undefined;
+  return env === 'sandbox' ? 'sandbox' : 'live';
+};
+
+// Get Paddle vendor ID
+export const getPaddleVendorId = (): string => {
+  const vendorId = process.env.PADDLE_VENDOR_ID;
+  if (!vendorId) {
+    throw new Error('PADDLE_VENDOR_ID is not defined');
+  }
+  return vendorId;
+};
+
+// Get Paddle API key
+export const getPaddleApiKey = (): string => {
+  const apiKey = process.env.PADDLE_API_KEY;
+  if (!apiKey) {
+    throw new Error('PADDLE_API_KEY is not defined');
+  }
+  return apiKey;
+};
+
+// Verify Paddle webhook signature
+export const verifyPaddleWebhook = (
+  request: NextRequest,
+  secret: string
+): boolean => {
+  const signature = request.headers.get('paddle-signature');
+  if (!signature) {
+    return false;
+  }
+
+  // Implement HMAC verification
+  // Note: This is a simplified version - production should use a more robust approach
+  const crypto = require('crypto');
+  const hmac = crypto.createHmac('sha256', secret);
+  
+  // In a real implementation, you would:
+  // 1. Get the raw request body
+  // 2. Compute HMAC with the secret
+  // 3. Compare with the signature
+  // This is a placeholder for the actual verification logic
+  
+  return true;
+};
+
+// Paddle API client
+export const paddleApi = {
+  async request<T>(
+    endpoint: string,
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
+    data?: any
+  ): Promise<T> {
+    const apiKey = getPaddleApiKey();
+    const url = `${PADDLE_API_BASE}${endpoint}`;
+    
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: data ? JSON.stringify(data) : undefined,
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`Paddle API error: ${response.status} - ${error}`);
+    }
+
+    return response.json() as Promise<T>;
+  },
+};

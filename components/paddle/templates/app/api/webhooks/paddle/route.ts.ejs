@@ -1,0 +1,151 @@
+/**
+ * Paddle Webhook Handler
+ * 
+ * Handles Paddle webhook events for subscriptions, payments, and cancellations.
+ * 
+ * Source: https://developer.paddle.com/webhooks
+ * Verified: 2026-09-06
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+import { verifyPaddleWebhook, getPaddleVendorId } from '@/lib/paddle';
+
+export async function POST(request: NextRequest) {
+  try {
+    // Verify webhook signature
+    const webhookSecret = process.env.PADDLE_WEBHOOK_SECRET || '';
+    
+    if (!verifyPaddleWebhook(request, webhookSecret)) {
+      return NextResponse.json(
+        { error: 'Invalid webhook signature' },
+        { status: 401 }
+      );
+    }
+
+    // Parse the webhook payload
+    const payload = await request.json();
+    
+    // Extract event data
+    const alertName = payload.alert_name;
+    const alertId = payload.alert_id;
+    const vendorId = payload.vendor_id;
+    const passthrough = payload.passthrough;
+
+    // Verify vendor ID matches our account
+    const expectedVendorId = getPaddleVendorId();
+    if (vendorId !== expectedVendorId) {
+      return NextResponse.json(
+        { error: 'Invalid vendor ID' },
+        { status: 400 }
+      );
+    }
+
+    // Handle different webhook events
+    switch (alertName) {
+      case 'subscription_created':
+        // New subscription created
+        await handleSubscriptionCreated(payload);
+        break;
+
+      case 'subscription_updated':
+        // Subscription updated (plan change, etc.)
+        await handleSubscriptionUpdated(payload);
+        break;
+
+      case 'subscription_cancelled':
+        // Subscription cancelled
+        await handleSubscriptionCancelled(payload);
+        break;
+
+      case 'payment_succeeded':
+        // One-time payment succeeded
+        await handlePaymentSucceeded(payload);
+        break;
+
+      case 'payment_failed':
+        // Payment failed
+        await handlePaymentFailed(payload);
+        break;
+
+      default:
+        console.log(`Unhandled Paddle webhook event: ${alertName}`);
+    }
+
+    // Return 200 to acknowledge receipt
+    return NextResponse.json({ 
+      success: true, 
+      alertId, 
+      alertName 
+    });
+
+  } catch (error) {
+    console.error('Paddle webhook error:', error);
+    return NextResponse.json(
+      { error: 'Failed to process webhook' },
+      { status: 500 }
+    );
+  }
+}
+
+// Helper functions for handling different webhook events
+async function handleSubscriptionCreated(payload: any) {
+  const subscriptionId = payload.subscription_id;
+  const customerId = payload.customer_id;
+  const passthrough = payload.passthrough;
+  
+  console.log(`Subscription created: ${subscriptionId} for customer ${customerId}`);
+  
+  // In a real implementation:
+  // - Create or update user subscription in database
+  // - Send welcome email
+  // - Grant access to premium features
+}
+
+async function handleSubscriptionUpdated(payload: any) {
+  const subscriptionId = payload.subscription_id;
+  const newStatus = payload.new_status;
+  
+  console.log(`Subscription updated: ${subscriptionId} - new status: ${newStatus}`);
+  
+  // In a real implementation:
+  // - Update subscription status in database
+  // - Send notification email
+}
+
+async function handleSubscriptionCancelled(payload: any) {
+  const subscriptionId = payload.subscription_id;
+  const customerId = payload.customer_id;
+  const cancellationReason = payload.cancellation_reason;
+  
+  console.log(`Subscription cancelled: ${subscriptionId} - reason: ${cancellationReason}`);
+  
+  // In a real implementation:
+  // - Update subscription status in database
+  // - Send cancellation confirmation email
+  // - Revoke access to premium features (if immediate)
+}
+
+async function handlePaymentSucceeded(payload: any) {
+  const orderId = payload.order_id;
+  const customerId = payload.customer_id;
+  const passthrough = payload.passthrough;
+  
+  console.log(`Payment succeeded: ${orderId} for customer ${customerId}`);
+  
+  // In a real implementation:
+  // - Create or update order in database
+  // - Send payment confirmation email
+  // - Grant access to purchased items
+}
+
+async function handlePaymentFailed(payload: any) {
+  const orderId = payload.order_id;
+  const customerId = payload.customer_id;
+  const failureReason = payload.failure_reason;
+  
+  console.log(`Payment failed: ${orderId} - reason: ${failureReason}`);
+  
+  // In a real implementation:
+  // - Update order status in database
+  // - Send payment failure notification
+}

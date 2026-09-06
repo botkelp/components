@@ -1,0 +1,29 @@
+/**
+ * Angular Application Routes
+ * 
+ * This file defines the routes for the Angular application.
+ * 
+ * Source: https://angular.dev/cli/new
+ * Verified: 2026-09-06
+ */
+
+import { Routes } from '@angular/router';
+import { HomePage } from './pages/home/home.page';
+import { AboutPage } from './pages/about/about.page';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: HomePage,
+    title: 'Home - <%= projectName || 'Angular App' %>',
+  },
+  {
+    path: 'about',
+    component: AboutPage,
+    title: 'About - <%= projectName || 'Angular App' %>',
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];

@@ -1,0 +1,68 @@
+/**
+ * Wrangler Configuration for Cloudflare Pages
+ * 
+ * This file configures Cloudflare Pages deployment for your Next.js application.
+ * 
+ * Source: https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/
+ * Verified: 2026-09-06
+ */
+
+# Cloudflare Pages configuration
+name = "<%= projectName || 'nextjs-app' %>"
+pages_build_output_dir = ".next/standalone"
+
+# Build settings
+[build]
+command = "npm run build"
+watch = { pattern = "**/*.{js,ts,jsx,tsx,css,json}", ignore = ["node_modules/**", ".next/**", ".out/**"] }
+
+# Deployment settings
+[deploy]
+# The directory where your static assets are built
+publish = ".next/static"
+
+# Cloudflare Functions (Edge Functions)
+[functions]
+# Directory for Cloudflare Functions
+# functions_directory = "functions"
+
+# Environment variables
+[vars]
+NODE_ENV = "production"
+
+# Next.js specific variables
+# Uncomment and set these as needed
+# NEXT_PUBLIC_BASE_URL = "https://your-app.pages.dev"
+# NEXT_PUBLIC_API_URL = "https://your-app.pages.dev/api"
+
+# KV namespace bindings (if using Cloudflare KV)
+# [[kv_namespaces]]
+# binding = "MY_KV"
+# id = "your-kv-namespace-id"
+
+# R2 bucket bindings (if using Cloudflare R2)
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "your-bucket-name"
+
+# D1 database bindings (if using Cloudflare D1)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "your-database-name"
+# database_id = "your-database-id"
+
+# Durable Object bindings (if using Durable Objects)
+# [[durable_objects]]
+# name = "DO"
+# class_name = "DurableObject"
+
+# Site configuration
+[site]
+# Entry point for your application
+entry_point = "node"
+
+# Compatibility date for Cloudflare Workers
+compatibility_date = "2024-01-01"
+
+# Compatibility flags
+compatibility_flags = ["nodejs_compat"]

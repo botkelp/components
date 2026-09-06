@@ -1,0 +1,89 @@
+/**
+ * Dockerfile for Laravel Application
+ * 
+ * Multi-stage build optimized for production deployment.
+ * 
+ * Source: https://laravel.com/docs/11.x/deployment
+ * Verified: 2026-09-06
+ */
+
+# Stage 1: Build stage
+FROM php:8.2-fpm as builder
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive \
+    COMPOSER_ALLOW_SUPERUSER=1 \
+    COMPOSER_NO_INTERACTION=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    git \
+    unzip \
+    curl \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        pdo \
+        pdo_mysql \
+        pdo_pgsql \
+        bcmath \
+        ctype \
+        fileinfo \
+        gd \
+        mbstring \
+        tokenizer \
+        xml \
+        zip \
+    && pecl install redis-5.3.7 \
+    && docker-php-ext-enable redis \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy application files
+WORKDIR /var/www/html
+COPY . .
+
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --classmap-authoritative
+
+# Stage 2: Runtime stage
+FROM php:8.2-fpm-alpine
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install runtime dependencies
+RUN apk add --no-cache \
+    nginx \
+    supervisor \
+    && mkdir -p /run/nginx
+
+# Copy PHP configuration from builder
+COPY --from=builder /usr/local/etc/php/php.ini /usr/local/etc/php/conf.d/php.ini
+COPY --from=builder /usr/local/etc/php/conf.d/docker-php-ext-redis.ini /usr/local/etc/php/conf.d/docker-php-ext-redis.ini
+
+# Copy application files
+WORKDIR /var/www/html
+COPY --from=builder /var/www/html /var/www/html
+
+# Copy nginx configuration
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Expose port 80
+EXPOSE 80
+
+# Start supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

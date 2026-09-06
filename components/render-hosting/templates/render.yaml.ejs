@@ -1,0 +1,73 @@
+/**
+ * Render Configuration
+ * 
+ * This file configures Render deployment for your Next.js application.
+ * 
+ * Source: https://render.com/docs/render-yaml
+ * Verified: 2026-09-06
+ */
+
+services:
+  - type: web
+    name: nextjs-app
+    runtime: node
+    buildCommand: npm run build
+    startCommand: npm start
+    
+    # Runtime settings
+    env: node
+    plan: free
+    
+    # Region for deployment
+    region: oregon # oregon, ohio, frankfurt, singapore
+    
+    # Health check
+    healthCheckPath: /api/health
+    healthCheckInterval: 30
+    
+    # Environment variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+      # Next.js specific variables
+      # Uncomment and set these as needed
+      # - key: NEXT_PUBLIC_BASE_URL
+      #   value: https://your-app.onrender.com
+      # - key: NEXT_PUBLIC_API_URL
+      #   value: https://your-app.onrender.com/api
+    
+    # Automatic deployments
+    autoDeploy: true
+    
+    # Branch to deploy
+    deployOnGitPush: true
+    
+    # Root directory (if your app is not in the root)
+    # rootDir: app
+    
+    # Dockerfile path (if using custom Dockerfile)
+    # dockerfilePath: Dockerfile
+
+# Database services (uncomment to add)
+# services:
+#   - type: postgres
+#     name: postgres-db
+#     plan: free
+#     region: oregon
+#     databaseName: mydb
+#     user: postgres
+#     password: ${POSTGRES_PASSWORD}
+#     
+#   - type: redis
+#     name: redis-cache
+#     plan: free
+#     region: oregon
+#     
+#   - type: mysql
+#     name: mysql-db
+#     plan: free
+#     region: oregon
+#     databaseName: mydb
+#     user: root
+#     password: ${MYSQL_PASSWORD}

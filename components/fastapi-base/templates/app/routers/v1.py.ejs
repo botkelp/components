@@ -1,0 +1,18 @@
+"""
+API Version 1 Router
+
+This module combines all v1 API endpoints into a single router.
+
+Source: https://fastapi.tiangolo.com/tutorial/dependencies/
+Verified: 2026-09-06
+"""
+
+from fastapi import APIRouter
+from app.api.v1.endpoints import health, examples
+
+# Create the v1 API router
+api_router = APIRouter()
+
+# Include all v1 endpoints
+api_router.include_router(health.router)
+api_router.include_router(examples.router)

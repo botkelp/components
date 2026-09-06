@@ -1,0 +1,210 @@
+/**
+ * Laravel Example Controller
+ * 
+ * This controller provides example endpoints for demonstration purposes.
+ * 
+ * Source: https://laravel.com/docs/11.x/controllers
+ * Verified: 2026-09-06
+ */
+
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Example;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class ExampleController extends Controller
+{
+    /**
+     * Get a health check response.
+     *
+     * @return JsonResponse
+     */
+    public function health(): JsonResponse
+    {
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'Laravel API is running',
+            'timestamp' => now()->toDateTimeString(),
+        ]);
+    }
+
+    /**
+     * Get a list of all examples.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function index(Request $request): JsonResponse
+    {
+        // Get query parameters
+        $perPage = $request->input('per_page', 15);
+        $isActive = $request->input('is_active');
+
+        // Build query
+        $query = Example::query();
+
+        // Filter by active status if specified
+        if ($isActive !== null) {
+            $query->where('is_active', (bool) $isActive);
+        }
+
+        // Get paginated results
+        $examples = $query->orderBy('created_at', 'desc')->paginate($perPage);
+
+        return response()->json([
+            'data' => $examples->items(),
+            'meta' => [
+                'current_page' => $examples->currentPage(),
+                'per_page' => $examples->perPage(),
+                'total' => $examples->total(),
+                'last_page' => $examples->lastPage(),
+            ],
+        ]);
+    }
+
+    /**
+     * Get a specific example by ID.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse
+    {
+        $example = Example::find($id);
+
+        if (!$example) {
+            return response()->json([
+                'error' => 'Example not found',
+            ], 404);
+        }
+
+        return response()->json($example);
+    }
+
+    /**
+     * Create a new example.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
+    {
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'count' => 'nullable|integer|min:0|max:1000',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        // Create the example
+        $example = Example::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'count' => $request->input('count', 0),
+            'is_active' => $request->input('is_active', true),
+        ]);
+
+        return response()->json($example, 201);
+    }
+
+    /**
+     * Update an existing example.
+     *
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $example = Example::find($id);
+
+        if (!$example) {
+            return response()->json([
+                'error' => 'Example not found',
+            ], 404);
+        }
+
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'name' => 'sometimes|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'count' => 'nullable|integer|min:0|max:1000',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        // Update the example
+        $example->update($request->only([
+            'name',
+            'description',
+            'count',
+            'is_active',
+        ]));
+
+        return response()->json($example);
+    }
+
+    /**
+     * Delete an example.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        $example = Example::find($id);
+
+        if (!$example) {
+            return response()->json([
+                'error' => 'Example not found',
+            ], 404);
+        }
+
+        $example->delete();
+
+        return response()->json([
+            'message' => 'Example deleted successfully',
+        ]);
+    }
+
+    /**
+     * Toggle the active status of an example.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function toggleActive(int $id): JsonResponse
+    {
+        $example = Example::find($id);
+
+        if (!$example) {
+            return response()->json([
+                'error' => 'Example not found',
+            ], 404);
+        }
+
+        $example->update([
+            'is_active' => !$example->is_active,
+        ]);
+
+        return response()->json($example);
+    }
+}

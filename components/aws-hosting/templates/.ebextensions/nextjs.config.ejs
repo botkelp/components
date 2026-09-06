@@ -1,0 +1,79 @@
+/**
+ * Elastic Beanstalk Configuration for Next.js
+ * 
+ * This configuration file sets up the environment for Next.js on AWS Elastic Beanstalk.
+ * 
+ * Source: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
+ * Verified: 2026-09-06
+ */
+
+files:
+  "/etc/nginx/conf.d/proxy.conf":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      # Proxy configuration for Next.js
+      server {
+        listen 80;
+        server_name _;
+        
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+          
+          # Required for WebSockets (e.g., Hot Module Replacement)
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        }
+      }
+
+commands:
+  01_install_node:
+    command: "curl -sL https://rpm.nodesource.com/setup_20.x | bash -"
+    ignoreErrors: false
+
+  02_install_node_packages:
+    command: "sudo yum install -y nodejs"
+    ignoreErrors: false
+
+  03_install_pm2:
+    command: "sudo npm install -g pm2"
+    ignoreErrors: false
+
+  04_install_dependencies:
+    command: "npm install"
+    cwd: "/var/app"
+
+  05_build_nextjs:
+    command: "npm run build"
+    cwd: "/var/app"
+
+container_commands:
+  01_start_nextjs:
+    command: "pm2 start npm --name nextjs-app -- start"
+    leader_only: true
+
+option_settings:
+  aws:elasticbeanstalk:container:nodejs:
+    NodeCommand: ""
+  aws:elasticbeanstalk:environment:
+    EnvironmentType: LoadBalanced
+    LoadBalancerType: application
+  aws:elasticbeanstalk:environment:process:default:
+    HealthCheckPath: /api/health
+    Port: 3000
+    Protocol: HTTP
+  aws:elb:loadbalancer:
+    CrossZone: true
+  aws:elasticbeanstalk:environment:proxy:
+    ProxyServer: nginx
+
+packages:
+  yum:
+    nginx: []

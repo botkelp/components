@@ -1,8 +1,8 @@
 {
   "id": "nextjs-base",
   "name": "Next.js App Router Base",
-  "version": "2.0.0",
-  "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Every other component requires this one, directly or transitively.",
+  "version": "2.0.2",
+  "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects and enables optimizePackageImports for icon barrels. Every other component requires this one, directly or transitively.",
   "requires": [],
   "provides": ["framework"],
   "dependencies": ["next", "react", "react-dom"],
@@ -28,6 +28,12 @@
       "label": "Official Next.js examples",
       "url": "https://github.com/vercel/next.js/tree/8ea76d64ca3931c1beccceb15d32df5d770f4957/examples",
       "verifiedAt": "2026-09-02"
+    },
+    {
+      "type": "docs",
+      "label": "Next.js package bundling / optimizePackageImports",
+      "url": "https://nextjs.org/docs/app/guides/package-bundling",
+      "verifiedAt": "2026-09-06"
     }
   ],
   "actions": [
@@ -80,6 +86,11 @@
       "type": "create_file",
       "templatePath": "templates/app/globals.css.ejs",
       "destination": "app/globals.css"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/github-workflows-ci.yml.ejs",
+      "destination": ".github/workflows/ci.yml"
     }
   ]
 }

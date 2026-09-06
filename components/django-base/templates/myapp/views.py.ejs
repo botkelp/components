@@ -1,0 +1,137 @@
+"""
+Django views for myapp application.
+
+Define your view functions here.
+
+Source: https://docs.djangoproject.com/en/5.0/topics/http/views/
+Verified: 2026-09-06
+"""
+
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.core.exceptions import ObjectDoesNotExist
+from .models import ExampleModel
+import json
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
+
+
+@require_http_methods(["GET"])
+def health_check(request):
+    """
+    Health check endpoint.
+    
+    Returns a simple JSON response indicating the API is running.
+    """
+    return JsonResponse({
+        'status': 'ok',
+        'message': 'Django API is running',
+        'timestamp': json.dumps(None),  # Will be replaced by actual timestamp
+    })
+
+
+@require_http_methods(["GET"])
+def example_list(request):
+    """
+    List all examples.
+    
+    Returns a JSON response with all ExampleModel instances.
+    """
+    try:
+        examples = ExampleModel.objects.filter(is_active=True)
+        data = [
+            {
+                'id': example.id,
+                'name': example.name,
+                'description': example.description,
+                'slug': example.slug,
+                'count': example.count,
+                'price': str(example.price) if example.price else None,
+                'is_featured': example.is_featured,
+                'created_at': example.created_at.isoformat(),
+                'updated_at': example.updated_at.isoformat(),
+            }
+            for example in examples
+        ]
+        
+        return JsonResponse({
+            'count': len(data),
+            'results': data,
+        })
+    except Exception as e:
+        logger.error(f'Error listing examples: {str(e)}')
+        return JsonResponse({
+            'error': str(e),
+        }, status=500)
+
+
+@require_http_methods(["GET"])
+def example_detail(request, pk):
+    """
+    Retrieve a single example by ID.
+    
+    Returns a JSON response with the ExampleModel instance details.
+    """
+    try:
+        example = ExampleModel.objects.get(pk=pk, is_active=True)
+        data = {
+            'id': example.id,
+            'name': example.name,
+            'description': example.description,
+            'slug': example.slug,
+            'count': example.count,
+            'price': str(example.price) if example.price else None,
+            'is_featured': example.is_featured,
+            'created_at': example.created_at.isoformat(),
+            'updated_at': example.updated_at.isoformat(),
+        }
+        
+        return JsonResponse(data)
+    except ObjectDoesNotExist:
+        return JsonResponse({
+            'error': 'Example not found',
+        }, status=404)
+    except Exception as e:
+        logger.error(f'Error retrieving example {pk}: {str(e)}')
+        return JsonResponse({
+            'error': str(e),
+        }, status=500)
+
+
+@require_http_methods(["POST"])
+def example_create(request):
+    """
+    Create a new example.
+    
+    Creates a new ExampleModel instance from JSON request body.
+    """
+    try:
+        body = json.loads(request.body)
+        
+        # Validate required fields
+        if 'name' not in body:
+            return JsonResponse({
+                'error': 'Name is required',
+            }, status=400)
+        
+        example = ExampleModel.objects.create(
+            name=body['name'],
+            description=body.get('description', ''),
+            slug=body.get('slug', body['name'].lower().replace(' ', '-')),
+            count=body.get('count', 0),
+            price=body.get('price'),
+            is_featured=body.get('is_featured', False),
+        )
+        
+        return JsonResponse({
+            'id': example.id,
+            'name': example.name,
+            'message': 'Example created successfully',
+        }, status=201)
+    except Exception as e:
+        logger.error(f'Error creating example: {str(e)}')
+        return JsonResponse({
+            'error': str(e),
+        }, status=500)

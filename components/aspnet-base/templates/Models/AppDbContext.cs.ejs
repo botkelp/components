@@ -1,0 +1,78 @@
+/**
+ * ASP.NET Core Database Context
+ * 
+ * This class configures the Entity Framework Core database context.
+ * 
+ * Source: https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/
+ * Verified: 2026-09-06
+ */
+
+using Microsoft.EntityFrameworkCore;
+
+namespace <%= projectName || 'AspNetCoreApp' %>.Models;
+
+/// <summary>
+/// The main database context for the application.
+/// </summary>
+public class AppDbContext : DbContext
+{
+    /// <summary>
+    /// Initializes a new instance of the AppDbContext class.
+    /// </summary>
+    /// <param name="options">The options for the context.</param>
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+    {
+    }
+
+    /// <summary>
+    /// Gets or sets the examples DbSet.
+    /// </summary>
+    public DbSet<Example> Examples { get; set; } = null!;
+
+    /// <summary>
+    /// Configures the database model.
+    /// </summary>
+    /// <param name="modelBuilder">The model builder.</param>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Configure the Example entity
+        modelBuilder.Entity<Example>(entity =>
+        {
+            entity.ToTable("Examples");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.Property(e => e.Description)
+                .HasMaxLength(1000);
+
+            entity.Property(e => e.Count)
+                .HasDefaultValue(0);
+
+            entity.Property(e => e.IsActive)
+                .HasDefaultValue(true);
+
+            entity.Property(e => e.IsFeatured)
+                .HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            // Add indexes for better query performance
+            entity.HasIndex(e => e.Name);
+            entity.HasIndex(e => e.Slug).IsUnique();
+            entity.HasIndex(e => e.IsActive);
+            entity.HasIndex(e => e.IsFeatured);
+            entity.HasIndex(e => e.CreatedAt);
+        });
+    }
+}

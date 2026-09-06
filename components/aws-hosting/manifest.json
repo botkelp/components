@@ -1,0 +1,66 @@
+{
+  "id": "aws-hosting",
+  "name": "AWS Hosting",
+  "version": "1.0.0",
+  "description": "AWS hosting configuration for Next.js applications. Includes deployment documentation and CI/CD setup for AWS Elastic Beanstalk, EC2, or Amplify. AWS provides scalable cloud hosting with extensive services.",
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "vercel-hosting",
+    "railway-hosting",
+    "render-hosting",
+    "cloudflare-hosting",
+    "azure-hosting",
+    "gcp-hosting"
+  ],
+  "provides": [
+    "hosting"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [
+    "AWS_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_ACCOUNT_ID"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "AWS Next.js deployment documentation",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-next-js-applications-on-aws.html",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "AWS Elastic Beanstalk Next.js guide",
+      "url": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "AWS Next.js sample application",
+      "url": "https://github.com/aws-samples/aws-nextjs-sample",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "aws-amplify/amplify-cli v14.5.1",
+      "url": "https://github.com/aws-amplify/amplify-cli/releases/tag/v14.5.1",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/AWS_README.md.ejs",
+      "destination": "AWS_README.md"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.ebextensions/nextjs.config.ejs",
+      "destination": ".ebextensions/nextjs.config"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+"""
+Example Model
+
+This module provides the Example model for demonstration purposes.
+
+Source: https://fastapi.tiangolo.com/tutorial/sql-databases/
+Verified: 2026-09-06
+"""
+
+from sqlalchemy import Column, String, Integer, Text, Boolean
+from sqlalchemy.orm import relationship
+from .base import BaseModel
+
+
+class Example(BaseModel):
+    """
+    Example model demonstrating common field types.
+    
+    Attributes:
+        name: Name of the example (required, max 255 chars)
+        slug: URL-friendly identifier (required, unique, max 255 chars)
+        description: Detailed description (optional, max 1000 chars)
+        count: Numeric count value (default: 0)
+        is_featured: Whether this example is featured (default: False)
+    """
+    __tablename__ = "examples"
+    
+    name = Column(
+        String(255),
+        nullable=False,
+        index=True,
+        comment="Name of the example"
+    )
+    
+    slug = Column(
+        String(255),
+        nullable=False,
+        unique=True,
+        index=True,
+        comment="URL-friendly identifier"
+    )
+    
+    description = Column(
+        Text,
+        nullable=True,
+        comment="Detailed description"
+    )
+    
+    count = Column(
+        Integer,
+        default=0,
+        nullable=False,
+        comment="Numeric count value"
+    )
+    
+    is_featured = Column(
+        Boolean,
+        default=False,
+        nullable=False,
+        comment="Whether this example is featured"
+    )
+    
+    def __repr__(self):
+        return f"<Example(id={self.id}, name='{self.name}')>"

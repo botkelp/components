@@ -1,0 +1,150 @@
+{
+  "id": "fastapi-base",
+  "name": "FastAPI Base",
+  "version": "1.0.0",
+  "description": "FastAPI backend project with Python 3.11+. Provides a modern, async-ready API foundation with automatic docs, dependency injection, and environment configuration. Packages pinned to fastapi==0.109.0, uvicorn==0.27.0 (verified 2026-09-06).",
+  "requires": [],
+  "conflictsWith": ["nextjs-base", "express", "nestjs", "django-base", "laravel-base", "aspnet-base"],
+  "provides": ["backend"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["APP_NAME", "APP_VERSION", "DEBUG", "SECRET_KEY", "DATABASE_URL", "API_V1_PREFIX"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "FastAPI official documentation",
+      "url": "https://fastapi.tiangolo.com/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "FastAPI tutorial",
+      "url": "https://fastapi.tiangolo.com/tutorial/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "tiangolo/fastapi v0.109.0",
+      "url": "https://github.com/tiangolo/fastapi/releases/tag/0.109.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official FastAPI project template",
+      "url": "https://github.com/tiangolo/full-stack-fastapi-postgresql",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/requirements.txt.ejs",
+      "destination": "requirements.txt"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/requirements-dev.txt.ejs",
+      "destination": "requirements-dev.txt"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/main.py.ejs",
+      "destination": "main.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/__init__.py.ejs",
+      "destination": "app/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/__init__.py.ejs",
+      "destination": "app/api/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/v1/__init__.py.ejs",
+      "destination": "app/api/v1/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/v1/endpoints/__init__.py.ejs",
+      "destination": "app/api/v1/endpoints/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/v1/endpoints/health.py.ejs",
+      "destination": "app/api/v1/endpoints/health.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/v1/endpoints/examples.py.ejs",
+      "destination": "app/api/v1/endpoints/examples.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/core/__init__.py.ejs",
+      "destination": "app/core/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/core/config.py.ejs",
+      "destination": "app/core/config.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/core/security.py.ejs",
+      "destination": "app/core/security.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/models/__init__.py.ejs",
+      "destination": "app/models/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/models/base.py.ejs",
+      "destination": "app/models/base.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/models/example.py.ejs",
+      "destination": "app/models/example.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/routers/__init__.py.ejs",
+      "destination": "app/routers/__init__.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/routers/v1.py.ejs",
+      "destination": "app/routers/v1.py"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Dockerfile.ejs",
+      "destination": "Dockerfile"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    }
+  ]
+}

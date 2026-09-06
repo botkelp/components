@@ -1,0 +1,34 @@
+/**
+ * Angular About Page Component
+ * 
+ * This component displays the about page of the application.
+ * 
+ * Source: https://angular.dev/cli/generate
+ * Verified: 2026-09-06
+ */
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-about-page',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './about.page.html',
+  styleUrls: ['./about.page.css'],
+})
+export class AboutPage {
+  appName = '<%= projectName || 'Angular App' %>';
+  angularVersion = '18.0.0';
+  
+  technologies = [
+    { name: 'Angular', version: '18.0.0', url: 'https://angular.dev' },
+    { name: 'TypeScript', version: '5.4.0', url: 'https://www.typescriptlang.org' },
+    { name: 'RxJS', version: '7.8.0', url: 'https://rxjs.dev' },
+    { name: 'Zone.js', version: '0.14.0', url: 'https://github.com/angular/angular/tree/main/packages/zone.js' },
+  ];
+
+  getCurrentYear(): number {
+    return new Date().getFullYear();
+  }
+}

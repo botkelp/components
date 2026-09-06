@@ -1,0 +1,50 @@
+{
+  "id": "sqlserver",
+  "name": "SQL Server Database",
+  "version": "1.0.0",
+  "description": "Microsoft SQL Server database integration via Docker. Includes Docker Compose configuration and connection utilities. Use with Prisma or other ORMs that support SQL Server.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["postgres", "mysql", "sqlite", "mongodb"],
+  "provides": ["database"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["DATABASE_URL", "SA_PASSWORD", "SQLSERVER_USER", "SQLSERVER_PASSWORD", "SQLSERVER_DATABASE"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Prisma SQL Server connection string",
+      "url": "https://www.prisma.io/docs/prisma-orm/quickstart/sql-server",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Official SQL Server Docker image (Docker Hub)",
+      "url": "https://hub.docker.com/_/microsoft-mssql-server",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "prisma/prisma 7.10.0 (SQL Server adapter)",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Microsoft SQL Server Docker examples",
+      "url": "https://github.com/microsoft/mssql-docker",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/env.example.ejs",
+      "destination": ".env.example"
+    }
+  ]
+}

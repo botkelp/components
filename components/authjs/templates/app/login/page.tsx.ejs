@@ -1,0 +1,40 @@
+/**
+ * Server page using Auth.js `auth()`.
+ * Source: https://authjs.dev/getting-started/session-management/protecting
+ * GitHub sign-in: https://authjs.dev/getting-started/providers/github
+ * Verified 2026-09-06.
+ */
+import { auth, signIn, signOut } from '@/auth';
+
+export default async function LoginPage() {
+  const session = await auth();
+
+  if (session) {
+    return (
+      <main>
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+        <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+        >
+          <button type="submit">Sign out</button>
+        </form>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <form
+        action={async () => {
+          'use server';
+          await signIn('github');
+        }}
+      >
+        <button type="submit">Sign in with GitHub</button>
+      </form>
+    </main>
+  );
+}

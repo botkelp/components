@@ -1,0 +1,42 @@
+"""
+Django admin configuration for myapp application.
+
+Register your models here for the Django admin interface.
+
+Source: https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
+Verified: 2026-09-06
+"""
+
+from django.contrib import admin
+from .models import ExampleModel, CustomUser
+
+
+@admin.register(ExampleModel)
+class ExampleModelAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for ExampleModel.
+    """
+    list_display = ('name', 'slug', 'count', 'is_featured', 'is_active', 'created_at')
+    list_filter = ('is_featured', 'is_active')
+    search_fields = ('name', 'description')
+    prepopulated_fields = {'slug': ('name',)}
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'slug', 'description')
+        }),
+        ('Details', {
+            'fields': ('count', 'price', 'is_featured', 'is_active')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+
+
+# Uncomment to register CustomUser when using custom user model
+# @admin.register(CustomUser)
+# class CustomUserAdmin(admin.ModelAdmin):
+#     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
+#     search_fields = ('username', 'email', 'first_name', 'last_name')
+#     list_filter = ('is_staff', 'is_active', 'is_superuser')

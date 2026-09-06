@@ -1,0 +1,80 @@
+{
+  "id": "stripe",
+  "name": "Stripe Checkout",
+  "version": "1.0.0",
+  "description": "Stripe-hosted Checkout Session plus a signed webhook Route Handler for Next.js App Router. Packages pinned to stripe@22.6.1 and @stripe/stripe-js@9.15.0 (verified 2026-09-06).",
+  "requires": ["nextjs-base"],
+  "provides": ["payments", "billing"],
+  "dependencies": ["stripe", "@stripe/stripe-js"],
+  "devDependencies": [],
+  "envVariables": [
+    "STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+    "STRIPE_PRICE_ID"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Stripe Checkout quickstart (Next.js client)",
+      "url": "https://docs.stripe.com/checkout/quickstart?client=next",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Stripe webhooks quickstart (Node)",
+      "url": "https://docs.stripe.com/webhooks/quickstart?lang=node",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "stripe/stripe-node v22.6.1",
+      "url": "https://github.com/stripe/stripe-node/releases/tag/v22.6.1",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official stripe-node Next.js App Router webhook signer",
+      "url": "https://github.com/stripe/stripe-node/blob/v22.6.1/examples/webhook-signing/nextjs/app/api/webhooks/route.ts",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "stripe-samples/accept-a-payment (Checkout Sessions API)",
+      "url": "https://github.com/stripe-samples/accept-a-payment",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/stripe.ts.ejs",
+      "destination": "lib/stripe.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/checkout/route.ts.ejs",
+      "destination": "app/api/checkout/route.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/webhooks/stripe/route.ts.ejs",
+      "destination": "app/api/webhooks/stripe/route.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/components/checkout-button.tsx.ejs",
+      "destination": "components/checkout-button.tsx"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "stripe": "22.6.1",
+          "@stripe/stripe-js": "9.15.0"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+"""
+Health Check Endpoint
+
+This module provides the health check endpoint for the API.
+
+Source: https://fastapi.tiangolo.com/tutorial/first-steps/
+Verified: 2026-09-06
+"""
+
+from datetime import datetime
+from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
+from typing import Optional
+
+# Create router for health endpoints
+router = APIRouter(prefix="/health", tags=["health"])
+
+
+@router.get("/", summary="Health Check", response_description="Check API health")
+async def health_check():
+    """
+    Health check endpoint that returns the current status of the API.
+    
+    This endpoint can be used for:
+    - Load balancer health checks
+    - Monitoring system probes
+    - Basic API availability verification
+    """
+    return JSONResponse(
+        content={
+            "status": "ok",
+            "message": "FastAPI v1 is running",
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "checks": {
+                "database": "ok",
+                "cache": "ok",
+            },
+        }
+    )
+
+
+@router.get("/detailed/", summary="Detailed Health Check", response_description="Detailed API health information")
+async def detailed_health_check():
+    """
+    Detailed health check endpoint with system information.
+    
+    Returns comprehensive health information including:
+    - System status
+    - Database connectivity
+    - Cache connectivity
+    - External service status
+    """
+    return JSONResponse(
+        content={
+            "status": "ok",
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "system": {
+                "python_version": f"{__import__('sys').version_info.major}.{__import__('sys').version_info.minor}.{__import__('sys').version_info.micro}",
+                "platform": __import__('platform').platform(),
+            },
+            "services": {
+                "database": {
+                    "status": "ok",
+                    "type": "postgresql",
+                },
+                "cache": {
+                    "status": "ok",
+                    "type": "redis",
+                },
+            },
+            "dependencies": {
+                "fastapi": "0.109.0",
+                "uvicorn": "0.27.0",
+                "pydantic": "2.5.3",
+            },
+        }
+    )

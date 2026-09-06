@@ -1,0 +1,55 @@
+{
+  "id": "mysql",
+  "name": "MySQL Database",
+  "version": "1.0.0",
+  "description": "MySQL database integration via Docker and Prisma ORM. Includes Docker Compose configuration and Prisma schema for MySQL. Pair with the existing prisma component for the ORM.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["postgres", "sqlite", "mongodb", "sqlserver"],
+  "provides": ["database"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["DATABASE_URL", "MYSQL_USER", "MYSQL_PASSWORD", "MYSQL_DATABASE", "MYSQL_ROOT_PASSWORD"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Prisma MySQL connection string",
+      "url": "https://www.prisma.io/docs/prisma-orm/quickstart/mysql",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Official MySQL Docker image (Docker Hub)",
+      "url": "https://hub.docker.com/_/mysql",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "prisma/prisma 7.10.0 (MySQL adapter)",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "docker-library/mysql official image source",
+      "url": "https://github.com/docker-library/mysql",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/env.example.ejs",
+      "destination": ".env.example"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/prisma-mysql-schema.prisma.ejs",
+      "destination": "prisma/schema.prisma"
+    }
+  ]
+}

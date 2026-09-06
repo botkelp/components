@@ -1,0 +1,138 @@
+{
+  "id": "angular-base",
+  "name": "Angular Base",
+  "version": "1.0.0",
+  "description": "Minimal Angular application with Angular CLI, TypeScript, and RxJS. Provides a foundation for Angular applications with component-based architecture. Packages pinned to @angular/core@18.0.0, @angular/cli@18.0.0 (verified 2026-09-06).",
+  "requires": [],
+  "conflictsWith": ["nextjs-base", "vue-base", "svelte-base"],
+  "provides": ["framework"],
+  "dependencies": ["@angular/animations", "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/platform-browser-dynamic", "@angular/router", "rxjs", "tslib", "zone.js"],
+  "devDependencies": [
+    "@angular/cli",
+    "@angular-devkit/build-angular",
+    "@angular/compiler-cli",
+    "@types/jasmine",
+    "@types/node",
+    "jasmine-core",
+    "karma",
+    "karma-chrome-launcher",
+    "karma-coverage",
+    "karma-jasmine",
+    "karma-jasmine-html-reporter",
+    "typescript"
+  ],
+  "envVariables": [],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Angular official documentation",
+      "url": "https://angular.dev/docs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Angular CLI documentation",
+      "url": "https://angular.dev/cli",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "angular/angular v18.0.0",
+      "url": "https://github.com/angular/angular/releases/tag/18.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Angular starter template",
+      "url": "https://github.com/angular/angular-cli/tree/v18.0.0/packages/angular/cli/lib/config/schema.json",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/package.json.ejs",
+      "destination": "package.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/angular.json.ejs",
+      "destination": "angular.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.json.ejs",
+      "destination": "tsconfig.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.app.json.ejs",
+      "destination": "tsconfig.app.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/tsconfig.spec.json.ejs",
+      "destination": "tsconfig.spec.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/index.html.ejs",
+      "destination": "src/index.html"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/main.ts.ejs",
+      "destination": "src/main.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/styles.css.ejs",
+      "destination": "src/styles.css"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/app/app.component.ts.ejs",
+      "destination": "src/app/app.component.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/app/app.component.html.ejs",
+      "destination": "src/app/app.component.html"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/app/app.config.ts.ejs",
+      "destination": "src/app/app.config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/app/app.routes.ts.ejs",
+      "destination": "src/app/app.routes.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/environments/environment.ts.ejs",
+      "destination": "src/environments/environment.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/src/environments/environment.prod.ts.ejs",
+      "destination": "src/environments/environment.prod.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.browserslistrc.ejs",
+      "destination": ".browserslistrc"
+    }
+  ]
+}

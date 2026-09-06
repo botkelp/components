@@ -1,0 +1,53 @@
+/**
+ * Laravel CORS Configuration
+ * 
+ * This file configures CORS (Cross-Origin Resource Sharing) for Laravel.
+ * 
+ * Source: https://laravel.com/docs/11.x/sanctum#cors-and-cookies
+ * Verified: 2026-09-06
+ */
+
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cross-Origin Resource Sharing (CORS) Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure your CORS settings. By default, the CORS options
+    | are very permissive which is suitable for development. For production,
+    | you should restrict these options to only allow connections from your
+    | trusted domains.
+    |
+    */
+
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+
+    'allowed_methods' => ['*'],
+
+    'allowed_origins' => [env('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000')],
+
+    'allowed_origins_patterns' => [
+        //
+    ],
+
+    'allowed_headers' => [
+        'Content-Type',
+        'Authorization',
+        'X-Requested-With',
+        'X-CSRF-TOKEN',
+        'Accept',
+        'Origin',
+    ],
+
+    'exposed_headers' => [
+        //
+    ],
+
+    'max_age' => 0,
+
+    'supports_credentials' => false,
+
+];

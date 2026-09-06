@@ -1,0 +1,250 @@
+# Google Cloud Platform (GCP) Hosting Deployment Guide
+
+This project is configured for deployment on [Google Cloud Platform](https://cloud.google.com).
+
+## Quick Start
+
+1. **Sign up for GCP**: [https://cloud.google.com](https://cloud.google.com)
+2. **Install Google Cloud SDK**:
+   ```bash
+   curl https://sdk.cloud.google.com | bash
+   exec -l $SHELL
+   gcloud init
+   ```
+3. **Login to GCP**:
+   ```bash
+   gcloud auth login
+   ```
+4. **Set your project**:
+   ```bash
+   gcloud config set project YOUR_PROJECT_ID
+   ```
+
+## Deployment Options
+
+### Option 1: Google Cloud Run (Recommended for Next.js)
+
+Cloud Run provides a serverless platform for containerized applications with automatic scaling.
+
+#### Deploy to Cloud Run
+
+```bash
+# Build your Docker image
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/nextjs-app
+
+# Deploy to Cloud Run
+gcloud run deploy nextjs-app \
+  --image gcr.io/YOUR_PROJECT_ID/nextjs-app \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --port 3000 \
+  --memory 1Gi \
+  --cpu 1
+
+# View your deployed application
+gcloud run services describe nextjs-app --platform managed --region us-central1 --format "value(status.url)"
+```
+
+#### Configuration
+
+The `Dockerfile` is configured for Next.js on Cloud Run:
+
+- **Node.js version**: 20.x
+- **Port**: 3000 (default Next.js port)
+- **Optimized for production**: Multi-stage build
+
+### Option 2: Google App Engine
+
+App Engine provides a fully managed platform for building and deploying applications.
+
+#### Deploy to App Engine
+
+```bash
+# Deploy to App Engine
+gcloud app deploy
+
+# View your deployed application
+gcloud app browse
+```
+
+#### Configuration
+
+Create an `app.yaml` file for App Engine:
+
+```yaml
+runtime: nodejs20
+service: nextjs-app
+
+instance_class: F2
+
+handlers:
+  - url: /.*
+    script: auto
+
+env_variables:
+  NODE_ENV: production
+```
+
+### Option 3: Google Kubernetes Engine (Advanced)
+
+For more control, deploy using Kubernetes.
+
+#### Deploy to GKE
+
+```bash
+# Create a GKE cluster
+gcloud container clusters create nextjs-cluster \
+  --num-nodes=2 \
+  --machine-type=e2-medium \
+  --zone=us-central1-a
+
+# Build and push your Docker image
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/nextjs-app
+
+# Deploy to Kubernetes
+kubectl create deployment nextjs-app --image=gcr.io/YOUR_PROJECT_ID/nextjs-app
+kubectl expose deployment nextjs-app --type=LoadBalancer --port=3000
+```
+
+## GCP Services
+
+### Cloud SQL (Managed Databases)
+
+Add a managed database to your GCP environment:
+
+1. Go to the [Cloud SQL Dashboard](https://console.cloud.google.com/sql)
+2. Click "Create instance"
+3. Choose your database engine (PostgreSQL, MySQL, SQL Server)
+4. Configure the database settings
+5. Connect to your application using the provided connection string
+
+### Cloud Storage
+
+Use Cloud Storage for storing static assets or user uploads:
+
+```javascript
+const { Storage } = require('@google-cloud/storage');
+
+const storage = new Storage({
+  projectId: process.env.GCP_PROJECT_ID,
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+});
+
+const bucket = storage.bucket('your-bucket-name');
+```
+
+### Cloud CDN
+
+Add Cloud CDN to cache your application globally:
+
+1. Go to the [Cloud CDN Dashboard](https://console.cloud.google.com/net-services/cdn)
+2. Click "Create backend"
+3. Set your origin (Cloud Run, App Engine, or Compute Engine)
+4. Configure caching and behavior settings
+
+## Custom Domains
+
+Add a custom domain to your GCP deployment:
+
+### For Cloud Run
+
+```bash
+# Map a custom domain to your Cloud Run service
+gcloud run domain-mappings create --service nextjs-app --domain yourdomain.com --region us-central1
+```
+
+### For App Engine
+
+1. Go to your App Engine service
+2. Navigate to "Custom domains"
+3. Click "Add custom domain"
+4. Enter your domain name
+5. Follow the DNS configuration instructions
+
+## Monitoring
+
+GCP provides extensive monitoring:
+
+- **Cloud Monitoring**: Metrics, dashboards, and alerts
+- **Cloud Logging**: Application logs and system logs
+- **Cloud Trace**: Distributed tracing
+- **Cloud Debugger**: Real-time application debugging
+
+### Enable Cloud Monitoring
+
+1. Go to the [Cloud Monitoring Dashboard](https://console.cloud.google.com/monitoring)
+2. Create dashboards for your application
+3. Set up alerts for errors and performance issues
+
+## CI/CD
+
+### Cloud Build
+
+Set up continuous deployment with Cloud Build:
+
+1. Go to the [Cloud Build Dashboard](https://console.cloud.google.com/cloud-build)
+2. Click "Create trigger"
+3. Connect your GitHub repository
+4. Configure build and deploy stages
+
+### GitHub Actions
+
+Use GitHub Actions for CI/CD:
+
+```yaml
+name: Deploy to GCP
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - run: gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/nextjs-app:${{ github.sha }}
+      - run: gcloud run deploy nextjs-app --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/nextjs-app:${{ github.sha }} --platform managed --region us-central1 --allow-unauthenticated --port 3000
+```
+
+## Troubleshooting
+
+### Build Failures
+
+Check the build logs in the Cloud Build dashboard for error messages.
+
+### Runtime Errors
+
+View application logs:
+
+```bash
+# For Cloud Run
+gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=nextjs-app" --limit 50
+
+# For App Engine
+gcloud app logs tail -s nextjs-app
+```
+
+### Database Connection Issues
+
+Verify your database connection strings and authorized networks settings.
+
+## Resources
+
+- [GCP Documentation](https://cloud.google.com/docs)
+- [Cloud Run Documentation](https://cloud.google.com/run/docs)
+- [App Engine Documentation](https://cloud.google.com/appengine/docs)
+- [GKE Documentation](https://cloud.google.com/kubernetes-engine/docs)
+- [GCP Next.js Guide](https://cloud.google.com/run/docs/quickstarts/build-and-deploy/nodejs)
+- [GCP Community](https://cloud.google.com/community)
+- [GCP Status](https://status.cloud.google.com)

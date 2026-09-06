@@ -1,0 +1,82 @@
+{
+  "id": "clerk",
+  "name": "Clerk Authentication",
+  "version": "1.0.0",
+  "description": "Clerk authentication integration for Next.js App Router. Includes Clerk provider, middleware, and sign-in/sign-out pages. Packages pinned to @clerk/nextjs@5.0.0 (verified 2026-09-06).",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["supabase-auth-ui", "authjs", "auth0", "firebase-auth"],
+  "provides": ["authentication"],
+  "dependencies": ["@clerk/nextjs"],
+  "devDependencies": [],
+  "envVariables": [
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+    "CLERK_SECRET_KEY",
+    "CLERK_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_CLERK_SIGN_IN_URL",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_URL",
+    "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL",
+    "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Clerk Next.js documentation",
+      "url": "https://clerk.com/docs/nextjs/get-started-with-nextjs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Clerk middleware documentation",
+      "url": "https://clerk.com/docs/nextjs/middleware",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "clerkinc/nextjs v5.0.0",
+      "url": "https://github.com/clerkinc/nextjs/releases/tag/v5.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Clerk Next.js example",
+      "url": "https://github.com/clerkinc/nextjs/tree/v5.0.0/examples/nextjs-app-router",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/providers.tsx.ejs",
+      "destination": "providers.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/middleware/middleware.ts.ejs",
+      "destination": "middleware.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/sign-in/[[...sign-in]]/page.tsx.ejs",
+      "destination": "app/sign-in/[[...sign-in]]/page.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/sign-up/[[...sign-up]]/page.tsx.ejs",
+      "destination": "app/sign-up/[[...sign-up]]/page.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/api/webhooks/clerk/route.ts.ejs",
+      "destination": "app/api/webhooks/clerk/route.ts"
+    },
+    {
+      "type": "json_merge",
+      "targetFile": "package.json",
+      "mergeData": {
+        "dependencies": {
+          "@clerk/nextjs": "5.0.0"
+        }
+      }
+    }
+  ]
+}

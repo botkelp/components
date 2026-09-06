@@ -1,0 +1,128 @@
+/**
+ * NestJS HTTP Exception Filter
+ * 
+ * This filter handles HTTP exceptions and formats the error responses.
+ * 
+ * Source: https://docs.nestjs.com/exception-filters
+ * Verified: 2026-09-06
+ */
+
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+  HttpStatus,
+  Logger,
+} from '@nestjs/common';
+import { Request, Response } from 'express';
+
+// Error response interface
+interface ErrorResponse {
+  statusCode: number;
+  timestamp: string;
+  path: string;
+  method: string;
+  error: string;
+  message: string | string[];
+  details?: unknown;
+}
+
+@Catch()
+export class HttpExceptionFilter implements ExceptionFilter {
+  private readonly logger = new Logger(HttpExceptionFilter.name);
+
+  catch(exception: unknown, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const request = ctx.getRequest<Request>();
+    const response = ctx.getResponse<Response>();
+
+    // Determine status code and message
+    let statusCode: number;
+    let errorType: string;
+    let message: string | string[];
+    let details: unknown;
+
+    if (exception instanceof HttpException) {
+      statusCode = exception.getStatus();
+      const responseBody = exception.getResponse();
+      
+      if (typeof responseBody === 'string') {
+        message = responseBody;
+        errorType = this.getErrorType(statusCode);
+      } else if (typeof responseBody === 'object' && responseBody !== null) {
+        const body = responseBody as Record<string, unknown>;
+        message = (body.message as string | string[]) || exception.message;
+        errorType = (body.error as string) || this.getErrorType(statusCode);
+        details = body.details;
+      } else {
+        message = exception.message;
+        errorType = this.getErrorType(statusCode);
+      }
+    } else if (exception instanceof Error) {
+      statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      message = exception.message || 'Internal server error';
+      errorType = 'Internal Server Error';
+      details = exception.stack;
+    } else {
+      statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      message = 'Internal server error';
+      errorType = 'Internal Server Error';
+    }
+
+    // Prepare error response
+    const errorResponse: ErrorResponse = {
+      statusCode,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+      method: request.method,
+      error: errorType,
+      message,
+    };
+
+    // Add details if available
+    if (details) {
+      errorResponse.details = details;
+    }
+
+    // Log the error
+    this.logger.error(`[${errorType}] ${request.method} ${request.url}`, {
+      statusCode,
+      message,
+      error: exception,
+    });
+
+    // Send error response
+    response.status(statusCode).json(errorResponse);
+  }
+
+  // Helper method to get error type
+  private getErrorType(statusCode: number): string {
+    switch (statusCode) {
+      case HttpStatus.BAD_REQUEST:
+        return 'Bad Request';
+      case HttpStatus.UNAUTHORIZED:
+        return 'Unauthorized';
+      case HttpStatus.FORBIDDEN:
+        return 'Forbidden';
+      case HttpStatus.NOT_FOUND:
+        return 'Not Found';
+      case HttpStatus.CONFLICT:
+        return 'Conflict';
+      case HttpStatus.UNPROCESSABLE_ENTITY:
+        return 'Unprocessable Entity';
+      case HttpStatus.TOO_MANY_REQUESTS:
+        return 'Too Many Requests';
+      case HttpStatus.INTERNAL_SERVER_ERROR:
+        return 'Internal Server Error';
+      case HttpStatus.BAD_GATEWAY:
+        return 'Bad Gateway';
+      case HttpStatus.SERVICE_UNAVAILABLE:
+        return 'Service Unavailable';
+      case HttpStatus.GATEWAY_TIMEOUT:
+        return 'Gateway Timeout';
+      default:
+        return 'Error';
+    }
+  }
+}

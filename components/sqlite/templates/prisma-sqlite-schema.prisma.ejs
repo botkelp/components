@@ -1,0 +1,41 @@
+/**
+ * Prisma Schema for SQLite
+ * 
+ * This schema is configured for SQLite database.
+ * Note: SQLite has some limitations compared to other databases.
+ * 
+ * Source: https://www.prisma.io/docs/prisma-orm/quickstart/sqlite
+ * Verified: 2026-09-06
+ */
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Example User model - customize for your application
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+// Example Post model - customize for your application
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,15 @@
+/**
+ * Angular Main Entry Point
+ * 
+ * This is the main entry point for the Angular application.
+ * 
+ * Source: https://angular.dev/cli/new
+ * Verified: 2026-09-06
+ */
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));

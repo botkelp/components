@@ -1,0 +1,80 @@
+/**
+ * Global Styles
+ * 
+ * This file contains global CSS styles for the SvelteKit application.
+ * 
+ * Source: https://kit.svelte.dev/docs/styling
+ * Verified: 2026-09-06
+ */
+
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #ffffff;
+	color: #333333;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Focus styles */
+:focus {
+	outline: none;
+}
+
+/* Selection styles */
+::selection {
+	background-color: #ff3e00;
+	color: white;
+}
+
+/* Link styles */
+a {
+	color: #ff3e00;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Button base styles */
+button {
+	font-family: inherit;
+	cursor: pointer;
+}
+
+/* Utility classes */
+.text-center {
+	text-align: center;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}

@@ -1,0 +1,80 @@
+/**
+ * MongoDB Client Configuration
+ * 
+ * This module provides a configured MongoDB client for use in your application.
+ * 
+ * Source: https://www.mongodb.com/docs/drivers/node/current/
+ * Verified: 2026-09-06
+ */
+
+import { MongoClient, Db, Collection, Document } from 'mongodb';
+
+// MongoDB connection URI
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydb';
+
+// Database name
+const MONGODB_DB = process.env.MONGODB_DB || 'mydb';
+
+// Cache the MongoDB client and database connection
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
+
+// Connect to MongoDB
+export async function connectToMongoDB(): Promise<{ client: MongoClient; db: Db }> {
+  if (cachedClient && cachedDb) {
+    return { client: cachedClient, db: cachedDb };
+  }
+
+  const client = new MongoClient(MONGODB_URI, {
+    maxPoolSize: 10,
+    socketTimeoutMS: 30000,
+    serverSelectionTimeoutMS: 5000,
+  });
+
+  try {
+    await client.connect();
+    const db = client.db(MONGODB_DB);
+    
+    // Verify the connection
+    await db.command({ ping: 1 });
+    
+    // Cache the connection
+    cachedClient = client;
+    cachedDb = db;
+    
+    console.log('Connected to MongoDB');
+    
+    return { client, db };
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    throw error;
+  }
+}
+
+// Get a specific collection
+export async function getCollection<T extends Document>(collectionName: string): Promise<Collection<T>> {
+  const { db } = await connectToMongoDB();
+  return db.collection<T>(collectionName);
+}
+
+// Close the MongoDB connection
+export async function closeMongoDBConnection(): Promise<void> {
+  if (cachedClient) {
+    await cachedClient.close();
+    cachedClient = null;
+    cachedDb = null;
+    console.log('MongoDB connection closed');
+  }
+}
+
+// Graceful shutdown
+export async function shutdownMongoDB(): Promise<void> {
+  try {
+    await closeMongoDBConnection();
+  } catch (error) {
+    console.error('Error closing MongoDB connection:', error);
+  }
+}
+
+// Export the MongoDB URI for use in other modules
+export { MONGODB_URI, MONGODB_DB };

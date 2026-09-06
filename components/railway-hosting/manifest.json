@@ -1,0 +1,55 @@
+{
+  "id": "railway-hosting",
+  "name": "Railway Hosting",
+  "version": "1.0.0",
+  "description": "Railway hosting configuration for Next.js applications. Includes railway.toml configuration and deployment documentation. Railway provides simple, scalable hosting with built-in databases, monitoring, and CI/CD.",
+  "requires": ["nextjs-base"],
+  "conflictsWith": ["vercel-hosting", "render-hosting", "cloudflare-hosting", "aws-hosting", "azure-hosting", "gcp-hosting"],
+  "provides": ["hosting"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["RAILWAY_ENVIRONMENT", "RAILWAY_PROJECT_ID", "RAILWAY_SERVICE_ID"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Railway Next.js deployment documentation",
+      "url": "https://docs.railway.app/deploy/deploying-nextjs",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Railway configuration reference",
+      "url": "https://docs.railway.app/reference/railway-toml",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "railwayapp/cli v3.0.0",
+      "url": "https://github.com/railwayapp/cli/releases/tag/v3.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Railway Next.js starter template",
+      "url": "https://github.com/railwayapp/starter-nextjs",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/railway.toml.ejs",
+      "destination": "railway.toml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.railwayignore.ejs",
+      "destination": ".railwayignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/RAILWAY_README.md.ejs",
+      "destination": "RAILWAY_README.md"
+    }
+  ]
+}

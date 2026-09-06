@@ -1,0 +1,116 @@
+{
+  "id": "aspnet-base",
+  "name": "ASP.NET Core Base",
+  "version": "1.0.0",
+  "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
+  "requires": [],
+  "conflictsWith": [
+    "nextjs-base",
+    "express",
+    "nestjs",
+    "django-base",
+    "fastapi-base",
+    "laravel-base"
+  ],
+  "provides": [
+    "backend"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [
+    "ASPNETCORE_ENVIRONMENT",
+    "ASPNETCORE_URLS",
+    "CONNECTIONSTRINGS__DEFAULT",
+    "JWT__SECRET",
+    "JWT__ISSUER",
+    "JWT__AUDIENCE"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "ASP.NET Core official documentation",
+      "url": "https://learn.microsoft.com/en-us/aspnet/core/",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "ASP.NET Core web API tutorial",
+      "url": "https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "dotnet/aspnetcore v8.0.0",
+      "url": "https://github.com/dotnet/aspnetcore/releases/tag/v8.0.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official ASP.NET Core web API template",
+      "url": "https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-web-api",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/aspnet-base.csproj.ejs",
+      "destination": "<%= projectName || 'AspNetCoreApp' %>.csproj"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Program.cs.ejs",
+      "destination": "Program.cs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/appsettings.json.ejs",
+      "destination": "appsettings.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/appsettings.Development.json.ejs",
+      "destination": "appsettings.Development.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Controllers/ExampleController.cs.ejs",
+      "destination": "Controllers/ExampleController.cs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Models/AppDbContext.cs.ejs",
+      "destination": "Models/AppDbContext.cs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Models/Example.cs.ejs",
+      "destination": "Models/Example.cs"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Properties/launchSettings.json.ejs",
+      "destination": "Properties/launchSettings.json"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/Dockerfile.ejs",
+      "destination": "Dockerfile"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/.gitignore.ejs",
+      "destination": ".gitignore"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/README.md.ejs",
+      "destination": "README.md"
+    }
+  ]
+}

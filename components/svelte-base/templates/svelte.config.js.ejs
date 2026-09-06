@@ -1,0 +1,34 @@
+/**
+ * SvelteKit Configuration
+ * 
+ * This file configures SvelteKit for development and production.
+ * 
+ * Source: https://kit.svelte.dev/docs/configuration
+ * Verified: 2026-09-06
+ */
+
+import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
+	kit: {
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for details.
+		// If your environment is supported, or you want to use a different adapter, you should change this.
+		// To use the Node.js adapter, install @sveltejs/adapter-node and import it here
+		adapter: adapter({
+			// Node adapter options
+			out: 'build',
+			precompress: true
+		}),
+		alias: {
+			$lib: './src/lib'
+		}
+	}
+};
+
+export default config;

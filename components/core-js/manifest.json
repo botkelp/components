@@ -1,8 +1,8 @@
 {
   "id": "core-js",
   "name": "Core JS Polyfill",
-  "version": "1.0.0",
-  "description": "Adds Core.js (v3.50.0), a modular standard library polyfill for ECMAScript features. Provides polyfills for ES6+ features including Promise, Array methods, Object methods, String methods, and more. Required for supporting older browsers in Next.js applications.",
+  "version": "1.0.1",
+  "description": "Opt-in Core.js (v3.50.0) polyfills for older browsers. Not selected by default and not required for Next.js 16 on current browsers. profile=minimal emits only import 'core-js/stable'; profile=complete also emits per-feature side-effect imports. Tree shaking cannot remove those imports.",
   "requires": ["nextjs-base"],
   "provides": ["polyfill", "browser-support"],
   "dependencies": ["core-js"],

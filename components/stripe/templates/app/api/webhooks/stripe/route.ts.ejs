@@ -1,0 +1,59 @@
+/**
+ * Adapted from Stripe's official App Router webhook example:
+ * https://github.com/stripe/stripe-node/blob/v22.6.1/examples/webhook-signing/nextjs/app/api/webhooks/route.ts
+ * Docs: https://docs.stripe.com/webhooks/quickstart?lang=node
+ * Verified 2026-09-06.
+ *
+ * Must read the raw body (`req.text()`). Parsed JSON breaks signature checks.
+ */
+import { Stripe } from 'stripe';
+import { NextResponse } from 'next/server';
+import { headers } from 'next/headers';
+import { stripe } from '@/lib/stripe';
+
+export async function POST(req: Request) {
+  let event: Stripe.Event;
+
+  try {
+    const stripeSignature = (await headers()).get('stripe-signature');
+    event = stripe.webhooks.constructEvent(
+      await req.text(),
+      stripeSignature as string,
+      process.env.STRIPE_WEBHOOK_SECRET as string,
+    );
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    console.log(`Error message: ${errorMessage}`);
+    return NextResponse.json({ message: `Webhook Error: ${errorMessage}` }, { status: 400 });
+  }
+
+  const permittedEvents: string[] = [
+    'checkout.session.completed',
+    'payment_intent.succeeded',
+    'payment_intent.payment_failed',
+  ];
+
+  if (permittedEvents.includes(event.type)) {
+    switch (event.type) {
+      case 'checkout.session.completed': {
+        const session = event.data.object as Stripe.Checkout.Session;
+        console.log(`CheckoutSession status: ${session.payment_status}`);
+        break;
+      }
+      case 'payment_intent.payment_failed': {
+        const intent = event.data.object as Stripe.PaymentIntent;
+        console.log(`Payment failed: ${intent.last_payment_error?.message}`);
+        break;
+      }
+      case 'payment_intent.succeeded': {
+        const intent = event.data.object as Stripe.PaymentIntent;
+        console.log(`PaymentIntent status: ${intent.status}`);
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  return NextResponse.json({ message: 'Received' }, { status: 200 });
+}

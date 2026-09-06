@@ -1,0 +1,125 @@
+<script lang="ts">
+/**
+ * Home Page Component
+ * 
+ * This component serves as the home page of the SvelteKit application.
+ * 
+ * Source: https://kit.svelte.dev/docs/page-options
+ * Verified: 2026-09-06
+ */
+
+import { counter } from '$lib/counter';
+</script>
+
+<h1><%= projectName || 'Svelte App' %></h1>
+<p>Welcome to your SvelteKit application!</p>
+
+<div class="counter-section">
+	<p>Counter: {counter.count}</p>
+	<div class="button-group">
+		<button on:click={counter.increment}>Increment</button>
+		<button on:click={counter.decrement}>Decrement</button>
+		<button on:click={counter.reset}>Reset</button>
+	</div>
+</div>
+
+<div class="info">
+	<p>Built with:</p>
+	<ul>
+		<li>SvelteKit</li>
+		<li>Svelte 5</li>
+		<li>Vite</li>
+		<li>TypeScript</li>
+	</ul>
+</div>
+
+<style>
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		color: #ff3e00;
+	}
+
+	p {
+		font-size: 1.1rem;
+		margin-bottom: 2rem;
+		color: #666;
+	}
+
+	.counter-section {
+		margin: 2rem 0;
+		padding: 1.5rem;
+		background: #f5f5f5;
+		border-radius: 8px;
+	}
+
+	.counter-section p {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	.button-group {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.button-group button {
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.2s;
+	}
+
+	.button-group button:hover {
+		opacity: 0.8;
+	}
+
+	.button-group button:first-child {
+		background-color: #ff3e00;
+		color: white;
+	}
+
+	.button-group button:nth-child(2) {
+		background-color: #ff6b6b;
+		color: white;
+	}
+
+	.button-group button:last-child {
+		background-color: #666;
+		color: white;
+	}
+
+	.info {
+		margin-top: 3rem;
+		padding: 1rem;
+		background: #f0f0f0;
+		border-radius: 8px;
+	}
+
+	.info ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		gap: 1.5rem;
+	}
+
+	.info li {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		background: white;
+		border-radius: 4px;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	}
+</style>

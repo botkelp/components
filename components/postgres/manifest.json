@@ -1,0 +1,49 @@
+{
+  "id": "postgres",
+  "name": "PostgreSQL",
+  "version": "1.0.0",
+  "description": "Local PostgreSQL via the official Docker image (tag 18) plus a DATABASE_URL that matches Prisma's documented postgresql:// form. Pair with the existing prisma component for the ORM.",
+  "requires": ["nextjs-base"],
+  "provides": ["database"],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": ["DATABASE_URL", "POSTGRES_USER", "POSTGRES_PASSWORD", "POSTGRES_DB"],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Prisma PostgreSQL connection string",
+      "url": "https://www.prisma.io/docs/prisma-orm/quickstart/postgresql",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "docs",
+      "label": "Official Postgres Docker image (Docker Hub)",
+      "url": "https://hub.docker.com/_/postgres",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-releases",
+      "label": "prisma/prisma 7.10.0 (PostgreSQL adapter line already in this registry)",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+      "verifiedAt": "2026-09-06"
+    },
+    {
+      "type": "github-examples",
+      "label": "docker-library/postgres official image source",
+      "url": "https://github.com/docker-library/postgres",
+      "verifiedAt": "2026-09-06"
+    }
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/docker-compose.yml.ejs",
+      "destination": "docker-compose.yml"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/env.example.ejs",
+      "destination": ".env.example"
+    }
+  ]
+}

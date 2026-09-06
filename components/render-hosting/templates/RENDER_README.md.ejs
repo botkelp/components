@@ -1,0 +1,141 @@
+# Render Hosting Deployment Guide
+
+This project is configured for deployment on [Render](https://render.com).
+
+## Quick Start
+
+1. **Sign up for Render**: [https://render.com](https://render.com)
+2. **Create a new Web Service**
+3. **Connect your GitHub repository**
+4. **Configure the service**
+
+## Deployment
+
+### Create a New Web Service
+
+1. Go to the [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" -> "Web Service"
+3. Connect your GitHub repository
+4. Configure the service:
+   - **Name**: Your application name
+   - **Region**: Choose the closest region (Oregon, Ohio, Frankfurt, Singapore)
+   - **Branch**: Select the branch to deploy (usually `main` or `master`)
+   - **Root Directory**: Leave blank if your app is in the root
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
+
+### Environment Variables
+
+Set your environment variables in the Render dashboard:
+
+1. Go to your Web Service
+2. Navigate to "Environment" tab
+3. Add your environment variables:
+   - `NODE_ENV=production`
+   - `NEXT_PUBLIC_BASE_URL=https://your-app.onrender.com`
+   - Any other application-specific variables
+
+### Deploy
+
+Once configured, Render will automatically deploy your application. You can also trigger manual deployments:
+
+1. Push to your connected branch to trigger automatic deployment
+2. Or click "Manual Deploy" -> "Deploy Latest Commit" in the Render dashboard
+
+## Configuration
+
+The `render.yaml` file contains deployment configuration:
+
+- **Build command**: `npm run build`
+- **Start command**: `npm start`
+- **Region**: oregon (or other available regions)
+- **Health check path**: `/api/health`
+- **Plan**: free (can be upgraded)
+
+Customize these settings in `render.yaml` or in the Render dashboard.
+
+## Adding Services
+
+Add databases and other services to your project:
+
+1. **PostgreSQL**:
+   - Go to Dashboard -> "New +" -> "PostgreSQL"
+   - Connect to your Web Service
+   - Environment variables will be automatically provided
+
+2. **MySQL**:
+   - Go to Dashboard -> "New +" -> "MySQL"
+   - Connect to your Web Service
+
+3. **Redis**:
+   - Go to Dashboard -> "New +" -> "Redis"
+   - Connect to your Web Service
+
+## Connecting to Databases
+
+When you add a database service, Render automatically provides connection environment variables:
+
+- **PostgreSQL**: `DATABASE_URL`, `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`
+- **MySQL**: `DATABASE_URL`, `MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE`
+- **MongoDB**: `MONGODB_URI`, `MONGODB_HOST`, `MONGODB_PORT`
+
+## Scaling
+
+Scale your application:
+
+1. **Vertical Scaling**: Upgrade your plan for more CPU and memory
+2. **Horizontal Scaling**: Enable auto-scaling in the service settings
+
+## Custom Domains
+
+Add a custom domain to your Render service:
+
+1. Go to your Web Service
+2. Navigate to "Settings" tab
+3. Under "Custom Domains", click "Add Custom Domain"
+4. Enter your domain name
+5. Follow the DNS configuration instructions
+
+## Monitoring
+
+Render provides built-in monitoring:
+
+- **Metrics**: CPU, memory, request count, response time
+- **Logs**: View application logs in real-time
+- **Alerts**: Configure alerts for errors and performance issues
+
+## CI/CD
+
+Render automatically sets up CI/CD for your project. Every push to your connected branch triggers a new deployment.
+
+### Manual Deployments
+
+1. Click "Manual Deploy" in the Render dashboard
+2. Select "Deploy Latest Commit"
+
+### Rollbacks
+
+1. Go to the "Deploys" tab
+2. Find the deploy you want to rollback to
+3. Click "Rollback" next to the deploy
+
+## Troubleshooting
+
+### Build Failures
+
+Check the build logs in the Render dashboard for error messages.
+
+### Runtime Errors
+
+View the application logs in the "Logs" tab of your Web Service.
+
+### Database Connection Issues
+
+Verify your database connection strings and credentials in the Render dashboard under the database service settings.
+
+## Resources
+
+- [Render Documentation](https://render.com/docs)
+- [Render Next.js Guide](https://render.com/docs/deploy-nextjs)
+- [Render Status](https://status.render.com)
+- [Render Community](https://community.render.com)
