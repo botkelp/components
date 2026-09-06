@@ -3,13 +3,27 @@
   "name": "Braintree Web SDK",
   "version": "1.0.0",
   "description": "Adds Braintree Web SDK (braintree-web) for integrating Braintree payment processing in Next.js applications. Provides client-side tokenization for credit cards, PayPal, and other payment methods. Requires a client authorization token from your server.",
-  "requires": ["nextjs-base"],
-  "provides": ["payments", "billing"],
-  "dependencies": ["braintree-web"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "payments",
+    "billing"
+  ],
+  "dependencies": [
+    "braintree-web"
+  ],
   "devDependencies": [],
-  "envVariables": ["NEXT_PUBLIC_BRAINTREE_AUTHORIZATION"],
+  "envVariables": [
+    "NEXT_PUBLIC_BRAINTREE_AUTHORIZATION"
+  ],
   "sources": [
-    { "type": "docs", "label": "Braintree Web Client Reference v3.145.0", "url": "https://braintree.github.io/braintree-web/current/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Braintree Web Client Reference v3.145.0",
+      "url": "https://braintree.github.io/braintree-web/current/",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "braintree braintree-web v3.145.0 release",
@@ -48,5 +62,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

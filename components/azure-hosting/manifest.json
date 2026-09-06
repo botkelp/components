@@ -58,5 +58,10 @@
       "templatePath": "templates/AZURE_README.md.ejs",
       "destination": "AZURE_README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

@@ -3,12 +3,23 @@
   "name": "SQLite Database",
   "version": "1.0.0",
   "description": "SQLite database integration for development. Includes Prisma schema configured for SQLite. Lightweight, file-based database perfect for development and testing. Pair with the existing prisma component for the ORM.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["postgres", "mysql", "mongodb", "sqlserver"],
-  "provides": ["database"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "postgres",
+    "mysql",
+    "mongodb",
+    "sqlserver"
+  ],
+  "provides": [
+    "database"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["DATABASE_URL"],
+  "envVariables": [
+    "DATABASE_URL"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -46,5 +57,10 @@
       "templatePath": "templates/prisma-sqlite-schema.prisma.ejs",
       "destination": "prisma/schema.prisma"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

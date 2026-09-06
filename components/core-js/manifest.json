@@ -3,13 +3,25 @@
   "name": "Core JS Polyfill",
   "version": "1.0.1",
   "description": "Opt-in Core.js (v3.50.0) polyfills for older browsers. Not selected by default and not required for Next.js 16 on current browsers. profile=minimal emits only import 'core-js/stable'; profile=complete also emits per-feature side-effect imports. Tree shaking cannot remove those imports.",
-  "requires": ["nextjs-base"],
-  "provides": ["polyfill", "browser-support"],
-  "dependencies": ["core-js"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "polyfill",
+    "browser-support"
+  ],
+  "dependencies": [
+    "core-js"
+  ],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "Core.js official documentation", "url": "https://github.com/zloirock/core-js#readme", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Core.js official documentation",
+      "url": "https://github.com/zloirock/core-js#readme",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "zloirock core-js v3.50.0 release",
@@ -38,5 +50,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

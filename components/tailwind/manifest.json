@@ -3,13 +3,25 @@
   "name": "Tailwind CSS",
   "version": "2.0.0",
   "description": "Adds Tailwind CSS v4 (CSS-first config, no tailwind.config.ts) and replaces app/globals.css with the Tailwind import + theme tokens.",
-  "requires": ["nextjs-base"],
-  "provides": ["styling"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "styling"
+  ],
   "dependencies": [],
-  "devDependencies": ["tailwindcss", "@tailwindcss/postcss"],
+  "devDependencies": [
+    "tailwindcss",
+    "@tailwindcss/postcss"
+  ],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "Tailwind CSS docs", "url": "https://tailwindcss.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Tailwind CSS docs",
+      "url": "https://tailwindcss.com/docs",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "tailwindcss v4.3.3 release notes",
@@ -45,5 +57,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

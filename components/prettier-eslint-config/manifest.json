@@ -3,15 +3,23 @@
   "name": "Prettier + ESLint Config",
   "version": "2.0.0",
   "description": "Adds Prettier with a standard config, and overwrites eslint.config.mjs (flat config) to fold in eslint-config-prettier/flat so formatting-conflicting lint rules are disabled.",
-  "requires": ["nextjs-base"],
-  "provides": ["code-formatting", "linting"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "code-formatting",
+    "linting"
+  ],
   "dependencies": [],
-  "devDependencies": ["prettier", "eslint-config-prettier"],
+  "devDependencies": [
+    "prettier",
+    "eslint-config-prettier"
+  ],
   "envVariables": [],
   "sources": [
     {
       "type": "docs",
-      "label": "ESLint flat config docs (this component's actual job — folding eslint-config-prettier into eslint.config.mjs)",
+      "label": "ESLint flat config docs (this component's actual job \u2014 folding eslint-config-prettier into eslint.config.mjs)",
       "url": "https://eslint.org/docs/latest/use/configure/configuration-files",
       "verifiedAt": "2026-09-02"
     },
@@ -23,7 +31,7 @@
     },
     {
       "type": "github-examples",
-      "label": "eslint-config-prettier's own repo (its README's flat-config usage is what this component actually follows — neither ESLint nor Prettier has a dedicated /examples directory)",
+      "label": "eslint-config-prettier's own repo (its README's flat-config usage is what this component actually follows \u2014 neither ESLint nor Prettier has a dedicated /examples directory)",
       "url": "https://github.com/prettier/eslint-config-prettier/tree/bd6e6171434c7b34dec3dd0f325aab792c126ec6",
       "verifiedAt": "2026-09-02"
     }
@@ -58,5 +66,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

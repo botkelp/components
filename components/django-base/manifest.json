@@ -4,11 +4,25 @@
   "version": "1.0.0",
   "description": "Django backend project with Python 3.11+. Provides a foundation for Django applications with models, views, URLs, and settings. Includes Docker configuration for PostgreSQL. Packages pinned to Django==5.0.0 (verified 2026-09-06).",
   "requires": [],
-  "conflictsWith": ["nextjs-base", "express", "nestjs", "fastapi-base", "laravel-base", "aspnet-base"],
-  "provides": ["backend"],
+  "conflictsWith": [
+    "nextjs-base",
+    "express",
+    "nestjs",
+    "fastapi-base",
+    "laravel-base",
+    "aspnet-base"
+  ],
+  "provides": [
+    "backend"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["DJANGO_SECRET_KEY", "DJANGO_DEBUG", "DJANGO_ALLOWED_HOSTS", "DATABASE_URL"],
+  "envVariables": [
+    "DJANGO_SECRET_KEY",
+    "DJANGO_DEBUG",
+    "DJANGO_ALLOWED_HOSTS",
+    "DATABASE_URL"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -121,5 +135,10 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "django": ">=5 <6",
+    "python": ">=3.11"
+  },
+  "status": "stable"
 }

@@ -3,13 +3,25 @@
   "name": "Animate On Scroll (AOS)",
   "version": "1.0.0",
   "description": "Adds AOS (Animate On Scroll) library for CSS3-driven scroll animations in Next.js applications. Apply data-aos attributes to elements to trigger animations as they enter the viewport. Supports fade, flip, zoom, and slide animations with configurable duration, delay, and easing.",
-  "requires": ["nextjs-base"],
-  "provides": ["ui", "animation"],
-  "dependencies": ["aos"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "ui",
+    "animation"
+  ],
+  "dependencies": [
+    "aos"
+  ],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "AOS official documentation and demo", "url": "https://michalsnik.github.io/aos/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "AOS official documentation and demo",
+      "url": "https://michalsnik.github.io/aos/",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "michalsnik aos v2.3.4 release",
@@ -61,5 +73,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

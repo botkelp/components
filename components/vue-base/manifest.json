@@ -175,5 +175,9 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "vue": ">=3 <4"
+  },
+  "status": "stable"
 }

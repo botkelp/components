@@ -62,5 +62,10 @@
       "templatePath": "templates/.ebextensions/nextjs.config.ejs",
       "destination": ".ebextensions/nextjs.config"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

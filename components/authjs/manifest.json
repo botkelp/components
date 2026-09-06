@@ -3,10 +3,18 @@
   "name": "Auth.js (NextAuth v5)",
   "version": "1.0.0",
   "description": "Auth.js / next-auth@5.0.0-beta.32 on Next.js App Router: auth.ts, /api/auth/[...nextauth], proxy.ts, GitHub provider. Pinned to the 20 Jul 2026 beta that includes @auth/core@0.41.3 security fixes.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["supabase-auth-ui"],
-  "provides": ["authentication"],
-  "dependencies": ["next-auth"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "supabase-auth-ui"
+  ],
+  "provides": [
+    "authentication"
+  ],
+  "dependencies": [
+    "next-auth"
+  ],
   "devDependencies": [],
   "envVariables": [
     "AUTH_SECRET",
@@ -76,5 +84,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

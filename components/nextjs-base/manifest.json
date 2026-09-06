@@ -4,8 +4,14 @@
   "version": "2.0.2",
   "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects and enables optimizePackageImports for icon barrels. Every other component requires this one, directly or transitively.",
   "requires": [],
-  "provides": ["framework"],
-  "dependencies": ["next", "react", "react-dom"],
+  "provides": [
+    "framework"
+  ],
+  "dependencies": [
+    "next",
+    "react",
+    "react-dom"
+  ],
   "devDependencies": [
     "typescript",
     "@types/node",
@@ -16,7 +22,12 @@
   ],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "Next.js docs", "url": "https://nextjs.org/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Next.js docs",
+      "url": "https://nextjs.org/docs",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "next.js v16.3.4 release notes",
@@ -92,5 +103,10 @@
       "templatePath": "templates/github-workflows-ci.yml.ejs",
       "destination": ".github/workflows/ci.yml"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

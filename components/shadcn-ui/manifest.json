@@ -3,16 +3,29 @@
   "name": "Shadcn UI (Button, Card)",
   "version": "1.0.0",
   "description": "Adds the shadcn/ui `cn` utility plus Button and Card primitives, styled with Tailwind and class-variance-authority.",
-  "requires": ["tailwind"],
-  "provides": ["ui-components"],
-  "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+  "requires": [
+    "tailwind"
+  ],
+  "provides": [
+    "ui-components"
+  ],
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "shadcn/ui docs", "url": "https://ui.shadcn.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "shadcn/ui docs",
+      "url": "https://ui.shadcn.com/docs",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
-      "label": "shadcn/ui releases (hand-rolled Button/Card here, not the shadcn CLI — no specific version to pin against)",
+      "label": "shadcn/ui releases (hand-rolled Button/Card here, not the shadcn CLI \u2014 no specific version to pin against)",
       "url": "https://github.com/shadcn-ui/ui/releases",
       "verifiedAt": "2026-09-02"
     },
@@ -50,5 +63,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

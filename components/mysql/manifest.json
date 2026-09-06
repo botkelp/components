@@ -3,12 +3,27 @@
   "name": "MySQL Database",
   "version": "1.0.0",
   "description": "MySQL database integration via Docker and Prisma ORM. Includes Docker Compose configuration and Prisma schema for MySQL. Pair with the existing prisma component for the ORM.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["postgres", "sqlite", "mongodb", "sqlserver"],
-  "provides": ["database"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "postgres",
+    "sqlite",
+    "mongodb",
+    "sqlserver"
+  ],
+  "provides": [
+    "database"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["DATABASE_URL", "MYSQL_USER", "MYSQL_PASSWORD", "MYSQL_DATABASE", "MYSQL_ROOT_PASSWORD"],
+  "envVariables": [
+    "DATABASE_URL",
+    "MYSQL_USER",
+    "MYSQL_PASSWORD",
+    "MYSQL_DATABASE",
+    "MYSQL_ROOT_PASSWORD"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -51,5 +66,10 @@
       "templatePath": "templates/prisma-mysql-schema.prisma.ejs",
       "destination": "prisma/schema.prisma"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

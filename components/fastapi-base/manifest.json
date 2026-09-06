@@ -4,11 +4,27 @@
   "version": "1.0.0",
   "description": "FastAPI backend project with Python 3.11+. Provides a modern, async-ready API foundation with automatic docs, dependency injection, and environment configuration. Packages pinned to fastapi==0.109.0, uvicorn==0.27.0 (verified 2026-09-06).",
   "requires": [],
-  "conflictsWith": ["nextjs-base", "express", "nestjs", "django-base", "laravel-base", "aspnet-base"],
-  "provides": ["backend"],
+  "conflictsWith": [
+    "nextjs-base",
+    "express",
+    "nestjs",
+    "django-base",
+    "laravel-base",
+    "aspnet-base"
+  ],
+  "provides": [
+    "backend"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["APP_NAME", "APP_VERSION", "DEBUG", "SECRET_KEY", "DATABASE_URL", "API_V1_PREFIX"],
+  "envVariables": [
+    "APP_NAME",
+    "APP_VERSION",
+    "DEBUG",
+    "SECRET_KEY",
+    "DATABASE_URL",
+    "API_V1_PREFIX"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -146,5 +162,9 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "python": ">=3.11"
+  },
+  "status": "stable"
 }

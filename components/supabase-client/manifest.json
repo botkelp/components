@@ -3,13 +3,29 @@
   "name": "Supabase Database & Auth Client",
   "version": "2.0.0",
   "description": "Adds browser/server Supabase clients (@supabase/ssr) and wraps the root layout in a SupabaseProvider via AST injection.",
-  "requires": ["nextjs-base"],
-  "provides": ["database", "authentication"],
-  "dependencies": ["@supabase/ssr", "@supabase/supabase-js"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "database",
+    "authentication"
+  ],
+  "dependencies": [
+    "@supabase/ssr",
+    "@supabase/supabase-js"
+  ],
   "devDependencies": [],
-  "envVariables": ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"],
+  "envVariables": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+  ],
   "sources": [
-    { "type": "docs", "label": "Supabase docs", "url": "https://supabase.com/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Supabase docs",
+      "url": "https://supabase.com/docs",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "supabase/supabase releases (the monorepo's own release tags don't track @supabase/ssr or @supabase/supabase-js's npm versions, which ship from separate repos)",
@@ -61,5 +77,11 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20",
+    "supabase_ssr": ">=0.12 <1"
+  },
+  "status": "stable"
 }

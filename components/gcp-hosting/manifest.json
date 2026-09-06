@@ -67,5 +67,10 @@
       "templatePath": "templates/.dockerignore.ejs",
       "destination": ".dockerignore"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

@@ -105,6 +105,19 @@
         "destination": ".browserslistrc",
         "template": "templates/.browserslistrc.ejs"
       }
+    ],
+    "compatibility": {
+      "angular": ">=18 <19"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "angular": ">=18 <19"
+        }
+      }
     ]
   },
   {
@@ -136,6 +149,21 @@
       {
         "destination": "components/aos-init.tsx",
         "template": "templates/components/aos-init.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -207,6 +235,19 @@
         "destination": "README.md",
         "template": "templates/README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "dotnet": ">=8"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "dotnet": ">=8"
+        }
+      }
     ]
   },
   {
@@ -243,6 +284,21 @@
       {
         "destination": "app/login/page.tsx",
         "template": "templates/app/login/page.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -284,6 +340,21 @@
         "destination": "app/login/page.tsx",
         "template": "templates/app/login/page.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -314,6 +385,21 @@
         "destination": ".ebextensions/nextjs.config",
         "template": "templates/.ebextensions/nextjs.config.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -340,6 +426,21 @@
       {
         "destination": "AZURE_README.md",
         "template": "templates/AZURE_README.md.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -374,6 +475,21 @@
       {
         "destination": "lib/braintree/hosted-fields.ts",
         "template": "templates/lib/braintree/hosted-fields.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -422,6 +538,21 @@
         "destination": "app/api/webhooks/clerk/route.ts",
         "template": "templates/app/api/webhooks/clerk/route.ts.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -457,6 +588,21 @@
         "destination": "CLOUDFLARE_README.md",
         "template": "templates/CLOUDFLARE_README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -480,6 +626,21 @@
       {
         "destination": "lib/core-js.ts",
         "template": "templates/lib/core-js.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.1",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -508,6 +669,21 @@
       {
         "destination": "types/dayjs.d.ts",
         "template": "templates/types/dayjs.d.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -597,6 +773,21 @@
         "destination": "README.md",
         "template": "templates/README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "django": ">=5 <6",
+      "python": ">=3.11"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "django": ">=5 <6",
+          "python": ">=3.11"
+        }
+      }
     ]
   },
   {
@@ -681,6 +872,19 @@
       {
         "destination": "README.md",
         "template": "templates/README.md.ejs"
+      }
+    ],
+    "compatibility": {
+      "node": ">=20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "node": ">=20"
+        }
       }
     ]
   },
@@ -792,6 +996,19 @@
         "destination": "README.md",
         "template": "templates/README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "python": ">=3.11"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "python": ">=3.11"
+        }
+      }
     ]
   },
   {
@@ -825,13 +1042,28 @@
         "destination": "lib/firebase.ts",
         "template": "templates/lib/firebase.ts.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
     "id": "footer",
     "name": "Footer",
     "version": "1.0.0",
-    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
+    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
     "requires": [
       "tailwind"
     ],
@@ -845,6 +1077,21 @@
       {
         "destination": "components/footer.tsx",
         "template": "templates/components/footer.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -880,13 +1127,28 @@
         "destination": ".dockerignore",
         "template": "templates/.dockerignore.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
     "id": "jquery",
     "name": "jQuery",
     "version": "1.0.0",
-    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app — real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
+    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app \u2014 real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
     "requires": [
       "nextjs-base"
     ],
@@ -905,6 +1167,21 @@
       {
         "destination": "lib/jquery.ts",
         "template": "templates/lib/jquery.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1017,6 +1294,21 @@
         "destination": "README.md",
         "template": "templates/README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "laravel": ">=11 <12",
+      "php": ">=8.2"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "laravel": ">=11 <12",
+          "php": ">=8.2"
+        }
+      }
     ]
   },
   {
@@ -1050,6 +1342,21 @@
       {
         "destination": "lib/mongodb.ts",
         "template": "templates/lib/mongodb.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1086,13 +1393,28 @@
         "destination": "prisma/schema.prisma",
         "template": "templates/prisma-mysql-schema.prisma.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
     "id": "navbar",
     "name": "Navbar",
     "version": "1.0.0",
-    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
+    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
     "requires": [
       "tailwind"
     ],
@@ -1106,6 +1428,21 @@
       {
         "destination": "components/navbar.tsx",
         "template": "templates/components/navbar.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1214,6 +1551,19 @@
         "destination": "README.md",
         "template": "templates/README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "node": ">=20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "node": ">=20"
+        }
+      }
     ]
   },
   {
@@ -1284,6 +1634,21 @@
         "destination": ".github/workflows/ci.yml",
         "template": "templates/github-workflows-ci.yml.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.2",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1325,6 +1690,21 @@
         "destination": "components/paddle-checkout-button.tsx",
         "template": "templates/components/paddle-checkout-button.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1359,6 +1739,21 @@
         "destination": "components/paypal-buttons.tsx",
         "template": "templates/components/paypal-buttons.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1388,6 +1783,21 @@
       {
         "destination": ".env.example",
         "template": "templates/env.example.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1421,6 +1831,21 @@
       {
         "destination": "eslint.config.mjs",
         "template": "templates/eslint.config.mjs.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1459,6 +1884,21 @@
         "destination": "lib/prisma.ts",
         "template": "templates/lib/prisma.ts.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1492,6 +1932,21 @@
         "destination": "RAILWAY_README.md",
         "template": "templates/RAILWAY_README.md.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1519,6 +1974,21 @@
       {
         "destination": "components/recaptcha-script.tsx",
         "template": "templates/components/recaptcha-script.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1551,6 +2021,21 @@
       {
         "destination": "RENDER_README.md",
         "template": "templates/RENDER_README.md.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1585,6 +2070,21 @@
         "destination": "components/ui/card.tsx",
         "template": "templates/components/ui/card.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1611,6 +2111,21 @@
       {
         "destination": "prisma/schema.prisma",
         "template": "templates/prisma-sqlite-schema.prisma.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1642,6 +2157,21 @@
       {
         "destination": ".env.example",
         "template": "templates/env.example.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1685,6 +2215,21 @@
         "destination": "components/checkout-button.tsx",
         "template": "templates/components/checkout-button.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1710,6 +2255,21 @@
       {
         "destination": "app/auth/callback/route.ts",
         "template": "templates/app/auth/callback/route.ts.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.1.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1746,6 +2306,23 @@
       {
         "destination": "components/supabase-provider.tsx",
         "template": "templates/components/supabase-provider.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20",
+      "supabase_ssr": ">=0.12 <1"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20",
+          "supabase_ssr": ">=0.12 <1"
+        }
       }
     ]
   },
@@ -1818,6 +2395,19 @@
         "destination": ".env.example",
         "template": "templates/.env.example.ejs"
       }
+    ],
+    "compatibility": {
+      "svelte": ">=5 <6"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "svelte": ">=5 <6"
+        }
+      }
     ]
   },
   {
@@ -1847,6 +2437,21 @@
         "destination": "components/swiper-slider.tsx",
         "template": "templates/components/swiper-slider.tsx.ejs"
       }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
     ]
   },
   {
@@ -1874,6 +2479,21 @@
       {
         "destination": "app/globals.css",
         "template": "templates/globals.css.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
       }
     ]
   },
@@ -1999,6 +2619,19 @@
       {
         "destination": "README.md",
         "template": "templates/README.md.ejs"
+      }
+    ],
+    "compatibility": {
+      "vue": ">=3 <4"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "vue": ">=3 <4"
+        }
       }
     ]
   }

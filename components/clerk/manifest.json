@@ -3,10 +3,21 @@
   "name": "Clerk Authentication",
   "version": "2.0.0",
   "description": "Clerk authentication integration for Next.js App Router using the real, current @clerk/nextjs API: clerkMiddleware in proxy.ts, a ClerkProvider actually wired into the root layout, and the built-in verifyWebhook helper for the webhook route.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["supabase-auth-ui", "authjs", "auth0", "firebase-auth"],
-  "provides": ["authentication"],
-  "dependencies": ["@clerk/nextjs"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "supabase-auth-ui",
+    "authjs",
+    "auth0",
+    "firebase-auth"
+  ],
+  "provides": [
+    "authentication"
+  ],
+  "dependencies": [
+    "@clerk/nextjs"
+  ],
   "devDependencies": [],
   "envVariables": [
     "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
@@ -26,13 +37,13 @@
     },
     {
       "type": "docs",
-      "label": "Clerk customize-redirect-urls guide (NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL etc. — afterSignInUrl/afterSignUpUrl are deprecated)",
+      "label": "Clerk customize-redirect-urls guide (NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL etc. \u2014 afterSignInUrl/afterSignUpUrl are deprecated)",
       "url": "https://clerk.com/docs/guides/development/customize-redirect-urls",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-releases",
-      "label": "@clerk/nextjs@7.9.1 (2026-09-03) — clerk/javascript is a monorepo (packages/nextjs); v5.0.0's peerDependencies cap next at ^14.0.3, incompatible with this catalog's Next 16 nextjs-base, so this pins the latest release instead",
+      "label": "@clerk/nextjs@7.9.1 (2026-09-03) \u2014 clerk/javascript is a monorepo (packages/nextjs); v5.0.0's peerDependencies cap next at ^14.0.3, incompatible with this catalog's Next 16 nextjs-base, so this pins the latest release instead",
       "url": "https://github.com/clerk/javascript/releases/tag/@clerk/nextjs@7.9.1",
       "verifiedAt": "2026-09-06"
     },
@@ -85,5 +96,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }
