@@ -46,4 +46,4 @@ One row per **individual component**. This is not a list of assembled apps.
 | [`svelte-base`](components/svelte-base/) | SvelteKit Base | framework | `package.json`, `tsconfig.json`, `svelte.config.js`, `vite.config.ts`, `src/app.html`, `src/app.css`, `src/routes/+page.svelte`, `src/routes/+layout.svelte`, … (12 files) |
 | [`swiper`](components/swiper/) | Swiper Slider | ui, carousel, slider | `lib/swiper.ts`, `components/swiper-slider.tsx` |
 | [`tailwind`](components/tailwind/) | Tailwind CSS | styling | `postcss.config.mjs`, `app/globals.css` |
-| [`vue-base`](components/vue-base/) | Vue Base | framework | `package.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`, `index.html`, `src/main.ts`, `src/App.vue`, … (22 files) |
+| [`vue-base`](components/vue-base/) | Vue Base | framework | `package.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`, `index.html`, `src/main.ts`, `src/App.vue`, … (23 files) |

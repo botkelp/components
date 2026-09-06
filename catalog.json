@@ -1946,6 +1946,14 @@
         "template": "templates/src/App.vue.ejs"
       },
       {
+        "destination": "src/assets/main.css",
+        "template": "templates/src/assets/main.css.ejs"
+      },
+      {
+        "destination": "src/stores/counter.ts",
+        "template": "templates/src/stores/counter.ts.ejs"
+      },
+      {
         "destination": "src/style.css",
         "template": "templates/src/style.css.ejs"
       },
@@ -1968,10 +1976,6 @@
       {
         "destination": ".env.example",
         "template": "templates/.env.example.ejs"
-      },
-      {
-        "destination": ".env",
-        "template": "templates/.env.ejs"
       },
       {
         "destination": ".gitignore",

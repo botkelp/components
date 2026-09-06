@@ -1,0 +1,8 @@
+# Source: https://docs.docker.com/compose/
+# Verified: 2026-09-06
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
