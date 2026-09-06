@@ -1,8 +1,8 @@
 {
   "id": "clerk",
   "name": "Clerk Authentication",
-  "version": "1.0.0",
-  "description": "Clerk authentication integration for Next.js App Router. Includes Clerk provider, middleware, and sign-in/sign-out pages. Packages pinned to @clerk/nextjs@5.0.0 (verified 2026-09-06).",
+  "version": "2.0.0",
+  "description": "Clerk authentication integration for Next.js App Router using the real, current @clerk/nextjs API: clerkMiddleware in proxy.ts, a ClerkProvider actually wired into the root layout, and the built-in verifyWebhook helper for the webhook route.",
   "requires": ["nextjs-base"],
   "conflictsWith": ["supabase-auth-ui", "authjs", "auth0", "firebase-auth"],
   "provides": ["authentication"],
@@ -11,35 +11,35 @@
   "envVariables": [
     "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
     "CLERK_SECRET_KEY",
-    "CLERK_WEBHOOK_SECRET",
+    "CLERK_WEBHOOK_SIGNING_SECRET",
     "NEXT_PUBLIC_CLERK_SIGN_IN_URL",
     "NEXT_PUBLIC_CLERK_SIGN_UP_URL",
-    "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL",
-    "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL"
+    "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL"
   ],
   "sources": [
     {
       "type": "docs",
-      "label": "Clerk Next.js documentation",
-      "url": "https://clerk.com/docs/nextjs/get-started-with-nextjs",
+      "label": "Clerk official webhooks skill (verifyWebhook, CLERK_WEBHOOK_SIGNING_SECRET, route exclusion)",
+      "url": "https://github.com/clerk/skills/blob/main/skills/features/clerk-webhooks/SKILL.md",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "docs",
-      "label": "Clerk middleware documentation",
-      "url": "https://clerk.com/docs/nextjs/middleware",
+      "label": "Clerk customize-redirect-urls guide (NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL etc. — afterSignInUrl/afterSignUpUrl are deprecated)",
+      "url": "https://clerk.com/docs/guides/development/customize-redirect-urls",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-releases",
-      "label": "clerkinc/nextjs v5.0.0",
-      "url": "https://github.com/clerkinc/nextjs/releases/tag/v5.0.0",
+      "label": "@clerk/nextjs@7.9.1 (2026-09-03) — clerk/javascript is a monorepo (packages/nextjs); v5.0.0's peerDependencies cap next at ^14.0.3, incompatible with this catalog's Next 16 nextjs-base, so this pins the latest release instead",
+      "url": "https://github.com/clerk/javascript/releases/tag/@clerk/nextjs@7.9.1",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-examples",
-      "label": "Official Clerk Next.js example",
-      "url": "https://github.com/clerkinc/nextjs/tree/v5.0.0/examples/nextjs-app-router",
+      "label": "Official clerk-nextjs-app-quickstart: proxy.ts + app/layout.tsx (ClerkProvider, clerkMiddleware)",
+      "url": "https://github.com/clerk/clerk-nextjs-app-quickstart",
       "verifiedAt": "2026-09-06"
     }
   ],
@@ -50,9 +50,16 @@
       "destination": "providers.tsx"
     },
     {
+      "type": "ast_inject",
+      "targetFile": "app/layout.tsx",
+      "astRule": "wrap_root_jsx",
+      "wrapperComponent": "Providers",
+      "importStatement": "import { Providers } from '@/providers'"
+    },
+    {
       "type": "create_file",
-      "templatePath": "templates/middleware/middleware.ts.ejs",
-      "destination": "middleware.ts"
+      "templatePath": "templates/proxy.ts.ejs",
+      "destination": "proxy.ts"
     },
     {
       "type": "create_file",
@@ -74,7 +81,7 @@
       "targetFile": "package.json",
       "mergeData": {
         "dependencies": {
-          "@clerk/nextjs": "5.0.0"
+          "@clerk/nextjs": "7.9.1"
         }
       }
     }

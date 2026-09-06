@@ -1,34 +1,14 @@
 /**
- * Clerk Provider
- * 
- * Wraps the application with Clerk authentication provider.
- * 
- * Source: https://clerk.com/docs/nextjs/get-started-with-nextjs
+ * Wraps the app in ClerkProvider. Wired into app/layout.tsx by this
+ * component's ast_inject action (wrap_root_jsx) — see manifest.json.
+ *
+ * Source: https://github.com/clerk/clerk-nextjs-app-quickstart/blob/main/app/layout.tsx
  * Verified: 2026-09-06
  */
-
 'use client';
 
 import { ClerkProvider } from '@clerk/nextjs';
-import { dark } from '@clerk/themes';
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <ClerkProvider
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-      appearance={
-        // Customize the appearance of Clerk components
-        baseTheme: dark,
-        variables: {
-          colorPrimary: '#3b82f6',
-        },
-      }}
-      signInUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL || '/sign-in'}
-      signUpUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL || '/sign-up'}
-      afterSignInUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL || '/'}
-      afterSignUpUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL || '/'}
-    >
-      {children}
-    </ClerkProvider>
-  );
+  return <ClerkProvider>{children}</ClerkProvider>;
 }

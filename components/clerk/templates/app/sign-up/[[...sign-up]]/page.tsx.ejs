@@ -1,14 +1,15 @@
 /**
- * Clerk Sign Up Page
- * 
- * Handles Clerk authentication sign-up flow.
- * 
- * Source: https://clerk.com/docs/nextjs/get-started-with-nextjs
+ * Clerk sign-up page (catch-all route, required by <SignUp routing="path">).
+ *
+ * afterSignUpUrl is deprecated (see the redirect-urls doc below) — Clerk
+ * reads NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL automatically, no
+ * prop needed.
+ *
+ * Source: https://clerk.com/docs/guides/development/customize-redirect-urls
  * Verified: 2026-09-06
  */
-
 import { SignUp } from '@clerk/nextjs';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Sign Up',
@@ -20,20 +21,10 @@ export default function SignUpPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Already have an account?
-          </p>
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Create your account</h2>
+          <p className="mt-2 text-sm text-gray-600">Already have an account?</p>
         </div>
-        
-        <SignUp 
-          path="/sign-up" 
-          routing="path" 
-          signInUrl="/sign-in"
-          afterSignUpUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL || '/'}
-        />
+        <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ One row per **individual component**. This is not a list of assembled apps.
 | [`aws-hosting`](components/aws-hosting/) | AWS Hosting | hosting | `AWS_README.md`, `.ebextensions/nextjs.config` |
 | [`azure-hosting`](components/azure-hosting/) | Azure Hosting | hosting | `AZURE_README.md` |
 | [`braintree`](components/braintree/) | Braintree Web SDK | payments, billing | `types/braintree-web.d.ts`, `lib/braintree/client.ts`, `lib/braintree/hosted-fields.ts` |
-| [`clerk`](components/clerk/) | Clerk Authentication | authentication | `providers.tsx`, `middleware.ts`, `app/sign-in/[[...sign-in]]/page.tsx`, `app/sign-up/[[...sign-up]]/page.tsx`, `app/api/webhooks/clerk/route.ts` |
+| [`clerk`](components/clerk/) | Clerk Authentication | authentication | `providers.tsx`, `proxy.ts`, `app/sign-in/[[...sign-in]]/page.tsx`, `app/sign-up/[[...sign-up]]/page.tsx`, `app/api/webhooks/clerk/route.ts` |
 | [`cloudflare-hosting`](components/cloudflare-hosting/) | Cloudflare Hosting | hosting | `wrangler.toml`, `.wranglerignore`, `CLOUDFLARE_README.md` |
 | [`core-js`](components/core-js/) | Core JS Polyfill | polyfill, browser-support | `lib/core-js.ts` |
 | [`day-js`](components/day-js/) | Day.js Date Library | date-time, utilities | `lib/dayjs.ts`, `types/dayjs.d.ts` |
