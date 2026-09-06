@@ -3,12 +3,26 @@
   "name": "MongoDB Database",
   "version": "1.0.0",
   "description": "MongoDB database integration via Docker and native driver. Includes Docker Compose configuration and connection utilities. No-ORM approach for maximum flexibility.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["postgres", "mysql", "sqlite", "sqlserver"],
-  "provides": ["database"],
-  "dependencies": ["mongodb"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "postgres",
+    "mysql",
+    "sqlite",
+    "sqlserver"
+  ],
+  "provides": [
+    "database"
+  ],
+  "dependencies": [
+    "mongodb"
+  ],
   "devDependencies": [],
-  "envVariables": ["MONGODB_URI", "MONGODB_DB"],
+  "envVariables": [
+    "MONGODB_URI",
+    "MONGODB_DB"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -60,5 +74,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

@@ -3,10 +3,21 @@
   "name": "Auth0 Authentication",
   "version": "2.0.0",
   "description": "Auth0 authentication integration for Next.js App Router using the real @auth0/nextjs-auth0 v4 API: an Auth0Client instance, middleware-mounted auth routes (no custom route handler), and server-side session checks.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["supabase-auth-ui", "authjs", "clerk", "firebase-auth"],
-  "provides": ["authentication"],
-  "dependencies": ["@auth0/nextjs-auth0"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "supabase-auth-ui",
+    "authjs",
+    "clerk",
+    "firebase-auth"
+  ],
+  "provides": [
+    "authentication"
+  ],
+  "dependencies": [
+    "@auth0/nextjs-auth0"
+  ],
   "devDependencies": [],
   "envVariables": [
     "AUTH0_DOMAIN",
@@ -18,19 +29,19 @@
   "sources": [
     {
       "type": "docs",
-      "label": "@auth0/nextjs-auth0 v4.29.0 README (Quickstart: env vars, Auth0Client, proxy.ts, session) — pinned above 4.0.0 because 4.0.0's peerDependencies cap at Next 15 and this catalog's nextjs-base pins Next 16",
+      "label": "@auth0/nextjs-auth0 v4.29.0 README (Quickstart: env vars, Auth0Client, proxy.ts, session) \u2014 pinned above 4.0.0 because 4.0.0's peerDependencies cap at Next 15 and this catalog's nextjs-base pins Next 16",
       "url": "https://github.com/auth0/nextjs-auth0/blob/v4.29.0/README.md",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-releases",
-      "label": "auth0/nextjs-auth0 v4.29.0 — latest v4.x with a Next 16 (^16.0.10) peerDependency range; v4.0.0 (2025-01-30) was the v3→v4 rewrite that introduced Auth0Client + middleware in place of handleAuth/withApiAuthRequired/withPageAuthRequired",
+      "label": "auth0/nextjs-auth0 v4.29.0 \u2014 latest v4.x with a Next 16 (^16.0.10) peerDependency range; v4.0.0 (2025-01-30) was the v3\u2192v4 rewrite that introduced Auth0Client + middleware in place of handleAuth/withApiAuthRequired/withPageAuthRequired",
       "url": "https://github.com/auth0/nextjs-auth0/releases/tag/v4.29.0",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-examples",
-      "label": "Official v4.29.0 example app (with-shadcn): lib/auth0.ts + middleware.ts (this catalog uses the Next-16 proxy.ts rename of the same file — see authjs's proxy.ts.ejs for the same convention)",
+      "label": "Official v4.29.0 example app (with-shadcn): lib/auth0.ts + middleware.ts (this catalog uses the Next-16 proxy.ts rename of the same file \u2014 see authjs's proxy.ts.ejs for the same convention)",
       "url": "https://github.com/auth0/nextjs-auth0/tree/v4.29.0/examples/with-shadcn",
       "verifiedAt": "2026-09-06"
     }
@@ -60,5 +71,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

@@ -3,10 +3,17 @@
   "name": "Paddle Payments",
   "version": "1.0.0",
   "description": "Paddle payment integration with Next.js App Router. Includes Paddle JavaScript SDK, checkout route, and webhook handler for subscription and one-time payments. Packages pinned to @paddle/paddle-js@1.0.0 (verified 2026-09-06).",
-  "requires": ["nextjs-base"],
-  "provides": ["payments", "billing"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "payments",
+    "billing"
+  ],
   "conflictsWith": [],
-  "dependencies": ["@paddle/paddle-js"],
+  "dependencies": [
+    "@paddle/paddle-js"
+  ],
   "devDependencies": [],
   "envVariables": [
     "PADDLE_VENDOR_ID",
@@ -70,5 +77,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

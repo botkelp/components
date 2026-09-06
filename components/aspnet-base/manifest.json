@@ -112,5 +112,9 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "dotnet": ">=8"
+  },
+  "status": "stable"
 }

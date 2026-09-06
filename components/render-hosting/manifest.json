@@ -3,12 +3,26 @@
   "name": "Render Hosting",
   "version": "1.0.0",
   "description": "Render hosting configuration for Next.js applications. Includes render.yaml configuration and deployment documentation. Render provides simple, scalable cloud hosting with built-in databases, caching, and CI/CD.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["vercel-hosting", "railway-hosting", "cloudflare-hosting", "aws-hosting", "azure-hosting", "gcp-hosting"],
-  "provides": ["hosting"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "vercel-hosting",
+    "railway-hosting",
+    "cloudflare-hosting",
+    "aws-hosting",
+    "azure-hosting",
+    "gcp-hosting"
+  ],
+  "provides": [
+    "hosting"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["RENDER_ENVIRONMENT", "RENDER_SERVICE_ID"],
+  "envVariables": [
+    "RENDER_ENVIRONMENT",
+    "RENDER_SERVICE_ID"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -51,5 +65,10 @@
       "templatePath": "templates/RENDER_README.md.ejs",
       "destination": "RENDER_README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

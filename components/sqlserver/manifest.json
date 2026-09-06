@@ -3,12 +3,27 @@
   "name": "SQL Server Database",
   "version": "1.0.0",
   "description": "Microsoft SQL Server database integration via Docker. Includes Docker Compose configuration and connection utilities. Use with Prisma or other ORMs that support SQL Server.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["postgres", "mysql", "sqlite", "mongodb"],
-  "provides": ["database"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb"
+  ],
+  "provides": [
+    "database"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["DATABASE_URL", "SA_PASSWORD", "SQLSERVER_USER", "SQLSERVER_PASSWORD", "SQLSERVER_DATABASE"],
+  "envVariables": [
+    "DATABASE_URL",
+    "SA_PASSWORD",
+    "SQLSERVER_USER",
+    "SQLSERVER_PASSWORD",
+    "SQLSERVER_DATABASE"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -46,5 +61,10 @@
       "templatePath": "templates/env.example.ejs",
       "destination": ".env.example"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

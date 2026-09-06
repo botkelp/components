@@ -8,8 +8,22 @@ You can browse, copy, and reuse these files. That is the point of this repositor
 
 Each folder under [`components/`](components/) is one component:
 
-- `manifest.json` — id, version, `requires` / `provides`, npm packages, and the generator actions
+- `manifest.json` — id, **immutable semver**, `requires` / `provides`, `compatibility` ranges, npm packages, and generator actions
 - `templates/` — the files the generator applies (EJS templates; most are plain source with no templating)
+- `versions/<semver>/` (optional) — additional immutable releases. The top-level `manifest.json` is always the latest. Older releases live under `versions/` so shipping 2.0.2 never overwrites 1.4.2.
+
+`compatibility` is a hard registry rule, not something an agent should guess. Example:
+
+```json
+"compatibility": { "nextjs": ">=16 <17", "react": ">=19 <20" }
+```
+
+BotKelp MCP looks up `(component, version, stack)` and:
+
+1. Exact version + compatible → returns that artifact
+2. Exact version + incompatible → `COMPONENT_VERSION_INCOMPATIBLE` plus alternatives — **no files**
+3. No version → auto-selects the best compatible release
+4. `allow_incompatible: true` → returns the pin with a warning; still `compatible: false`
 
 The same list is in [`CATALOG.md`](CATALOG.md) and [`catalog.json`](catalog.json).
 

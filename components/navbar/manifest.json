@@ -2,16 +2,20 @@
   "id": "navbar",
   "name": "Navbar",
   "version": "1.0.0",
-  "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
-  "requires": ["tailwind"],
-  "provides": ["navigation"],
+  "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
+  "requires": [
+    "tailwind"
+  ],
+  "provides": [
+    "navigation"
+  ],
   "dependencies": [],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
     {
       "type": "docs",
-      "label": "Next.js docs (no separate upstream package — this is a plain Next.js App Router component)",
+      "label": "Next.js docs (no separate upstream package \u2014 this is a plain Next.js App Router component)",
       "url": "https://nextjs.org/docs",
       "verifiedAt": "2026-09-02"
     },
@@ -34,5 +38,10 @@
       "templatePath": "templates/components/navbar.tsx.ejs",
       "destination": "components/navbar.tsx"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

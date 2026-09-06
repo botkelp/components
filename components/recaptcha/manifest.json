@@ -3,13 +3,25 @@
   "name": "reCAPTCHA Widget",
   "version": "1.0.0",
   "description": "Adds Google reCAPTCHA widget support to Next.js applications. This is a script-based integration (no npm install needed for the widget itself). The reCAPTCHA widget provides CAPTCHA protection for forms and prevents automated abuse. Requires a site key from Google reCAPTCHA admin console.",
-  "requires": ["nextjs-base"],
-  "provides": ["security", "captcha"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "security",
+    "captcha"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["NEXT_PUBLIC_RECAPTCHA_SITE_KEY"],
+  "envVariables": [
+    "NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
+  ],
   "sources": [
-    { "type": "docs", "label": "Google reCAPTCHA developer documentation", "url": "https://developers.google.com/recaptcha/docs/display", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Google reCAPTCHA developer documentation",
+      "url": "https://developers.google.com/recaptcha/docs/display",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "google recaptcha reference implementation",
@@ -47,5 +59,10 @@
       "exportStatement": "export { ReCaptchaScript }",
       "position": "end"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

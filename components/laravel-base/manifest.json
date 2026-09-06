@@ -4,11 +4,32 @@
   "version": "1.0.0",
   "description": "Laravel PHP framework project. Provides a foundation for Laravel applications with MVC architecture, Eloquent ORM, and Blade templating. Packages pinned to laravel/framework v11.0.0 (verified 2026-09-06).",
   "requires": [],
-  "conflictsWith": ["nextjs-base", "express", "nestjs", "django-base", "fastapi-base", "aspnet-base"],
-  "provides": ["backend"],
+  "conflictsWith": [
+    "nextjs-base",
+    "express",
+    "nestjs",
+    "django-base",
+    "fastapi-base",
+    "aspnet-base"
+  ],
+  "provides": [
+    "backend"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["APP_NAME", "APP_ENV", "APP_KEY", "APP_DEBUG", "APP_URL", "DB_CONNECTION", "DB_HOST", "DB_PORT", "DB_DATABASE", "DB_USERNAME", "DB_PASSWORD"],
+  "envVariables": [
+    "APP_NAME",
+    "APP_ENV",
+    "APP_KEY",
+    "APP_DEBUG",
+    "APP_URL",
+    "DB_CONNECTION",
+    "DB_HOST",
+    "DB_PORT",
+    "DB_DATABASE",
+    "DB_USERNAME",
+    "DB_PASSWORD"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -141,5 +162,10 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "laravel": ">=11 <12",
+    "php": ">=8.2"
+  },
+  "status": "stable"
 }

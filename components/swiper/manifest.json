@@ -3,13 +3,26 @@
   "name": "Swiper Slider",
   "version": "1.0.0",
   "description": "Adds Swiper (v14), the most modern mobile touch slider with hardware-accelerated transitions. Library-agnostic, modular, and framework-compatible for Next.js applications. Supports React components via swiper/react.",
-  "requires": ["nextjs-base"],
-  "provides": ["ui", "carousel", "slider"],
-  "dependencies": ["swiper"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "ui",
+    "carousel",
+    "slider"
+  ],
+  "dependencies": [
+    "swiper"
+  ],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "Swiper official documentation", "url": "https://swiperjs.com/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Swiper official documentation",
+      "url": "https://swiperjs.com/",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "nolimits4web swiper v14.2.0 release",
@@ -43,5 +56,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

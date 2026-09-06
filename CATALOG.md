@@ -2,7 +2,10 @@
 
 One row per **individual component**. This is not a list of assembled apps.
 
+Each component's `manifest.json` now includes `compatibility` ranges (for example `nextjs: ">=16 <17"`). The MCP server treats those as a hard lookup rule: an exact pin that does not fit the caller's stack returns `COMPONENT_VERSION_INCOMPATIBLE` and alternatives — never a silent substitute. Additional immutable releases, when published, live under `components/<id>/versions/<semver>/`.
+
 | id | name | provides | files |
+
 |---|---|---|---|
 | [`angular-base`](components/angular-base/) | Angular Base | framework | `package.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.spec.json`, `src/index.html`, `src/main.ts`, `src/styles.css`, … (17 files) |
 | [`aos`](components/aos/) | Animate On Scroll (AOS) | ui, animation | `types/aos.d.ts`, `lib/aos.ts`, `components/aos-init.tsx` |

@@ -3,13 +3,30 @@
   "name": "Prisma ORM (PostgreSQL)",
   "version": "1.0.0",
   "description": "Adds Prisma ORM (v7, driver-adapter based) with a PostgreSQL datasource and a hot-reload-safe singleton PrismaClient for use in Next.js Server Components, Route Handlers, and Server Actions. Point DATABASE_URL at any hosted Postgres instance.",
-  "requires": ["nextjs-base"],
-  "provides": ["orm"],
-  "dependencies": ["@prisma/client", "@prisma/adapter-pg"],
-  "devDependencies": ["prisma", "dotenv"],
-  "envVariables": ["DATABASE_URL"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "orm"
+  ],
+  "dependencies": [
+    "@prisma/client",
+    "@prisma/adapter-pg"
+  ],
+  "devDependencies": [
+    "prisma",
+    "dotenv"
+  ],
+  "envVariables": [
+    "DATABASE_URL"
+  ],
   "sources": [
-    { "type": "docs", "label": "Prisma docs", "url": "https://www.prisma.io/docs", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Prisma docs",
+      "url": "https://www.prisma.io/docs",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "prisma v7.10.0 release notes",
@@ -58,5 +75,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

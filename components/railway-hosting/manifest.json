@@ -3,12 +3,27 @@
   "name": "Railway Hosting",
   "version": "1.0.0",
   "description": "Railway hosting configuration for Next.js applications. Includes railway.toml configuration and deployment documentation. Railway provides simple, scalable hosting with built-in databases, monitoring, and CI/CD.",
-  "requires": ["nextjs-base"],
-  "conflictsWith": ["vercel-hosting", "render-hosting", "cloudflare-hosting", "aws-hosting", "azure-hosting", "gcp-hosting"],
-  "provides": ["hosting"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "conflictsWith": [
+    "vercel-hosting",
+    "render-hosting",
+    "cloudflare-hosting",
+    "aws-hosting",
+    "azure-hosting",
+    "gcp-hosting"
+  ],
+  "provides": [
+    "hosting"
+  ],
   "dependencies": [],
   "devDependencies": [],
-  "envVariables": ["RAILWAY_ENVIRONMENT", "RAILWAY_PROJECT_ID", "RAILWAY_SERVICE_ID"],
+  "envVariables": [
+    "RAILWAY_ENVIRONMENT",
+    "RAILWAY_PROJECT_ID",
+    "RAILWAY_SERVICE_ID"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -51,5 +66,10 @@
       "templatePath": "templates/RAILWAY_README.md.ejs",
       "destination": "RAILWAY_README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

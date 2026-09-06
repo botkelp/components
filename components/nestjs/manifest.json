@@ -4,8 +4,17 @@
   "version": "1.0.0",
   "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
   "requires": [],
-  "conflictsWith": ["nextjs-base", "express", "django-base", "fastapi-base", "laravel-base", "aspnet-base"],
-  "provides": ["backend"],
+  "conflictsWith": [
+    "nextjs-base",
+    "express",
+    "django-base",
+    "fastapi-base",
+    "laravel-base",
+    "aspnet-base"
+  ],
+  "provides": [
+    "backend"
+  ],
   "dependencies": [
     "@nestjs/common",
     "@nestjs/core",
@@ -27,7 +36,12 @@
     "tsconfig-paths",
     "typescript"
   ],
-  "envVariables": ["NODE_ENV", "PORT", "API_PREFIX", "APP_NAME"],
+  "envVariables": [
+    "NODE_ENV",
+    "PORT",
+    "API_PREFIX",
+    "APP_NAME"
+  ],
   "sources": [
     {
       "type": "docs",
@@ -140,5 +154,9 @@
       "templatePath": "templates/README.md.ejs",
       "destination": "README.md"
     }
-  ]
+  ],
+  "compatibility": {
+    "node": ">=20"
+  },
+  "status": "stable"
 }

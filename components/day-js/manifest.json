@@ -3,13 +3,25 @@
   "name": "Day.js Date Library",
   "version": "1.0.0",
   "description": "Adds Day.js (v1.11.23), a 2kB immutable date-time library as a modern alternative to Moment.js with the same API. Parse, validate, manipulate, and display dates and times for modern browsers. Supports internationalization, plugins, and TypeScript.",
-  "requires": ["nextjs-base"],
-  "provides": ["date-time", "utilities"],
-  "dependencies": ["dayjs"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "date-time",
+    "utilities"
+  ],
+  "dependencies": [
+    "dayjs"
+  ],
   "devDependencies": [],
   "envVariables": [],
   "sources": [
-    { "type": "docs", "label": "Day.js official documentation", "url": "https://day.js.org/", "verifiedAt": "2026-09-02" },
+    {
+      "type": "docs",
+      "label": "Day.js official documentation",
+      "url": "https://day.js.org/",
+      "verifiedAt": "2026-09-02"
+    },
     {
       "type": "github-releases",
       "label": "iamkun dayjs v1.11.23 release",
@@ -44,5 +56,10 @@
         "devDependencies": {}
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }

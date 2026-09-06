@@ -3,9 +3,17 @@
   "name": "Stripe Checkout",
   "version": "1.0.0",
   "description": "Stripe-hosted Checkout Session plus a signed webhook Route Handler for Next.js App Router. Packages pinned to stripe@22.6.1 and @stripe/stripe-js@9.15.0 (verified 2026-09-06).",
-  "requires": ["nextjs-base"],
-  "provides": ["payments", "billing"],
-  "dependencies": ["stripe", "@stripe/stripe-js"],
+  "requires": [
+    "nextjs-base"
+  ],
+  "provides": [
+    "payments",
+    "billing"
+  ],
+  "dependencies": [
+    "stripe",
+    "@stripe/stripe-js"
+  ],
   "devDependencies": [],
   "envVariables": [
     "STRIPE_SECRET_KEY",
@@ -76,5 +84,10 @@
         }
       }
     }
-  ]
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
 }
