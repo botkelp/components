@@ -1,44 +1,37 @@
 {
   "id": "auth0",
   "name": "Auth0 Authentication",
-  "version": "1.0.0",
-  "description": "Auth0 authentication integration for Next.js App Router. Includes Auth0 provider, SDK configuration, and callback routes. Packages pinned to @auth0/auth0-nextjs@4.0.0 (verified 2026-09-06).",
+  "version": "2.0.0",
+  "description": "Auth0 authentication integration for Next.js App Router using the real @auth0/nextjs-auth0 v4 API: an Auth0Client instance, middleware-mounted auth routes (no custom route handler), and server-side session checks.",
   "requires": ["nextjs-base"],
   "conflictsWith": ["supabase-auth-ui", "authjs", "clerk", "firebase-auth"],
   "provides": ["authentication"],
-  "dependencies": ["@auth0/auth0-nextjs"],
+  "dependencies": ["@auth0/nextjs-auth0"],
   "devDependencies": [],
   "envVariables": [
-    "AUTH0_SECRET",
-    "AUTH0_BASE_URL",
-    "AUTH0_ISSUER_BASE_URL",
+    "AUTH0_DOMAIN",
     "AUTH0_CLIENT_ID",
     "AUTH0_CLIENT_SECRET",
-    "NEXT_PUBLIC_AUTH0_DOMAIN"
+    "AUTH0_SECRET",
+    "APP_BASE_URL"
   ],
   "sources": [
     {
       "type": "docs",
-      "label": "Auth0 Next.js SDK documentation",
-      "url": "https://auth0.com/docs/quickstart/spa/nextjs",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "docs",
-      "label": "Auth0 Next.js App Router integration",
-      "url": "https://auth0.com/docs/integrations/next-js-app-router",
+      "label": "@auth0/nextjs-auth0 v4 README (Quickstart: env vars, Auth0Client, middleware, session)",
+      "url": "https://github.com/auth0/nextjs-auth0/blob/v4.0.0/README.md",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-releases",
-      "label": "auth0/auth0-nextjs v4.0.0",
-      "url": "https://github.com/auth0/auth0-nextjs/releases/tag/v4.0.0",
+      "label": "auth0/nextjs-auth0 v4.0.0 (2025-01-30) — the v3→v4 rewrite: Auth0Client + middleware replace handleAuth/withApiAuthRequired/withPageAuthRequired",
+      "url": "https://github.com/auth0/nextjs-auth0/releases/tag/v4.0.0",
       "verifiedAt": "2026-09-06"
     },
     {
       "type": "github-examples",
-      "label": "Official Auth0 Next.js example",
-      "url": "https://github.com/auth0/auth0-nextjs/tree/v4.0.0/examples/app-router",
+      "label": "Official v4.0.0 example app (with-shadcn): lib/auth0.ts + middleware.ts",
+      "url": "https://github.com/auth0/nextjs-auth0/tree/v4.0.0/examples/with-shadcn",
       "verifiedAt": "2026-09-06"
     }
   ],
@@ -50,8 +43,8 @@
     },
     {
       "type": "create_file",
-      "templatePath": "templates/app/api/auth/[...auth0]/route.ts.ejs",
-      "destination": "app/api/auth/[...auth0]/route.ts"
+      "templatePath": "templates/middleware.ts.ejs",
+      "destination": "middleware.ts"
     },
     {
       "type": "create_file",
@@ -59,16 +52,11 @@
       "destination": "app/login/page.tsx"
     },
     {
-      "type": "create_file",
-      "templatePath": "templates/app/api/auth/user/route.ts.ejs",
-      "destination": "app/api/auth/user/route.ts"
-    },
-    {
       "type": "json_merge",
       "targetFile": "package.json",
       "mergeData": {
         "dependencies": {
-          "@auth0/auth0-nextjs": "4.0.0"
+          "@auth0/nextjs-auth0": "4.0.0"
         }
       }
     }

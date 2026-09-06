@@ -1,71 +1,42 @@
 /**
- * Auth0 Login Page
- * 
- * Login page with Auth0 authentication.
- * 
- * Source: https://auth0.com/docs/quickstart/spa/nextjs
+ * Auth0 has no custom login form to build — /auth/login redirects to Auth0's
+ * hosted Universal Login page, and /auth/logout ends the session. This page
+ * just shows the current session state and links to those built-in routes.
+ *
+ * Source: https://github.com/auth0/nextjs-auth0/blob/v4.0.0/README.md
  * Verified: 2026-09-06
  */
+import { auth0 } from "@/lib/auth0";
 
-import { Metadata } from 'next';
-import { withPageAuthRequired, UserProfile } from '@auth0/auth0-nextjs';
+export default async function LoginPage() {
+  const session = await auth0.getSession();
 
-export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Login to your account',
-};
+  if (!session) {
+    return (
+      <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-4 p-6">
+        <h1 className="text-2xl font-semibold">Sign in</h1>
+        <a
+          href="/auth/login"
+          className="rounded-md bg-slate-900 px-4 py-2 text-center text-white"
+        >
+          Log in
+        </a>
+        <a href="/auth/login?screen_hint=signup" className="text-center text-sm text-slate-600">
+          Sign up
+        </a>
+      </main>
+    );
+  }
 
-export default withPageAuthRequired(function LoginPage({ user }: { user: UserProfile }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div className="text-center">
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            Welcome!
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            You are logged in as {user.name || user.email || user.sub}
-          </p>
-        </div>
-
-        <div className="rounded-md bg-white p-6 shadow">
-          <div className="space-y-4">
-            {user.picture && (
-              <img
-                src={user.picture}
-                alt="Profile"
-                className="w-24 h-24 rounded-full mx-auto"
-              />
-            )}
-            
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-gray-900">
-                {user.name || 'User'}
-              </h3>
-              <p className="text-gray-600">{user.email}</p>
-            </div>
-
-            <div className="flex flex-col gap-3 pt-4">
-              <a
-                href="/api/auth/logout"
-                className="inline-flex items-center justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors"
-              >
-                Logout
-              </a>
-              
-              <a
-                href="/"
-                className="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Go to Dashboard
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-4 p-6">
+      <h1 className="text-2xl font-semibold">Welcome, {session.user.name}</h1>
+      <a
+        href="/auth/logout"
+        className="rounded-md border border-slate-200 px-4 py-2 text-center"
+      >
+        Log out
+      </a>
+    </main>
   );
-});
-
-// Custom error page for when user is not authenticated
-export const getServerSideProps = withPageAuthRequired();
+}
