@@ -1,0 +1,34 @@
+/**
+ * Admin dashboard customisation, sourced from BotKelp's get_admin_config MCP
+ * tool. DEFAULT_ADMIN_CONFIG is a safe fallback so /admin works even if you
+ * never call the config tools. To change these values, use an MCP-capable
+ * agent with your BotKelp API key: call get_admin_config to read the current
+ * values, save_admin_config to write new ones. There is no in-app settings
+ * write path — see app/admin/settings/page.tsx.
+ */
+
+export interface AdminConfig {
+  brandName: string;
+  theme: 'default' | 'light' | 'dark';
+  enabledModules: string[];
+  roleNames: Record<string, string>;
+}
+
+export const DEFAULT_ADMIN_CONFIG: AdminConfig = {
+  brandName: '<%= projectName %>',
+  theme: 'default',
+  enabledModules: ['dashboard', 'settings'],
+  roleNames: {
+    admin: 'Admin',
+    member: 'Member',
+  },
+};
+
+/**
+ * Returns the current admin config. This ships as the default only — wire
+ * this up to your own data source if you want get_admin_config's saved
+ * values to actually reach this function at runtime.
+ */
+export function getAdminConfig(): AdminConfig {
+  return DEFAULT_ADMIN_CONFIG;
+}

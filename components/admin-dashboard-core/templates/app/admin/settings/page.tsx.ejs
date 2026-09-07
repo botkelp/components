@@ -1,0 +1,48 @@
+import { getAdminConfig } from '@/lib/admin-config';
+
+export default function AdminSettingsPage() {
+  const config = getAdminConfig();
+
+  return (
+    <div>
+      <h1 className="mb-1 text-xl font-semibold">Settings</h1>
+      <p className="mb-6 text-sm text-slate-500">
+        This page is read-only. Changes are made with an MCP-capable agent
+        and your BotKelp API key: call the <code>save_admin_config</code>{' '}
+        tool to write new values, <code>get_admin_config</code> to read the
+        current ones. There is no in-app save action here — see this
+        component&apos;s manifest for why.
+      </p>
+      <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="rounded-lg border border-slate-200 px-4 py-3">
+          <dt className="text-xs uppercase tracking-wide text-slate-500">
+            Brand name
+          </dt>
+          <dd className="mt-1 text-sm">{config.brandName}</dd>
+        </div>
+        <div className="rounded-lg border border-slate-200 px-4 py-3">
+          <dt className="text-xs uppercase tracking-wide text-slate-500">
+            Theme
+          </dt>
+          <dd className="mt-1 text-sm">{config.theme}</dd>
+        </div>
+        <div className="rounded-lg border border-slate-200 px-4 py-3">
+          <dt className="text-xs uppercase tracking-wide text-slate-500">
+            Enabled modules
+          </dt>
+          <dd className="mt-1 text-sm">{config.enabledModules.join(', ')}</dd>
+        </div>
+        <div className="rounded-lg border border-slate-200 px-4 py-3">
+          <dt className="text-xs uppercase tracking-wide text-slate-500">
+            Role names
+          </dt>
+          <dd className="mt-1 text-sm">
+            {Object.entries(config.roleNames)
+              .map(([key, value]) => `${key}: ${value}`)
+              .join(', ')}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  );
+}

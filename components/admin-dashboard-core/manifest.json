@@ -1,0 +1,70 @@
+{
+  "id": "admin-dashboard-core",
+  "name": "Admin Dashboard Core",
+  "version": "1.0.0",
+  "description": "Minimal /admin shell: sidebar nav, a dashboard overview page, and a settings page that reads lib/admin-config.ts. Users/Billing/Audit Log/Security render as visibly disabled \"coming soon\" nav items, not fake pages. Config is read/written via BotKelp's get_admin_config/save_admin_config MCP tools, gated by your BotKelp API key — there is no separate admin login built in.",
+  "requires": [
+    "tailwind"
+  ],
+  "provides": [
+    "admin",
+    "admin-dashboard"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "envVariables": [
+    "BOTKELP_API_KEY"
+  ],
+  "sources": [
+    {
+      "type": "docs",
+      "label": "Next.js docs (no separate upstream package — this is a plain Next.js App Router component)",
+      "url": "https://nextjs.org/docs",
+      "verifiedAt": "2026-09-07"
+    },
+    {
+      "type": "github-releases",
+      "label": "next.js v16.3.4 release notes",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+      "verifiedAt": "2026-09-07"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official Next.js examples",
+      "url": "https://github.com/vercel/next.js/tree/8ea76d64ca3931c1beccceb15d32df5d770f4957/examples",
+      "verifiedAt": "2026-09-07"
+    }
+  ],
+  "securityNotes": [
+    "This component renders /admin without any route protection or login wall — it holds no sensitive data in v1 (placeholder stats, and settings that only affect branding/nav).",
+    "Changing admin config requires a valid BotKelp API key via the save_admin_config MCP tool. There is no other write path — the generated app itself never accepts unauthenticated writes.",
+    "If you add real user data (Users/Billing/Audit Log) behind these nav items later, add your own auth/route protection before deploying — this component does not provide one."
+  ],
+  "actions": [
+    {
+      "type": "create_file",
+      "templatePath": "templates/lib/admin-config.ts.ejs",
+      "destination": "lib/admin-config.ts"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/admin/layout.tsx.ejs",
+      "destination": "app/admin/layout.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/admin/page.tsx.ejs",
+      "destination": "app/admin/page.tsx"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/app/admin/settings/page.tsx.ejs",
+      "destination": "app/admin/settings/page.tsx"
+    }
+  ],
+  "compatibility": {
+    "nextjs": ">=16 <17",
+    "react": ">=19 <20"
+  },
+  "status": "stable"
+}

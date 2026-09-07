@@ -1,5 +1,56 @@
 [
   {
+    "id": "admin-dashboard-core",
+    "name": "Admin Dashboard Core",
+    "version": "1.0.0",
+    "description": "Minimal /admin shell: sidebar nav, a dashboard overview page, and a settings page that reads lib/admin-config.ts. Users/Billing/Audit Log/Security render as visibly disabled \"coming soon\" nav items, not fake pages. Config is read/written via BotKelp's get_admin_config/save_admin_config MCP tools, gated by your BotKelp API key \u2014 there is no separate admin login built in.",
+    "requires": [
+      "tailwind"
+    ],
+    "provides": [
+      "admin",
+      "admin-dashboard"
+    ],
+    "dependencies": [],
+    "devDependencies": [],
+    "envVariables": [
+      "BOTKELP_API_KEY"
+    ],
+    "files": [
+      {
+        "destination": "lib/admin-config.ts",
+        "template": "templates/lib/admin-config.ts.ejs"
+      },
+      {
+        "destination": "app/admin/layout.tsx",
+        "template": "templates/app/admin/layout.tsx.ejs"
+      },
+      {
+        "destination": "app/admin/page.tsx",
+        "template": "templates/app/admin/page.tsx.ejs"
+      },
+      {
+        "destination": "app/admin/settings/page.tsx",
+        "template": "templates/app/admin/settings/page.tsx.ejs"
+      }
+    ],
+    "compatibility": {
+      "nextjs": ">=16 <17",
+      "react": ">=19 <20"
+    },
+    "status": "stable",
+    "releases": [
+      {
+        "version": "1.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      }
+    ]
+  },
+  {
     "id": "angular-base",
     "name": "Angular Base",
     "version": "1.0.0",

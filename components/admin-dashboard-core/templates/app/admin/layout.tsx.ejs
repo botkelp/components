@@ -1,0 +1,46 @@
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+import { getAdminConfig } from '@/lib/admin-config';
+
+const NAV_LINKS = [
+  { href: '/admin', label: 'Dashboard' },
+  { href: '/admin/settings', label: 'Settings' },
+];
+
+// Not wired up in v1 — rendered as visibly disabled so the nav is honest
+// about what actually exists. Add real pages behind these (and your own
+// route protection) before enabling them.
+const COMING_SOON_LINKS = ['Users', 'Billing', 'Audit Log', 'Security'];
+
+export default function AdminLayout({ children }: { children: ReactNode }) {
+  const config = getAdminConfig();
+
+  return (
+    <div className="flex min-h-screen">
+      <aside className="w-56 shrink-0 border-r border-slate-200 px-4 py-6">
+        <div className="mb-6 text-lg font-semibold">{config.brandName}</div>
+        <nav className="flex flex-col gap-1">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded px-3 py-2 text-sm text-slate-700 hover:bg-slate-100"
+            >
+              {link.label}
+            </Link>
+          ))}
+          {COMING_SOON_LINKS.map((label) => (
+            <span
+              key={label}
+              aria-disabled="true"
+              className="cursor-not-allowed rounded px-3 py-2 text-sm text-slate-400"
+            >
+              {label} <span className="text-xs">(coming soon)</span>
+            </span>
+          ))}
+        </nav>
+      </aside>
+      <main className="flex-1 px-8 py-6">{children}</main>
+    </div>
+  );
+}
