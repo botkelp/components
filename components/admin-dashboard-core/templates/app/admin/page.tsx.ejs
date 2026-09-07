@@ -1,0 +1,33 @@
+// Placeholder overview. These stat cards show fixed example values, not
+// live data — nothing in this component reads a database or an API.
+// Wire them up to your own data source before treating them as real.
+const PLACEHOLDER_STATS = [
+  { label: 'Users', value: '—' },
+  { label: 'Revenue (30d)', value: '—' },
+  { label: 'Open issues', value: '—' },
+];
+
+export default function AdminDashboardPage() {
+  return (
+    <div>
+      <h1 className="mb-1 text-xl font-semibold">Dashboard</h1>
+      <p className="mb-6 text-sm text-slate-500">
+        Example values below — connect this page to your own data before
+        relying on it.
+      </p>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {PLACEHOLDER_STATS.map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-lg border border-slate-200 px-4 py-3"
+          >
+            <div className="text-xs uppercase tracking-wide text-slate-500">
+              {stat.label}
+            </div>
+            <div className="mt-1 text-2xl font-semibold">{stat.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

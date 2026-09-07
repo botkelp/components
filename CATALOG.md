@@ -7,6 +7,7 @@ Each component's `manifest.json` now includes `compatibility` ranges (for exampl
 | id | name | provides | files |
 
 |---|---|---|---|
+| [`admin-dashboard-core`](components/admin-dashboard-core/) | Admin Dashboard Core | admin, admin-dashboard | `lib/admin-config.ts`, `app/admin/layout.tsx`, `app/admin/page.tsx`, `app/admin/settings/page.tsx` |
 | [`angular-base`](components/angular-base/) | Angular Base | framework | `package.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.spec.json`, `src/index.html`, `src/main.ts`, `src/styles.css`, … (17 files) |
 | [`aos`](components/aos/) | Animate On Scroll (AOS) | ui, animation | `types/aos.d.ts`, `lib/aos.ts`, `components/aos-init.tsx` |
 | [`aspnet-base`](components/aspnet-base/) | ASP.NET Core Base | backend | `<%= projectName || 'AspNetCoreApp' %>.csproj`, `Program.cs`, `appsettings.json`, `appsettings.Development.json`, `Controllers/ExampleController.cs`, `Models/AppDbContext.cs`, `Models/Example.cs`, `Properties/launchSettings.json`, … (12 files) |
