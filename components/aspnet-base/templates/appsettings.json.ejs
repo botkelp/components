@@ -1,41 +1,10 @@
-/**
- * ASP.NET Core Production Configuration
- * 
- * This file contains the production configuration for ASP.NET Core.
- * 
- * Source: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration
- * Verified: 2026-09-06
- */
-
 {
-  "ConnectionStrings": {
-    "Default": ""
-  },
+  "ConnectionStrings": { "Default": "" },
   "Logging": {
     "LogLevel": {
       "Default": "Warning",
-      "Microsoft.AspNetCore": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
+      "Microsoft.AspNetCore": "Warning"
     }
   },
-  "AllowedHosts": "*",
-  "JWT": {
-    "Secret": "",
-    "Issuer": "<%= projectName || 'AspNetCoreApp' %>",
-    "Audience": "<%= projectName || 'AspNetCoreApp' %>-client",
-    "ExpiryInMinutes": 60,
-    "RefreshExpiryInDays": 7
-  },
-  "Swagger": {
-    "Enabled": false,
-    "RoutePrefix": "api/docs",
-    "Title": "<%= projectName || 'ASP.NET Core API' %>",
-    "Version": "v1"
-  },
-  "CORS": {
-    "AllowedOrigins": ["http://localhost:3000", "http://127.0.0.1:3000"],
-    "AllowedMethods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    "AllowedHeaders": ["Content-Type", "Authorization", "X-Requested-With"],
-    "AllowCredentials": false
-  }
+  "AllowedHosts": "*"
 }

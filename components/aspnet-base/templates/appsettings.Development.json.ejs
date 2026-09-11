@@ -1,41 +1,8 @@
-/**
- * ASP.NET Core Development Configuration
- * 
- * This file contains the development configuration for ASP.NET Core.
- * 
- * Source: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration
- * Verified: 2026-09-06
- */
-
 {
-  "ConnectionStrings": {
-    "Default": "Server=localhost;Database=<%= projectName || 'AspNetCoreApp' %>;User Id=sa;Password=YourPassword123;TrustServerCertificate=True;"
-  },
   "Logging": {
     "LogLevel": {
       "Default": "Debug",
-      "Microsoft.AspNetCore": "Debug",
-      "Microsoft.Hosting.Lifetime": "Debug"
+      "Microsoft.AspNetCore": "Information"
     }
-  },
-  "AllowedHosts": "*",
-  "JWT": {
-    "Secret": "change-this-in-production-use-32-characters-or-more",
-    "Issuer": "<%= projectName || 'AspNetCoreApp' %>",
-    "Audience": "<%= projectName || 'AspNetCoreApp' %>-client",
-    "ExpiryInMinutes": 60,
-    "RefreshExpiryInDays": 7
-  },
-  "Swagger": {
-    "Enabled": true,
-    "RoutePrefix": "api/docs",
-    "Title": "<%= projectName || 'ASP.NET Core API' %>",
-    "Version": "v1"
-  },
-  "CORS": {
-    "AllowedOrigins": ["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:8080"],
-    "AllowedMethods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    "AllowedHeaders": ["Content-Type", "Authorization", "X-Requested-With"],
-    "AllowCredentials": true
   }
 }
