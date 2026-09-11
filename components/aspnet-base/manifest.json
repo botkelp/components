@@ -1,7 +1,7 @@
 {
   "id": "aspnet-base",
   "name": "ASP.NET Core Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [
@@ -12,9 +12,7 @@
     "fastapi-base",
     "laravel-base"
   ],
-  "provides": [
-    "backend"
-  ],
+  "provides": ["backend"],
   "dependencies": [],
   "devDependencies": [],
   "envVariables": [
@@ -55,7 +53,7 @@
     {
       "type": "create_file",
       "templatePath": "templates/aspnet-base.csproj.ejs",
-      "destination": "<%= projectName || 'AspNetCoreApp' %>.csproj"
+      "destination": "AspNetCoreApp.csproj"
     },
     {
       "type": "create_file",
@@ -118,8 +116,6 @@
       "destination": ".github/workflows/ci.yml"
     }
   ],
-  "compatibility": {
-    "dotnet": ">=8"
-  },
+  "compatibility": { "dotnet": ">=8" },
   "status": "stable"
 }

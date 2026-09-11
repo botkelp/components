@@ -1,0 +1,114 @@
+name: Component gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  static:
+    name: Template + version gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_templates.py
+      - run: python scripts/check_version_bump.py origin/${{ github.base_ref || 'main' }}
+
+  build:
+    name: Render + build ${{ matrix.base }}
+    needs: static
+    if: always() && needs.static.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - base: vue-base
+            stack: node
+            required: "true"
+          - base: nextjs-base
+            stack: node
+            required: "true"
+          - base: express
+            stack: node
+            required: "false"
+          - base: nestjs
+            stack: node
+            required: "false"
+          - base: svelte-base
+            stack: node
+            required: "false"
+          - base: angular-base
+            stack: node
+            required: "false"
+          - base: django-base
+            stack: python
+            required: "false"
+          - base: fastapi-base
+            stack: python
+            required: "false"
+          - base: laravel-base
+            stack: php
+            required: "false"
+          - base: aspnet-base
+            stack: dotnet
+            required: "false"
+    continue-on-error: ${{ matrix.required == 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Render
+        run: python scripts/render_base.py ${{ matrix.base }} --out /tmp/rendered --project ci-app
+      - uses: actions/setup-node@v4
+        if: matrix.stack == 'node'
+        with:
+          node-version: "20"
+      - uses: actions/setup-python@v5
+        if: matrix.stack == 'python'
+        with:
+          python-version: "3.11"
+      - uses: shivammathur/setup-php@v2
+        if: matrix.stack == 'php'
+        with:
+          php-version: "8.3"
+      - uses: actions/setup-dotnet@v4
+        if: matrix.stack == 'dotnet'
+        with:
+          dotnet-version: "8.0.x"
+      - name: Install + build
+        working-directory: /tmp/rendered
+        run: |
+          set -euo pipefail
+          case "${{ matrix.stack }}" in
+            node)
+              test -f package.json
+              npm install --no-audit --no-fund
+              npm run build
+              ;;
+            python)
+              if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+              if [ -f manage.py ]; then python manage.py check; fi
+              if [ -f app/main.py ]; then python -c "import ast,pathlib; ast.parse(pathlib.Path('app/main.py').read_text())"; fi
+              ;;
+            php)
+              test -f composer.json
+              composer install --no-interaction --prefer-dist --no-scripts
+              ;;
+            dotnet)
+              proj=$(find . -maxdepth 1 -name '*.csproj' | head -n1)
+              test -n "$proj"
+              case "$proj" in *'<%'*) echo "unrendered csproj name: $proj"; exit 1;; esac
+              dotnet restore "$proj"
+              dotnet build "$proj" --no-restore -c Release
+              ;;
+          esac

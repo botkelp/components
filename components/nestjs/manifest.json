@@ -1,167 +1,38 @@
 {
   "id": "nestjs",
   "name": "NestJS Backend",
-  "version": "1.0.1",
-  "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
+  "version": "1.0.2",
+  "description": "NestJS backend project with TypeScript. Packages pinned to @nestjs/core@10.0.0 (verified 2026-09-06).",
   "requires": [],
-  "conflictsWith": [
-    "nextjs-base",
-    "express",
-    "django-base",
-    "fastapi-base",
-    "laravel-base",
-    "aspnet-base"
-  ],
-  "provides": [
-    "backend"
-  ],
-  "dependencies": [
-    "@nestjs/common",
-    "@nestjs/core",
-    "@nestjs/platform-express",
-    "reflect-metadata",
-    "rxjs"
-  ],
-  "devDependencies": [
-    "@nestjs/cli",
-    "@nestjs/schematics",
-    "@nestjs/testing",
-    "@types/express",
-    "@types/jest",
-    "@types/node",
-    "jest",
-    "ts-jest",
-    "ts-loader",
-    "ts-node",
-    "tsconfig-paths",
-    "typescript"
-  ],
-  "envVariables": [
-    "NODE_ENV",
-    "PORT",
-    "API_PREFIX",
-    "APP_NAME"
-  ],
+  "conflictsWith": ["nextjs-base", "express", "django-base", "fastapi-base", "laravel-base", "aspnet-base"],
+  "provides": ["backend"],
+  "dependencies": ["@nestjs/common", "@nestjs/core", "@nestjs/platform-express", "reflect-metadata", "rxjs"],
+  "devDependencies": ["@nestjs/cli", "@nestjs/schematics", "@nestjs/testing", "@types/express", "@types/node", "typescript"],
+  "envVariables": ["NODE_ENV", "PORT", "API_PREFIX", "APP_NAME"],
   "sources": [
-    {
-      "type": "docs",
-      "label": "NestJS official documentation",
-      "url": "https://docs.nestjs.com/",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "docs",
-      "label": "NestJS first steps",
-      "url": "https://docs.nestjs.com/first-steps",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "github-releases",
-      "label": "nestjs/nest v10.0.0",
-      "url": "https://github.com/nestjs/nest/releases/tag/v10.0.0",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "github-examples",
-      "label": "Official NestJS starter project",
-      "url": "https://github.com/nestjs/typescript-starter",
-      "verifiedAt": "2026-09-06"
-    }
+    {"type": "docs", "label": "NestJS official documentation", "url": "https://docs.nestjs.com/", "verifiedAt": "2026-09-06"},
+    {"type": "github-releases", "label": "nestjs/nest v10.0.0", "url": "https://github.com/nestjs/nest/releases/tag/v10.0.0", "verifiedAt": "2026-09-06"}
   ],
   "actions": [
-    {
-      "type": "create_file",
-      "templatePath": "templates/package.json.ejs",
-      "destination": "package.json"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/tsconfig.json.ejs",
-      "destination": "tsconfig.json"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/tsconfig.build.json.ejs",
-      "destination": "tsconfig.build.json"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/nest-cli.json.ejs",
-      "destination": "nest-cli.json"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/main.ts.ejs",
-      "destination": "src/main.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/app.module.ts.ejs",
-      "destination": "src/app.module.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/app.controller.ts.ejs",
-      "destination": "src/app.controller.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/app.service.ts.ejs",
-      "destination": "src/app.service.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/common/filter/http-exception.filter.ts.ejs",
-      "destination": "src/common/filter/http-exception.filter.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/src/config/configuration.ts.ejs",
-      "destination": "src/config/configuration.ts"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/.env.example.ejs",
-      "destination": ".env.example"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/.gitignore.ejs",
-      "destination": ".gitignore"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/.eslintrc.json.ejs",
-      "destination": ".eslintrc.json"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/.prettierrc.ejs",
-      "destination": ".prettierrc"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/Dockerfile.ejs",
-      "destination": "Dockerfile"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/docker-compose.yml.ejs",
-      "destination": "docker-compose.yml"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/README.md.ejs",
-      "destination": "README.md"
-    },
-    {
-      "type": "create_file",
-      "templatePath": "templates/github-workflows-ci.yml.ejs",
-      "destination": ".github/workflows/ci.yml"
-    }
+    {"type": "create_file", "templatePath": "templates/package.json.ejs", "destination": "package.json"},
+    {"type": "create_file", "templatePath": "templates/tsconfig.json.ejs", "destination": "tsconfig.json"},
+    {"type": "create_file", "templatePath": "templates/tsconfig.build.json.ejs", "destination": "tsconfig.build.json"},
+    {"type": "create_file", "templatePath": "templates/nest-cli.json.ejs", "destination": "nest-cli.json"},
+    {"type": "create_file", "templatePath": "templates/src/main.ts.ejs", "destination": "src/main.ts"},
+    {"type": "create_file", "templatePath": "templates/src/app.module.ts.ejs", "destination": "src/app.module.ts"},
+    {"type": "create_file", "templatePath": "templates/src/app.controller.ts.ejs", "destination": "src/app.controller.ts"},
+    {"type": "create_file", "templatePath": "templates/src/app.service.ts.ejs", "destination": "src/app.service.ts"},
+    {"type": "create_file", "templatePath": "templates/src/common/filter/http-exception.filter.ts.ejs", "destination": "src/common/filter/http-exception.filter.ts"},
+    {"type": "create_file", "templatePath": "templates/src/config/configuration.ts.ejs", "destination": "src/config/configuration.ts"},
+    {"type": "create_file", "templatePath": "templates/.env.example.ejs", "destination": ".env.example"},
+    {"type": "create_file", "templatePath": "templates/.gitignore.ejs", "destination": ".gitignore"},
+    {"type": "create_file", "templatePath": "templates/.eslintrc.json.ejs", "destination": ".eslintrc.json"},
+    {"type": "create_file", "templatePath": "templates/.prettierrc.ejs", "destination": ".prettierrc"},
+    {"type": "create_file", "templatePath": "templates/Dockerfile.ejs", "destination": "Dockerfile"},
+    {"type": "create_file", "templatePath": "templates/docker-compose.yml.ejs", "destination": "docker-compose.yml"},
+    {"type": "create_file", "templatePath": "templates/README.md.ejs", "destination": "README.md"},
+    {"type": "create_file", "templatePath": "templates/github-workflows-ci.yml.ejs", "destination": ".github/workflows/ci.yml"}
   ],
-  "compatibility": {
-    "node": ">=20"
-  },
+  "compatibility": { "node": ">=20" },
   "status": "stable"
 }
