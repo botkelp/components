@@ -1,7 +1,7 @@
 {
   "id": "nestjs",
   "name": "NestJS Backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [
