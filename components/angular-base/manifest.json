@@ -151,6 +151,11 @@
       "type": "create_file",
       "templatePath": "templates/.browserslistrc.ejs",
       "destination": ".browserslistrc"
+    },
+    {
+      "type": "create_file",
+      "templatePath": "templates/github-workflows-ci.yml.ejs",
+      "destination": ".github/workflows/ci.yml"
     }
   ],
   "compatibility": {
