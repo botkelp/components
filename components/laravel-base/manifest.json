@@ -1,7 +1,7 @@
 {
   "id": "laravel-base",
   "name": "Laravel Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Laravel PHP framework project. Provides a foundation for Laravel applications with MVC architecture, Eloquent ORM, and Blade templating. Packages pinned to laravel/framework v11.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [

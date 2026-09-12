@@ -6,6 +6,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Least-privilege GITHUB_TOKEN. The build job below renders templates and runs
+# `npm install` / `composer install` / `dotnet restore` on the result, which
+# executes dependency lifecycle scripts; nothing here writes to the repository.
+permissions:
+  contents: read
+
 jobs:
   static:
     name: Template + version gates
@@ -20,6 +26,10 @@ jobs:
           python-version: "3.12"
       - run: python scripts/check_templates.py
       - run: python scripts/check_version_bump.py origin/${{ github.base_ref || 'main' }}
+      # catalog.json is what agents actually read, and a component's version is
+      # the tpl cache key. A bumped manifest with a stale catalog entry defeats
+      # the cache-busting check_version_bump.py exists to enforce.
+      - run: python scripts/check_catalog_sync.py
 
   build:
     name: Render + build ${{ matrix.base }}

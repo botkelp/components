@@ -1,7 +1,7 @@
 {
   "id": "vue-base",
   "name": "Vue Base",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue.js frontend project with Vue 3, Vite, Pinia, and Vue Router. Provides a modern, reactive foundation for Vue applications with composition API. Packages pinned to vue@3.4.0, vite@5.0.0, pinia@2.1.7, vue-router@4.2.5 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": ["nextjs-base", "angular-base", "svelte-base"],

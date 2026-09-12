@@ -1,7 +1,7 @@
 {
   "id": "angular-base",
   "name": "Angular Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal Angular application with Angular CLI, TypeScript, and RxJS. Provides a foundation for Angular applications with component-based architecture. Packages pinned to @angular/core@18.0.0, @angular/cli@18.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [

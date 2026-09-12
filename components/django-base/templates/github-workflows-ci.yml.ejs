@@ -6,6 +6,14 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Least-privilege GITHUB_TOKEN. This workflow only installs dependencies and
+# builds; it never writes to the repository. Without this block the job
+# inherits the repository-default token scopes, which on many repositories
+# include write access — handed to `npm install`, which executes arbitrary
+# lifecycle scripts from the whole dependency tree.
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Install and build

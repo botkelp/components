@@ -1,7 +1,7 @@
 {
   "id": "fastapi-base",
   "name": "FastAPI Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FastAPI backend project with Python 3.11+. Provides a modern, async-ready API foundation with automatic docs, dependency injection, and environment configuration. Packages pinned to fastapi==0.109.0, uvicorn==0.27.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [

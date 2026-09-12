@@ -1,7 +1,7 @@
 {
   "id": "aspnet-base",
   "name": "ASP.NET Core Base",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [
