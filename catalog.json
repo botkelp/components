@@ -53,7 +53,7 @@
   {
     "id": "angular-base",
     "name": "Angular Base",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Minimal Angular application with Angular CLI, TypeScript, and RxJS. Provides a foundation for Angular applications with component-based architecture. Packages pinned to @angular/core@18.0.0, @angular/cli@18.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -221,7 +221,7 @@
   {
     "id": "aspnet-base",
     "name": "ASP.NET Core Base",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -741,7 +741,7 @@
   {
     "id": "django-base",
     "name": "Django Base",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Django backend project with Python 3.11+. Provides a foundation for Django applications with models, views, URLs, and settings. Includes Docker configuration for PostgreSQL. Packages pinned to Django==5.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -1239,7 +1239,7 @@
   {
     "id": "laravel-base",
     "name": "Laravel Base",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Laravel PHP framework project. Provides a foundation for Laravel applications with MVC architecture, Eloquent ORM, and Blade templating. Packages pinned to laravel/framework v11.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -1500,7 +1500,7 @@
   {
     "id": "nestjs",
     "name": "NestJS Backend",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -2380,7 +2380,7 @@
   {
     "id": "svelte-base",
     "name": "SvelteKit Base",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Minimal SvelteKit project with TypeScript. Provides a foundation for Svelte applications with file-based routing and server-side rendering. Packages pinned to svelte@5.0.0, @sveltejs/kit@2.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [

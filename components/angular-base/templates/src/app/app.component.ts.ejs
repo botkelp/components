@@ -20,4 +20,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = '<%= projectName || 'Angular App' %>';
+
+  getCurrentYear(): number {
+    return new Date().getFullYear();
+  }
 }
