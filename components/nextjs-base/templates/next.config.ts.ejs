@@ -1,11 +1,8 @@
 import type { NextConfig } from 'next';
 
-// optimizePackageImports: Next.js docs
-// https://nextjs.org/docs/app/guides/package-bundling
-const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
-};
+// Components that bring barrel-export packages (e.g. lucide-react) should
+// add them to experimental.optimizePackageImports here. The base config
+// intentionally leaves this empty — no base dependency needs it.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
