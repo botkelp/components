@@ -22,10 +22,10 @@ COPY Models/ ./Models/
 COPY Properties/ ./Properties/
 
 # Restore dependencies
-RUN dotnet restore "<%= projectName || 'AspNetCoreApp' %>.csproj"
+RUN dotnet restore "AspNetCoreApp.csproj"
 
 # Build the application
-RUN dotnet publish "<%= projectName || 'AspNetCoreApp' %>.csproj" -c Release -o /app/publish \
+RUN dotnet publish "AspNetCoreApp.csproj" -c Release -o /app/publish \
     --no-restore \
     -p:PublishReadyToRun=true \
     -p:PublishSingleFile=false \
@@ -48,4 +48,4 @@ ENV ASPNETCORE_ENVIRONMENT=Production \
 EXPOSE 8080
 
 # Start the application
-ENTRYPOINT ["dotnet", "<%= projectName || 'AspNetCoreApp' %>.dll"]
+ENTRYPOINT ["dotnet", "AspNetCoreApp.dll"]

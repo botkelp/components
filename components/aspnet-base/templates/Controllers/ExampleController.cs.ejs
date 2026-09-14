@@ -7,7 +7,7 @@
  * Verified: 2026-09-06
  */
 
-using <%= projectName || 'AspNetCoreApp' %>.Models;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace <%= projectName || 'AspNetCoreApp' %>.Controllers;
+namespace AspNetCoreApp.Controllers;
 
 /// <summary>
 /// Example controller for managing examples.
@@ -332,8 +332,8 @@ public class ExampleController : ControllerBase
     public IActionResult GenerateToken()
     {
         var jwtSecret = _configuration["JWT:Secret"] ?? "change-this-in-production-use-32-characters-or-more";
-        var jwtIssuer = _configuration["JWT:Issuer"] ?? "<%= projectName || 'AspNetCoreApp' %>";
-        var jwtAudience = _configuration["JWT:Audience"] ?? "<%= projectName || 'AspNetCoreApp' %>-client";
+        var jwtIssuer = _configuration["JWT:Issuer"] ?? "AspNetCoreApp";
+        var jwtAudience = _configuration["JWT:Audience"] ?? "AspNetCoreApp-client";
         var expiryInMinutes = int.Parse(_configuration["JWT:ExpiryInMinutes"] ?? "60");
 
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
