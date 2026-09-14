@@ -91,7 +91,7 @@ jobs:
         if: matrix.stack == 'php'
         with:
           php-version: "8.3"
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         if: matrix.stack == 'dotnet'
         with:
           dotnet-version: "8.0.x"
