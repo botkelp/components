@@ -1,7 +1,7 @@
 {
   "id": "nestjs",
   "name": "NestJS Backend",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NestJS backend project with TypeScript. Packages pinned to @nestjs/core@10.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": ["nextjs-base", "express", "django-base", "fastapi-base", "laravel-base", "aspnet-base"],

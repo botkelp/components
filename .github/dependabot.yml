@@ -1,0 +1,19 @@
+version: 2
+
+updates:
+  # The workflow actions this repository runs. Without this, the pinned
+  # `actions/checkout@v4`, `actions/setup-*` and third-party
+  # `shivammathur/setup-php@v2` versions never received security updates —
+  # this repository had no Dependabot configuration at all.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "github-actions"
+      - "automated"

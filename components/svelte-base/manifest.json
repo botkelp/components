@@ -1,7 +1,7 @@
 {
   "id": "svelte-base",
   "name": "SvelteKit Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal SvelteKit project with TypeScript. Provides a foundation for Svelte applications with file-based routing and server-side rendering. Packages pinned to svelte@5.0.0, @sveltejs/kit@2.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [

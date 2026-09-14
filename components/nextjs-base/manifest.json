@@ -1,7 +1,7 @@
 {
   "id": "nextjs-base",
   "name": "Next.js App Router Base",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects and enables optimizePackageImports for icon barrels. Every other component requires this one, directly or transitively.",
   "requires": [],
   "provides": [

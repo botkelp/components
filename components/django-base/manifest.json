@@ -1,7 +1,7 @@
 {
   "id": "django-base",
   "name": "Django Base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Django backend project with Python 3.11+. Provides a foundation for Django applications with models, views, URLs, and settings. Includes Docker configuration for PostgreSQL. Packages pinned to Django==5.0.0 (verified 2026-09-06).",
   "requires": [],
   "conflictsWith": [
