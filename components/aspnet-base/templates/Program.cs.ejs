@@ -120,8 +120,7 @@ app.UseExceptionHandler(errorApp =>
 {
     errorApp.Run(async context =>
     {
-        var exceptionHandler = context.Features.Get<IExceptionHandlerFeature>()?.Error;
-        var exception = exceptionHandler?.Exception ?? new Exception("An unexpected error occurred");
+        var exception = context.Features.Get<IExceptionHandlerFeature>()?.Error ?? new Exception("An unexpected error occurred");
         
         context.Response.StatusCode = 500;
         context.Response.ContentType = "application/json";
