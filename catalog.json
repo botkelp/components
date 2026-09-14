@@ -221,7 +221,7 @@
   {
     "id": "aspnet-base",
     "name": "ASP.NET Core Base",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "ASP.NET Core backend project with C# and .NET 8.0+. Provides a cross-platform, high-performance API foundation with dependency injection, middleware pipeline, and configuration management. Packages pinned to Microsoft.AspNetCore.App 8.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
@@ -2380,7 +2380,7 @@
   {
     "id": "svelte-base",
     "name": "SvelteKit Base",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Minimal SvelteKit project with TypeScript. Provides a foundation for Svelte applications with file-based routing and server-side rendering. Packages pinned to svelte@5.0.0, @sveltejs/kit@2.0.0 (verified 2026-09-06).",
     "requires": [],
     "provides": [
