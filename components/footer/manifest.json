@@ -1,7 +1,7 @@
 {
   "id": "footer",
   "name": "Footer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
   "requires": [
     "tailwind"
