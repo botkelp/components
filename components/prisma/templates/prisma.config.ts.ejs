@@ -1,5 +1,6 @@
+import { readFileSync } from 'node:fs';
 import { config as loadEnv } from 'dotenv';
-import { defineConfig, env } from 'prisma/config';
+import { defineConfig } from 'prisma/config';
 
 /**
  * Prisma 7 moved the database connection string out of schema.prisma and
@@ -11,11 +12,35 @@ import { defineConfig, env } from 'prisma/config';
  * resolves the same way here as it does for the running app: .env first,
  * then .env.local overriding it.
  */
-loadEnv({ path: '.env' });
-loadEnv({ path: '.env.local', override: true });
+loadEnv({ path: '.env', quiet: true });
+loadEnv({ path: '.env.local', override: true, quiet: true });
+
+/**
+ * `prisma generate` runs on `npm install` (postinstall) and never connects, but
+ * Prisma still refuses to start when DATABASE_URL is unset. Fall back to an
+ * inert placeholder matching the schema's provider so a fresh clone, CI, or a
+ * Vercel build can install before real env exists. migrate/studio still need a
+ * real DATABASE_URL and fail clearly against the placeholder host.
+ */
+const PLACEHOLDER_URLS: Record<string, string> = {
+  postgresql: 'postgresql://placeholder:placeholder@localhost:5432/placeholder',
+  mysql: 'mysql://placeholder:placeholder@localhost:3306/placeholder',
+  sqlite: 'file:./dev.db',
+};
+
+function placeholderUrl(): string {
+  try {
+    const schema = readFileSync('./prisma/schema.prisma', 'utf8');
+    const provider = /datasource\s+\w+\s*\{[^}]*provider\s*=\s*"(\w+)"/.exec(schema)?.[1];
+    return PLACEHOLDER_URLS[provider ?? ''] ?? PLACEHOLDER_URLS.postgresql;
+  } catch {
+    return PLACEHOLDER_URLS.postgresql;
+  }
+}
+
 export default defineConfig({
   schema: './prisma/schema.prisma',
   datasource: {
-    url: env('DATABASE_URL'),
+    url: process.env.DATABASE_URL || placeholderUrl(),
   },
 });

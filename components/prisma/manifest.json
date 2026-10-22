@@ -1,7 +1,7 @@
 {
   "id": "prisma",
   "name": "Prisma ORM (PostgreSQL)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds Prisma ORM (v7, driver-adapter based) with a PostgreSQL datasource and a hot-reload-safe singleton PrismaClient for use in Next.js Server Components, Route Handlers, and Server Actions. Point DATABASE_URL at any hosted Postgres instance.",
   "requires": [
     "nextjs-base"
