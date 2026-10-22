@@ -1,7 +1,7 @@
 {
   "id": "nextjs-base",
   "name": "Next.js App Router Base",
-  "version": "2.0.5",
+  "version": "2.1.0",
   "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects. Every other component requires this one, directly or transitively.",
   "requires": [],
   "provides": [
@@ -92,6 +92,9 @@
       "templatePath": "templates/app/globals.css.ejs",
       "destination": "app/globals.css"
     },
+    { "type": "create_file", "templatePath": "templates/lib/env.ts.ejs", "destination": "lib/env.ts" },
+    { "type": "create_file", "templatePath": "templates/tests/env.test.ts.ejs", "destination": "tests/env.test.ts" },
+    { "type": "create_file", "templatePath": "templates/vitest.config.mts.ejs", "destination": "vitest.config.mts" },
     {
       "type": "create_file",
       "templatePath": "templates/github-workflows-ci.yml.ejs",

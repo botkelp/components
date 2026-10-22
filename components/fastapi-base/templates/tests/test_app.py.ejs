@@ -1,0 +1,48 @@
+"""Smoke and unit tests for the generated FastAPI app. Run: pytest"""
+
+from fastapi.testclient import TestClient
+
+from app.core.config import Settings
+from app.core.security import create_access_token, decode_token, get_password_hash, verify_password
+from main import app
+
+client = TestClient(app)
+
+
+def test_root_lists_links():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json()["health"].endswith("/health")
+
+
+def test_health():
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
+
+
+def test_v1_health():
+    response = client.get("/api/v1/health")
+    assert response.status_code == 200
+
+
+def test_cors_origins_accepts_comma_separated_env(monkeypatch):
+    monkeypatch.setenv("CORS_ORIGINS", "http://a.example, http://b.example")
+    assert Settings().CORS_ORIGINS == ["http://a.example", "http://b.example"]
+
+
+def test_cors_origins_accepts_json_list(monkeypatch):
+    monkeypatch.setenv("CORS_ORIGINS", '["http://a.example"]')
+    assert Settings().CORS_ORIGINS == ["http://a.example"]
+
+
+def test_password_hash_round_trip():
+    hashed = get_password_hash("s3cret-pass")
+    assert hashed != "s3cret-pass"
+    assert verify_password("s3cret-pass", hashed)
+    assert not verify_password("wrong", hashed)
+
+
+def test_access_token_round_trip():
+    token = create_access_token({"sub": "user-1"})
+    assert decode_token(token)["sub"] == "user-1"
