@@ -9,8 +9,7 @@
   "conflictsWith": [
     "supabase-auth-ui",
     "authjs",
-    "auth0",
-    "firebase-auth"
+    "auth0"
   ],
   "provides": [
     "authentication"
