@@ -32,10 +32,12 @@ This repository is the **source of truth** for BotKelp's component catalog. The 
 ## What we are not providing
 
 - **Not a complete application.** Cloning this repo will not give you a running site.
-- **Not assembled / generated project builds.** Combinations produced by `generate_scaffold` or `get_scaffold_template` (a full Next.js app with several components already wired together) are **not published here**.
+- **Not assembled / generated project builds.** Scaffolds built by the BotKelp MCP tool `purchase_scaffold` (a full app with several components already wired together) are **not published here**.
 - **Not the BotKelp service.** The MCP server, billing, accounts, and generation engine live elsewhere and are not in this repository.
 
-If you want a generated project, use the BotKelp MCP tools with an account key. If you want to copy a navbar, a Supabase client, or Tailwind config, use this repo.
+If you want a generated project, connect your agent to the BotKelp MCP server at `https://www.botkelp.com/mcp` (remote HTTP; there is no npm package or stdio server), call `get_help` and `search_components` to pick component ids, then call `purchase_scaffold`. Building uses account credits (sign in with MCP OAuth, or send a `bk_live_` key from https://www.botkelp.com/dashboard as an `Authorization: Bearer` header; never as a tool argument), and you are only charged when the build passes. Setup for each client: https://www.botkelp.com/llms.txt
+
+If you want to copy a navbar, a Supabase client, or Tailwind config, use this repo.
 
 ## How to copy a component
 
