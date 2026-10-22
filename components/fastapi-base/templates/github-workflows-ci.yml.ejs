@@ -6,23 +6,26 @@ on:
   pull_request:
   workflow_dispatch:
 
-# Least-privilege GITHUB_TOKEN. This workflow only installs dependencies and
-# builds; it never writes to the repository. Without this block the job
-# inherits the repository-default token scopes, which on many repositories
-# include write access — handed to `npm install`, which executes arbitrary
-# lifecycle scripts from the whole dependency tree.
+# Least-privilege GITHUB_TOKEN: this workflow only installs and tests.
 permissions:
   contents: read
 
 jobs:
-  build:
-    name: Install and build
+  test:
+    name: Install and test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - run: pip install -r requirements.txt
+          python-version: ${{ matrix.python-version }}
+      - name: Use .env.example so the app boots with its real config file
+        run: cp .env.example .env
+      - run: pip install -r requirements-dev.txt
       - run: python -c "from app.core.config import settings; print('Config OK')"
+      - run: pytest -q
