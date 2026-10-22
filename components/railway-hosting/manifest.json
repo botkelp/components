@@ -7,7 +7,6 @@
     "nextjs-base"
   ],
   "conflictsWith": [
-    "vercel-hosting",
     "render-hosting",
     "cloudflare-hosting",
     "aws-hosting",

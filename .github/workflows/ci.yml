@@ -30,6 +30,8 @@ jobs:
       # the tpl cache key. A bumped manifest with a stale catalog entry defeats
       # the cache-busting check_version_bump.py exists to enforce.
       - run: python scripts/check_catalog_sync.py
+      # requires/conflictsWith must name real ids; a dangling id enforces nothing.
+      - run: python scripts/check_references.py
 
   build:
     name: Render + build ${{ matrix.base }}
