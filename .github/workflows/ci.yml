@@ -34,7 +34,7 @@ jobs:
       - run: python scripts/check_references.py
 
   build:
-    name: Render + build ${{ matrix.base }}
+    name: Render + build ${{ matrix.base }} ${{ matrix.python }}
     needs: static
     if: always() && needs.static.result == 'success'
     runs-on: ubuntu-latest
@@ -66,7 +66,12 @@ jobs:
             required: "false"
           - base: fastapi-base
             stack: python
-            required: "false"
+            required: "true"
+            python: "3.11"
+          - base: fastapi-base
+            stack: python
+            required: "true"
+            python: "3.13"
           - base: laravel-base
             stack: php
             required: "false"
@@ -84,11 +89,11 @@ jobs:
       - uses: actions/setup-node@v7
         if: matrix.stack == 'node'
         with:
-          node-version: "20"
+          node-version: "22"
       - uses: actions/setup-python@v7
         if: matrix.stack == 'python'
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python || '3.11' }}
       - uses: shivammathur/setup-php@v2
         if: matrix.stack == 'php'
         with:
@@ -104,13 +109,20 @@ jobs:
           case "${{ matrix.stack }}" in
             node)
               test -f package.json
+              # Same order as the generated CI: placeholder env before install,
+              # because install lifecycle scripts can read env too (#370).
+              if [ -f .env.example ]; then cp .env.example .env.local; fi
               npm install --no-audit --no-fund
               npm run build
+              if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then CI=1 npm test; fi
               ;;
             python)
-              if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+              if [ -f .env.example ] && [ ! -f .env ]; then cp .env.example .env; fi
+              if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt
+              elif [ -f requirements.txt ]; then pip install -r requirements.txt; fi
               if [ -f manage.py ]; then python manage.py check; fi
               if [ -f app/main.py ]; then python -c "import ast,pathlib; ast.parse(pathlib.Path('app/main.py').read_text())"; fi
+              if [ -d tests ]; then python -m pytest -q; fi
               ;;
             php)
               test -f composer.json
