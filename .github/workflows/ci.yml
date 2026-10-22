@@ -114,7 +114,12 @@ jobs:
               if [ -f .env.example ]; then cp .env.example .env.local; fi
               npm install --no-audit --no-fund
               npm run build
-              if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then CI=1 npm test; fi
+              # Run the base's unit tests when it ships some (a bare test script with
+              # no test files is not a failure of the template).
+              if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)" \
+                && [ -n "$(find . -path ./node_modules -prune -o -type f -regex '.*\.\(test\|spec\)\.[cm]?[jt]sx?' -print -quit)" ]; then
+                CI=1 npm test
+              fi
               ;;
             python)
               if [ -f .env.example ] && [ ! -f .env ]; then cp .env.example .env; fi
