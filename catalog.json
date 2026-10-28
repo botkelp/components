@@ -3,7 +3,7 @@
     "id": "admin-dashboard-core",
     "name": "Admin Dashboard Core",
     "version": "1.0.0",
-    "description": "Minimal /admin shell: sidebar nav, a dashboard overview page, and a settings page that reads lib/admin-config.ts. Users/Billing/Audit Log/Security render as visibly disabled \"coming soon\" nav items, not fake pages. Config is read/written via BotKelp's get_admin_config/save_admin_config MCP tools, gated by your BotKelp API key \u2014 there is no separate admin login built in.",
+    "description": "Minimal /admin shell: sidebar nav, a dashboard overview page, and a settings page that reads lib/admin-config.ts. Users/Billing/Audit Log/Security render as visibly disabled \"coming soon\" nav items, not fake pages. Config is read/written via BotKelp's get_admin_config/save_admin_config MCP tools, gated by your BotKelp API key — there is no separate admin login built in.",
     "requires": [
       "tailwind"
     ],
@@ -313,7 +313,7 @@
       "authentication"
     ],
     "dependencies": [
-      "@auth0/nextjs-auth0"
+      "@auth0/nextjs-auth0@4.33.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -365,7 +365,7 @@
       "authentication"
     ],
     "dependencies": [
-      "next-auth"
+      "next-auth@4.24.15"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -508,7 +508,7 @@
       "billing"
     ],
     "dependencies": [
-      "braintree-web"
+      "braintree-web@3.144.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -556,7 +556,7 @@
       "authentication"
     ],
     "dependencies": [
-      "@clerk/nextjs"
+      "@clerk/nextjs@7.9.22"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -618,7 +618,7 @@
       "hosting"
     ],
     "dependencies": [
-      "wrangler"
+      "wrangler@4.155.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -669,7 +669,7 @@
       "browser-support"
     ],
     "dependencies": [
-      "core-js"
+      "core-js@3.51.0"
     ],
     "devDependencies": [],
     "envVariables": [],
@@ -708,7 +708,7 @@
       "utilities"
     ],
     "dependencies": [
-      "dayjs"
+      "dayjs@1.11.13"
     ],
     "devDependencies": [],
     "envVariables": [],
@@ -1076,7 +1076,7 @@
       "realtime"
     ],
     "dependencies": [
-      "firebase"
+      "firebase@13.1.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -1114,7 +1114,7 @@
     "id": "footer",
     "name": "Footer",
     "version": "1.0.1",
-    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
+    "description": "A simple site footer component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Footer } from '@/components/footer'`.",
     "requires": [
       "tailwind"
     ],
@@ -1199,7 +1199,7 @@
     "id": "jquery",
     "name": "jQuery",
     "version": "1.0.0",
-    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app \u2014 real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
+    "description": "Adds jQuery (v4.0.0) to the project. NOTE: Pairing jQuery's direct DOM manipulation with React's virtual DOM is an unusual combination for a generated app — real and sourceable regardless. jQuery provides cross-browser DOM manipulation, event handling, animation, and AJAX capabilities. Use sparingly in React applications and prefer React's declarative approach where possible.",
     "requires": [
       "nextjs-base"
     ],
@@ -1211,7 +1211,7 @@
       "jquery"
     ],
     "devDependencies": [
-      "@types/jquery"
+      "@types/jquery@4.0.1"
     ],
     "envVariables": [],
     "files": [
@@ -1374,7 +1374,7 @@
       "database"
     ],
     "dependencies": [
-      "mongodb"
+      "mongodb@7.7.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -1465,7 +1465,7 @@
     "id": "navbar",
     "name": "Navbar",
     "version": "1.0.0",
-    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx \u2014 import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
+    "description": "A responsive top navigation bar component, styled with Tailwind. Not auto-wired into layout.tsx — import it where needed, e.g. `import { Navbar } from '@/components/navbar'`.",
     "requires": [
       "tailwind"
     ],
@@ -1627,17 +1627,17 @@
       "framework"
     ],
     "dependencies": [
-      "next",
-      "react",
-      "react-dom"
+      "next@16.4.3",
+      "react@19.3.1",
+      "react-dom@19.3.1"
     ],
     "devDependencies": [
-      "typescript",
-      "@types/node",
-      "@types/react",
-      "@types/react-dom",
-      "eslint",
-      "eslint-config-next"
+      "typescript@7.0.2",
+      "@types/node@26.6.6",
+      "@types/react@19.3.0",
+      "@types/react-dom@19.3.0",
+      "eslint@10.13.0",
+      "eslint-config-next@16.4.3"
     ],
     "envVariables": [],
     "files": [
@@ -1715,7 +1715,7 @@
       "billing"
     ],
     "dependencies": [
-      "@paddle/paddle-js"
+      "@paddle/paddle-js@1.6.5"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -1771,7 +1771,7 @@
       "billing"
     ],
     "dependencies": [
-      "@paypal/react-paypal-js"
+      "@paypal/react-paypal-js@10.6.1"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -1866,7 +1866,7 @@
     ],
     "dependencies": [],
     "devDependencies": [
-      "prettier",
+      "prettier@3.9.10",
       "eslint-config-prettier"
     ],
     "envVariables": [],
@@ -1912,11 +1912,11 @@
       "orm"
     ],
     "dependencies": [
-      "@prisma/client",
-      "@prisma/adapter-pg"
+      "@prisma/client@7.10.1",
+      "@prisma/adapter-pg@7.10.1"
     ],
     "devDependencies": [
-      "prisma",
+      "prisma@8.0.0-rc.28",
       "dotenv"
     ],
     "envVariables": [
@@ -2102,9 +2102,9 @@
       "ui-components"
     ],
     "dependencies": [
-      "class-variance-authority",
+      "class-variance-authority@0.7.1",
       "clsx",
-      "tailwind-merge"
+      "tailwind-merge@3.7.0"
     ],
     "devDependencies": [],
     "envVariables": [],
@@ -2239,8 +2239,8 @@
       "billing"
     ],
     "dependencies": [
-      "stripe",
-      "@stripe/stripe-js"
+      "stripe@23.0.1",
+      "@stripe/stripe-js@10.2.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -2337,8 +2337,8 @@
       "authentication"
     ],
     "dependencies": [
-      "@supabase/ssr",
-      "@supabase/supabase-js"
+      "@supabase/ssr@0.12.7",
+      "@supabase/supabase-js@2.118.0"
     ],
     "devDependencies": [],
     "envVariables": [
@@ -2475,7 +2475,7 @@
       "slider"
     ],
     "dependencies": [
-      "swiper"
+      "swiper@14.3.0"
     ],
     "devDependencies": [],
     "envVariables": [],
