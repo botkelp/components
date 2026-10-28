@@ -1,7 +1,7 @@
 {
   "id": "nextjs-base",
   "name": "Next.js App Router Base",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Minimal Next.js 16 App Router project: package.json, tsconfig, root layout and home page. Marks CSS as the only sideEffects. Every other component requires this one, directly or transitively.",
   "requires": [],
   "provides": [
@@ -26,19 +26,19 @@
       "type": "docs",
       "label": "Next.js docs",
       "url": "https://nextjs.org/docs",
-      "verifiedAt": "2026-09-02"
+      "verifiedAt": "2026-10-28"
     },
     {
       "type": "github-releases",
-      "label": "next.js v16.3.4 release notes",
-      "url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
-      "verifiedAt": "2026-09-02"
+      "label": "next.js v16.4.3 release notes",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+      "verifiedAt": "2026-10-28"
     },
     {
       "type": "github-examples",
       "label": "Official Next.js examples",
-      "url": "https://github.com/vercel/next.js/tree/8ea76d64ca3931c1beccceb15d32df5d770f4957/examples",
-      "verifiedAt": "2026-09-02"
+      "url": "https://github.com/vercel/next.js/tree/main/examples",
+      "verifiedAt": "2026-10-28"
     }
   ],
   "actions": [
