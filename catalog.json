@@ -304,7 +304,7 @@
   {
     "id": "auth0",
     "name": "Auth0 Authentication",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Auth0 authentication integration for Next.js App Router using the real @auth0/nextjs-auth0 v4 API: an Auth0Client instance, middleware-mounted auth routes (no custom route handler), and server-side session checks.",
     "requires": [
       "nextjs-base"
@@ -345,6 +345,14 @@
     "releases": [
       {
         "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      },
+      {
+        "version": "2.1.0",
         "status": "stable",
         "compatibility": {
           "nextjs": ">=16 <17",
@@ -547,7 +555,7 @@
   {
     "id": "clerk",
     "name": "Clerk Authentication",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Clerk authentication integration for Next.js App Router using the real, current @clerk/nextjs API: clerkMiddleware in proxy.ts, a ClerkProvider actually wired into the root layout, and the built-in verifyWebhook helper for the webhook route.",
     "requires": [
       "nextjs-base"
@@ -598,6 +606,14 @@
     "releases": [
       {
         "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "nextjs": ">=16 <17",
+          "react": ">=19 <20"
+        }
+      },
+      {
+        "version": "2.1.0",
         "status": "stable",
         "compatibility": {
           "nextjs": ">=16 <17",
