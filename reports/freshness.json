@@ -1,0 +1,2113 @@
+{
+  "generated_at": "2026-10-29T16:45:22Z",
+  "counts": {
+    "discovered": 44,
+    "audited": 42,
+    "current": 6,
+    "outdated": 27,
+    "unsupported": 1,
+    "unverified": 10,
+    "coverage_pct": 95.5
+  },
+  "results": [
+    {
+      "id": "admin-dashboard-core",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/vercel/next.js",
+          "timestamp": "2026-10-29T16:42:58Z",
+          "error": null,
+          "latest_tag": "v16.4.3",
+          "latest_version": "16.4.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+          "published_at": "2026-10-23T13:32:31Z",
+          "declared_tag": "v16.3.4",
+          "declared_url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+          "verifiedAt": "2026-09-07",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "angular-base",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/angular/angular",
+          "timestamp": "2026-10-29T16:42:59Z",
+          "error": null,
+          "latest_tag": "v22.2.3",
+          "latest_version": "22.2.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/angular/angular/releases/tag/v22.2.3",
+          "published_at": "2026-10-14T23:38:58Z",
+          "declared_tag": "v22.2.3",
+          "declared_url": "https://github.com/angular/angular/releases/tag/v22.2.3",
+          "verifiedAt": "2026-10-29",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/animations",
+          "timestamp": "2026-10-29T16:43:00Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "@angular/animations is deprecated. Use `animate.enter` and `animate.leave` instead. For more information see: https://v22.angular.dev/guide/animations.",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/common",
+          "timestamp": "2026-10-29T16:43:03Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/compiler",
+          "timestamp": "2026-10-29T16:43:04Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/core",
+          "timestamp": "2026-10-29T16:43:06Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/forms",
+          "timestamp": "2026-10-29T16:43:07Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/platform-browser",
+          "timestamp": "2026-10-29T16:43:09Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/platform-browser-dynamic",
+          "timestamp": "2026-10-29T16:43:10Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@angular/router",
+          "timestamp": "2026-10-29T16:43:11Z",
+          "error": null,
+          "latest_version": "22.2.3",
+          "deprecated": "",
+          "pinned": "22.2.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        }
+      ],
+      "overall": "unsupported",
+      "errors": [
+        "@angular/animations deprecated: @angular/animations is deprecated. Use `animate.enter` and `animate.leave` instead. For more information see: https://v22.angular.dev/guide/animations."
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "aos",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/michalsnik/aos",
+          "timestamp": "2026-10-29T16:43:13Z",
+          "error": "gh api failed: gh: Not Found (HTTP 404)",
+          "latest_tag": null,
+          "latest_version": null,
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "declared_tag": "v2.3.4",
+          "declared_url": "https://github.com/michalsnik/aos/releases/tag/v2.3.4",
+          "verifiedAt": "2026-09-02"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/aos",
+          "timestamp": "2026-10-29T16:43:14Z",
+          "error": null,
+          "latest_version": "2.3.4",
+          "deprecated": "",
+          "pinned": "2.3.4",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [
+        "gh api failed: gh: Not Found (HTTP 404)"
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "aspnet-base",
+      "installed_version": "1.0.6",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/dotnet/aspnetcore",
+          "timestamp": "2026-10-29T16:43:15Z",
+          "error": null,
+          "latest_tag": "v10.0.13",
+          "latest_version": "10.0.13",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/dotnet/aspnetcore/releases/tag/v10.0.13",
+          "published_at": "2026-10-13T22:26:19Z",
+          "declared_tag": "v8.0.0",
+          "declared_url": "https://github.com/dotnet/aspnetcore/releases/tag/v8.0.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "auth0",
+      "installed_version": "2.1.0",
+      "catalog_status": "stable",
+      "sources_declared": 2,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/auth0/nextjs-auth0",
+          "timestamp": "2026-10-29T16:43:17Z",
+          "error": null,
+          "latest_tag": "v4.33.0",
+          "latest_version": "4.33.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/auth0/nextjs-auth0/releases/tag/v4.33.0",
+          "published_at": "2026-10-22T14:22:20Z",
+          "declared_tag": "v4.33.0",
+          "declared_url": "https://github.com/auth0/nextjs-auth0/releases/tag/v4.33.0",
+          "verifiedAt": "2026-10-28",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@auth0/nextjs-auth0",
+          "timestamp": "2026-10-29T16:43:18Z",
+          "error": null,
+          "latest_version": "4.33.0",
+          "deprecated": "",
+          "pinned": "4.33.0",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "authjs",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 5,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/nextauthjs/next-auth",
+          "timestamp": "2026-10-29T16:43:19Z",
+          "error": null,
+          "latest_tag": "next-auth@4.24.15",
+          "latest_version": "4.24.15",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/nextauthjs/next-auth/releases/tag/next-auth%404.24.15",
+          "published_at": "2026-07-20T23:22:47Z",
+          "declared_tag": "next-auth%405.0.0-beta.32",
+          "declared_url": "https://github.com/nextauthjs/next-auth/releases/tag/next-auth%405.0.0-beta.32",
+          "verifiedAt": "2026-09-06",
+          "comparison": "unknown"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/next-auth",
+          "timestamp": "2026-10-29T16:43:20Z",
+          "error": null,
+          "latest_version": "4.24.15",
+          "deprecated": "",
+          "pinned": "5.0.0-beta.32",
+          "pin_source": "json_merge",
+          "comparison": "ahead"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "aws-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/aws-amplify/amplify-cli",
+          "timestamp": "2026-10-29T16:43:22Z",
+          "error": null,
+          "latest_tag": "v14.5.1",
+          "latest_version": "14.5.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/aws-amplify/amplify-cli/releases/tag/v14.5.1",
+          "published_at": "2026-06-25T13:06:28Z",
+          "declared_tag": "v14.5.1",
+          "declared_url": "https://github.com/aws-amplify/amplify-cli/releases/tag/v14.5.1",
+          "verifiedAt": "2026-09-06",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "azure-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/Azure/static-web-apps-cli",
+          "timestamp": "2026-10-29T16:43:23Z",
+          "error": null,
+          "latest_tag": "v2.0.10",
+          "latest_version": "2.0.10",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/Azure/static-web-apps-cli/releases/tag/v2.0.10",
+          "published_at": "2026-07-20T08:51:57Z",
+          "declared_tag": "v2.0.10",
+          "declared_url": "https://github.com/Azure/static-web-apps-cli/releases/tag/v2.0.10",
+          "verifiedAt": "2026-09-06",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "braintree",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/braintree/braintree-web",
+          "timestamp": "2026-10-29T16:43:24Z",
+          "error": null,
+          "latest_tag": "3.147.0",
+          "latest_version": "3.147.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/braintree/braintree-web/releases/tag/3.147.0",
+          "published_at": "2026-10-12T19:19:42Z",
+          "declared_tag": "3.145.0",
+          "declared_url": "https://github.com/braintree/braintree-web/releases/tag/3.145.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/braintree-web",
+          "timestamp": "2026-10-29T16:43:26Z",
+          "error": null,
+          "latest_version": "3.147.0",
+          "deprecated": "",
+          "pinned": "3.145.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "clerk",
+      "installed_version": "2.1.0",
+      "catalog_status": "stable",
+      "sources_declared": 1,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/clerk/javascript",
+          "timestamp": "2026-10-29T16:43:27Z",
+          "error": null,
+          "latest_tag": "@clerk/tanstack-react-start@1.7.8",
+          "latest_version": "1.7.8",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/clerk/javascript/releases/tag/%40clerk/tanstack-react-start%401.7.8",
+          "published_at": "2026-10-27T21:06:46Z",
+          "declared_tag": "@clerk/nextjs@7.9.22",
+          "declared_url": "https://github.com/clerk/javascript/releases/tag/@clerk/nextjs@7.9.22",
+          "verifiedAt": "2026-10-28",
+          "comparison": "unknown"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@clerk/nextjs",
+          "timestamp": "2026-10-29T16:43:28Z",
+          "error": null,
+          "latest_version": "7.9.22",
+          "deprecated": "",
+          "pinned": "7.9.22",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "cloudflare-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/cloudflare/workers-sdk",
+          "timestamp": "2026-10-29T16:43:31Z",
+          "error": null,
+          "latest_tag": "@cloudflare/runtime-types@0.1.18",
+          "latest_version": "0.1.18",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/cloudflare/workers-sdk/releases/tag/%40cloudflare/runtime-types%400.1.18",
+          "published_at": "2026-10-28T20:36:09Z",
+          "declared_tag": "wrangler-v3.0.0",
+          "declared_url": "https://github.com/cloudflare/workers-sdk/releases/tag/wrangler-v3.0.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "unknown"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "core-js",
+      "installed_version": "1.0.1",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/zloirock/core-js",
+          "timestamp": "2026-10-29T16:43:32Z",
+          "error": null,
+          "latest_tag": "v3.51.0",
+          "latest_version": "3.51.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/zloirock/core-js/releases/tag/v3.51.0",
+          "published_at": "2026-10-19T10:48:39Z",
+          "declared_tag": "v3.50.0",
+          "declared_url": "https://github.com/zloirock/core-js/releases/tag/v3.50.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/core-js",
+          "timestamp": "2026-10-29T16:43:34Z",
+          "error": null,
+          "latest_version": "3.51.0",
+          "deprecated": "",
+          "pinned": "3.50.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "day-js",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/iamkun/dayjs",
+          "timestamp": "2026-10-29T16:43:35Z",
+          "error": null,
+          "latest_tag": "v1.11.23",
+          "latest_version": "1.11.23",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/iamkun/dayjs/releases/tag/v1.11.23",
+          "published_at": "2026-08-17T11:50:26Z",
+          "declared_tag": "v1.11.23",
+          "declared_url": "https://github.com/iamkun/dayjs/releases/tag/v1.11.23",
+          "verifiedAt": "2026-09-02",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/dayjs",
+          "timestamp": "2026-10-29T16:43:36Z",
+          "error": null,
+          "latest_version": "1.11.23",
+          "deprecated": "",
+          "pinned": "1.11.23",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "django-base",
+      "installed_version": "1.0.3",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/django/django",
+          "timestamp": "2026-10-29T16:43:37Z",
+          "error": "gh api failed: gh: Not Found (HTTP 404)",
+          "latest_tag": null,
+          "latest_version": null,
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "declared_tag": "5.0",
+          "declared_url": "https://github.com/django/django/releases/tag/5.0",
+          "verifiedAt": "2026-09-06"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [
+        "gh api failed: gh: Not Found (HTTP 404)"
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "express",
+      "installed_version": "1.0.3",
+      "catalog_status": "stable",
+      "sources_declared": 2,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/expressjs/express",
+          "timestamp": "2026-10-29T16:43:39Z",
+          "error": null,
+          "latest_tag": "v5.3.0",
+          "latest_version": "5.3.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/expressjs/express/releases/tag/v5.3.0",
+          "published_at": "2026-10-09T12:50:31Z",
+          "declared_tag": "v4.18.0",
+          "declared_url": "https://github.com/expressjs/express/releases/tag/v4.18.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "fastapi-base",
+      "installed_version": "1.1.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/tiangolo/fastapi",
+          "timestamp": "2026-10-29T16:43:40Z",
+          "error": null,
+          "latest_tag": "0.162.0",
+          "latest_version": "0.162.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/fastapi/fastapi/releases/tag/0.162.0",
+          "published_at": "2026-10-23T18:47:17Z",
+          "declared_tag": "0.109.0",
+          "declared_url": "https://github.com/tiangolo/fastapi/releases/tag/0.109.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "firebase",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/firebase/firebase-js-sdk",
+          "timestamp": "2026-10-29T16:43:42Z",
+          "error": null,
+          "latest_tag": "firebase@13.1.0",
+          "latest_version": "13.1.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/firebase/firebase-js-sdk/releases/tag/firebase%4013.1.0",
+          "published_at": "2026-10-21T15:02:20Z",
+          "declared_tag": "firebase%4012.18.0",
+          "declared_url": "https://github.com/firebase/firebase-js-sdk/releases/tag/firebase%4012.18.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "unknown"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/firebase",
+          "timestamp": "2026-10-29T16:43:43Z",
+          "error": null,
+          "latest_version": "13.1.0",
+          "deprecated": "",
+          "pinned": "12.18.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "footer",
+      "installed_version": "1.0.1",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/vercel/next.js",
+          "timestamp": "2026-10-29T16:43:45Z",
+          "error": null,
+          "latest_tag": "v16.4.3",
+          "latest_version": "16.4.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+          "published_at": "2026-10-23T13:32:31Z",
+          "declared_tag": "v16.3.4",
+          "declared_url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "gcp-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/google-github-actions/deploy-cloudrun",
+          "timestamp": "2026-10-29T16:43:47Z",
+          "error": null,
+          "latest_tag": "v3",
+          "latest_version": "3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/google-github-actions/deploy-cloudrun/releases/tag/v3",
+          "published_at": "2025-09-03T14:05:15Z",
+          "declared_tag": "v3.0.1",
+          "declared_url": "https://github.com/google-github-actions/deploy-cloudrun/releases/tag/v3.0.1",
+          "verifiedAt": "2026-09-06",
+          "comparison": "ahead"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "jquery",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/jquery/jquery",
+          "timestamp": "2026-10-29T16:43:48Z",
+          "error": null,
+          "latest_tag": "4.0.0",
+          "latest_version": "4.0.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/jquery/jquery/releases/tag/4.0.0",
+          "published_at": "2026-01-18T00:27:34Z",
+          "declared_tag": "4.0.0",
+          "declared_url": "https://github.com/jquery/jquery/releases/tag/4.0.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/jquery",
+          "timestamp": "2026-10-29T16:43:49Z",
+          "error": null,
+          "latest_version": "4.0.0",
+          "deprecated": "",
+          "pinned": "4.0.0",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "laravel-base",
+      "installed_version": "1.0.3",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/laravel/framework",
+          "timestamp": "2026-10-29T16:43:50Z",
+          "error": null,
+          "latest_tag": "v13.39.0",
+          "latest_version": "13.39.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/laravel/framework/releases/tag/v13.39.0",
+          "published_at": "2026-10-27T14:06:19Z",
+          "declared_tag": "v11.0.0",
+          "declared_url": "https://github.com/laravel/framework/releases/tag/v11.0.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "mongodb",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/mongodb/node-mongodb-driver",
+          "timestamp": "2026-10-29T16:43:52Z",
+          "error": "gh api failed: gh: Not Found (HTTP 404)",
+          "latest_tag": null,
+          "latest_version": null,
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "declared_tag": "v6.0.0",
+          "declared_url": "https://github.com/mongodb/node-mongodb-driver/releases/tag/v6.0.0",
+          "verifiedAt": "2026-09-06"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/mongodb",
+          "timestamp": "2026-10-29T16:43:53Z",
+          "error": null,
+          "latest_version": "7.7.0",
+          "deprecated": "",
+          "pinned": "6.0.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [
+        "gh api failed: gh: Not Found (HTTP 404)"
+      ],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "mysql",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/prisma/prisma",
+          "timestamp": "2026-10-29T16:43:54Z",
+          "error": null,
+          "latest_tag": "7.10.1",
+          "latest_version": "7.10.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/prisma/orm/releases/tag/7.10.1",
+          "published_at": "2026-10-19T08:13:27Z",
+          "declared_tag": "7.10.0",
+          "declared_url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "navbar",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/vercel/next.js",
+          "timestamp": "2026-10-29T16:43:56Z",
+          "error": null,
+          "latest_tag": "v16.4.3",
+          "latest_version": "16.4.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+          "published_at": "2026-10-23T13:32:31Z",
+          "declared_tag": "v16.3.4",
+          "declared_url": "https://github.com/vercel/next.js/releases/tag/v16.3.4",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "nestjs",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/nestjs/nest",
+          "timestamp": "2026-10-29T16:43:57Z",
+          "error": null,
+          "latest_tag": "v12.3.0",
+          "latest_version": "12.3.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/nestjs/nest/releases/tag/v12.3.0",
+          "published_at": "2026-10-28T11:41:13Z",
+          "declared_tag": "v12.3.2",
+          "declared_url": "https://github.com/nestjs/nest/releases/tag/v12.3.2",
+          "verifiedAt": "2026-10-28",
+          "comparison": "ahead"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/common",
+          "timestamp": "2026-10-29T16:43:59Z",
+          "error": null,
+          "latest_version": "12.3.2",
+          "deprecated": "",
+          "pinned": "12.3.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/core",
+          "timestamp": "2026-10-29T16:44:00Z",
+          "error": null,
+          "latest_version": "12.3.2",
+          "deprecated": "",
+          "pinned": "12.3.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/platform-express",
+          "timestamp": "2026-10-29T16:44:01Z",
+          "error": null,
+          "latest_version": "12.3.2",
+          "deprecated": "",
+          "pinned": "12.3.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/reflect-metadata",
+          "timestamp": "2026-10-29T16:44:02Z",
+          "error": null,
+          "latest_version": "0.2.2",
+          "deprecated": "",
+          "pinned": "0.2.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/rxjs",
+          "timestamp": "2026-10-29T16:44:04Z",
+          "error": null,
+          "latest_version": "7.8.2",
+          "deprecated": "",
+          "pinned": "7.8.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/cli",
+          "timestamp": "2026-10-29T16:44:05Z",
+          "error": null,
+          "latest_version": "12.0.11",
+          "deprecated": "",
+          "pinned": "12.0.11",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/schematics",
+          "timestamp": "2026-10-29T16:44:06Z",
+          "error": null,
+          "latest_version": "12.0.12",
+          "deprecated": "",
+          "pinned": "12.0.12",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@nestjs/testing",
+          "timestamp": "2026-10-29T16:44:07Z",
+          "error": null,
+          "latest_version": "12.3.2",
+          "deprecated": "",
+          "pinned": "12.3.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "nextjs-base",
+      "installed_version": "2.2.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/vercel/next.js",
+          "timestamp": "2026-10-29T16:44:08Z",
+          "error": null,
+          "latest_tag": "v16.4.3",
+          "latest_version": "16.4.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+          "published_at": "2026-10-23T13:32:31Z",
+          "declared_tag": "v16.4.3",
+          "declared_url": "https://github.com/vercel/next.js/releases/tag/v16.4.3",
+          "verifiedAt": "2026-10-28",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/next",
+          "timestamp": "2026-10-29T16:44:10Z",
+          "error": null,
+          "latest_version": "16.4.3",
+          "deprecated": "",
+          "pinned": "16.4.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/react",
+          "timestamp": "2026-10-29T16:44:13Z",
+          "error": null,
+          "latest_version": "19.3.1",
+          "deprecated": "",
+          "pinned": "19.3.1",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/react-dom",
+          "timestamp": "2026-10-29T16:44:14Z",
+          "error": null,
+          "latest_version": "19.3.1",
+          "deprecated": "",
+          "pinned": "19.3.1",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/typescript",
+          "timestamp": "2026-10-29T16:44:16Z",
+          "error": null,
+          "latest_version": "7.0.2",
+          "deprecated": "",
+          "pinned": "5.9.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@types/node",
+          "timestamp": "2026-10-29T16:44:18Z",
+          "error": null,
+          "latest_version": "26.6.6",
+          "deprecated": "",
+          "pinned": "20.19.43",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@types/react",
+          "timestamp": "2026-10-29T16:44:20Z",
+          "error": null,
+          "latest_version": "19.3.0",
+          "deprecated": "",
+          "pinned": "19.3.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@types/react-dom",
+          "timestamp": "2026-10-29T16:44:21Z",
+          "error": null,
+          "latest_version": "19.3.0",
+          "deprecated": "",
+          "pinned": "19.3.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/eslint",
+          "timestamp": "2026-10-29T16:44:22Z",
+          "error": null,
+          "latest_version": "10.13.0",
+          "deprecated": "",
+          "pinned": "9.39.5",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "paddle",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/PaddlePaddle/paddle.js",
+          "timestamp": "2026-10-29T16:44:24Z",
+          "error": null,
+          "latest_tag": "v2.1.0",
+          "latest_version": "2.1.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/PaddlePaddle/Paddle.js/releases/tag/v2.1.0",
+          "published_at": "2021-09-21T13:45:47Z",
+          "declared_tag": "v1.0.0",
+          "declared_url": "https://github.com/PaddlePaddle/paddle.js/releases/tag/v1.0.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@paddle/paddle-js",
+          "timestamp": "2026-10-29T16:44:25Z",
+          "error": null,
+          "latest_version": "1.6.5",
+          "deprecated": "",
+          "pinned": "1.0.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "paypal",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/paypal/paypal-js",
+          "timestamp": "2026-10-29T16:44:26Z",
+          "error": null,
+          "latest_tag": "@paypal/react-paypal-js@10.6.1",
+          "latest_version": "10.6.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/paypal/paypal-js/releases/tag/%40paypal/react-paypal-js%4010.6.1",
+          "published_at": "2026-10-23T18:33:25Z",
+          "declared_tag": "%40paypal%2Freact-paypal-js%4010.4.0",
+          "declared_url": "https://github.com/paypal/paypal-js/releases/tag/%40paypal%2Freact-paypal-js%4010.4.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "unknown"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@paypal/react-paypal-js",
+          "timestamp": "2026-10-29T16:44:28Z",
+          "error": null,
+          "latest_version": "10.6.1",
+          "deprecated": "",
+          "pinned": "10.4.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "postgres",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/prisma/prisma",
+          "timestamp": "2026-10-29T16:44:29Z",
+          "error": null,
+          "latest_tag": "7.10.1",
+          "latest_version": "7.10.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/prisma/orm/releases/tag/7.10.1",
+          "published_at": "2026-10-19T08:13:27Z",
+          "declared_tag": "7.10.0",
+          "declared_url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "prettier-eslint-config",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/eslint/eslint",
+          "timestamp": "2026-10-29T16:44:31Z",
+          "error": null,
+          "latest_tag": "v10.13.0",
+          "latest_version": "10.13.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/eslint/eslint/releases/tag/v10.13.0",
+          "published_at": "2026-10-16T14:23:23Z",
+          "declared_tag": "v9.39.5",
+          "declared_url": "https://github.com/eslint/eslint/releases/tag/v9.39.5",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "prisma",
+      "installed_version": "1.0.1",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/prisma/prisma",
+          "timestamp": "2026-10-29T16:44:32Z",
+          "error": null,
+          "latest_tag": "7.10.1",
+          "latest_version": "7.10.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/prisma/orm/releases/tag/7.10.1",
+          "published_at": "2026-10-19T08:13:27Z",
+          "declared_tag": "7.10.0",
+          "declared_url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@prisma/client",
+          "timestamp": "2026-10-29T16:44:33Z",
+          "error": null,
+          "latest_version": "7.10.1",
+          "deprecated": "",
+          "pinned": "7.10.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@prisma/adapter-pg",
+          "timestamp": "2026-10-29T16:44:38Z",
+          "error": null,
+          "latest_version": "7.10.1",
+          "deprecated": "",
+          "pinned": "7.10.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "railway-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/railwayapp/cli",
+          "timestamp": "2026-10-29T16:44:40Z",
+          "error": null,
+          "latest_tag": "v5.71.0",
+          "latest_version": "5.71.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/railwayapp/cli/releases/tag/v5.71.0",
+          "published_at": "2026-10-19T22:41:49Z",
+          "declared_tag": "v3.0.0",
+          "declared_url": "https://github.com/railwayapp/cli/releases/tag/v3.0.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "recaptcha",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [],
+      "overall": "unverified",
+      "errors": [
+        "unparseable github-releases url: https://github.com/google/recaptcha",
+        "no checkable upstream sources or pins"
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "render-hosting",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/rendercom/render-cli",
+          "timestamp": "2026-10-29T16:44:41Z",
+          "error": "gh api failed: gh: Not Found (HTTP 404)",
+          "latest_tag": null,
+          "latest_version": null,
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "declared_tag": "v1.0.0",
+          "declared_url": "https://github.com/rendercom/render-cli/releases/tag/v1.0.0",
+          "verifiedAt": "2026-09-06"
+        }
+      ],
+      "overall": "unverified",
+      "errors": [
+        "gh api failed: gh: Not Found (HTTP 404)"
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "shadcn-ui",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/class-variance-authority",
+          "timestamp": "2026-10-29T16:44:42Z",
+          "error": null,
+          "latest_version": "0.7.1",
+          "deprecated": "",
+          "pinned": "0.7.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/clsx",
+          "timestamp": "2026-10-29T16:44:43Z",
+          "error": null,
+          "latest_version": "2.1.1",
+          "deprecated": "",
+          "pinned": "2.1.1",
+          "pin_source": "json_merge",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/tailwind-merge",
+          "timestamp": "2026-10-29T16:44:44Z",
+          "error": null,
+          "latest_version": "3.7.0",
+          "deprecated": "",
+          "pinned": "2.5.2",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [
+        "unparseable github-releases url: https://github.com/shadcn-ui/ui/releases"
+      ],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "sqlite",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/prisma/prisma",
+          "timestamp": "2026-10-29T16:44:46Z",
+          "error": null,
+          "latest_tag": "7.10.1",
+          "latest_version": "7.10.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/prisma/orm/releases/tag/7.10.1",
+          "published_at": "2026-10-19T08:13:27Z",
+          "declared_tag": "7.10.0",
+          "declared_url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "sqlserver",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 4,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/prisma/prisma",
+          "timestamp": "2026-10-29T16:44:47Z",
+          "error": null,
+          "latest_tag": "7.10.1",
+          "latest_version": "7.10.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/prisma/orm/releases/tag/7.10.1",
+          "published_at": "2026-10-19T08:13:27Z",
+          "declared_tag": "7.10.0",
+          "declared_url": "https://github.com/prisma/prisma/releases/tag/7.10.0",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "stripe",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 5,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/stripe/stripe-node",
+          "timestamp": "2026-10-29T16:44:49Z",
+          "error": null,
+          "latest_tag": "v23.0.1",
+          "latest_version": "23.0.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/stripe/stripe-node/releases/tag/v23.0.1",
+          "published_at": "2026-10-22T18:06:33Z",
+          "declared_tag": "v22.6.1",
+          "declared_url": "https://github.com/stripe/stripe-node/releases/tag/v22.6.1",
+          "verifiedAt": "2026-09-06",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/stripe",
+          "timestamp": "2026-10-29T16:44:50Z",
+          "error": null,
+          "latest_version": "23.0.1",
+          "deprecated": "",
+          "pinned": "22.6.1",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@stripe/stripe-js",
+          "timestamp": "2026-10-29T16:44:52Z",
+          "error": null,
+          "latest_version": "10.2.0",
+          "deprecated": "",
+          "pinned": "9.15.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "supabase-auth-ui",
+      "installed_version": "1.1.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [],
+      "overall": "unverified",
+      "errors": [
+        "unparseable github-releases url: https://github.com/supabase/supabase/releases",
+        "no checkable upstream sources or pins"
+      ],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "supabase-client",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@supabase/ssr",
+          "timestamp": "2026-10-29T16:44:53Z",
+          "error": null,
+          "latest_version": "0.12.7",
+          "deprecated": "",
+          "pinned": "0.12.5",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@supabase/supabase-js",
+          "timestamp": "2026-10-29T16:44:54Z",
+          "error": null,
+          "latest_version": "2.118.0",
+          "deprecated": "",
+          "pinned": "2.113.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [
+        "unparseable github-releases url: https://github.com/supabase/supabase/releases"
+      ],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "svelte-base",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/sveltejs/kit",
+          "timestamp": "2026-10-29T16:44:55Z",
+          "error": null,
+          "latest_tag": "@sveltejs/package@3.0.1",
+          "latest_version": "3.0.1",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/package%403.0.1",
+          "published_at": "2026-10-14T22:33:00Z",
+          "declared_tag": "%40sveltejs%2Fkit%403.1.0",
+          "declared_url": "https://github.com/sveltejs/kit/releases/tag/%40sveltejs%2Fkit%403.1.0",
+          "verifiedAt": "2026-10-29",
+          "comparison": "unknown"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@sveltejs/kit",
+          "timestamp": "2026-10-29T16:44:57Z",
+          "error": null,
+          "latest_version": "3.1.0",
+          "deprecated": "",
+          "pinned": "3.1.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@sveltejs/adapter-node",
+          "timestamp": "2026-10-29T16:44:58Z",
+          "error": null,
+          "latest_version": "6.0.0",
+          "deprecated": "",
+          "pinned": "6.0.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@sveltejs/vite-plugin-svelte",
+          "timestamp": "2026-10-29T16:44:59Z",
+          "error": null,
+          "latest_version": "7.3.1",
+          "deprecated": "",
+          "pinned": "7.3.1",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/svelte",
+          "timestamp": "2026-10-29T16:45:00Z",
+          "error": null,
+          "latest_version": "5.57.3",
+          "deprecated": "",
+          "pinned": "5.57.3",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/typescript",
+          "timestamp": "2026-10-29T16:45:02Z",
+          "error": null,
+          "latest_version": "7.0.2",
+          "deprecated": "",
+          "pinned": "6.0.2",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/vite",
+          "timestamp": "2026-10-29T16:45:04Z",
+          "error": null,
+          "latest_version": "8.3.5",
+          "deprecated": "",
+          "pinned": "8.3.5",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 1
+    },
+    {
+      "id": "swiper",
+      "installed_version": "1.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/nolimits4web/swiper",
+          "timestamp": "2026-10-29T16:45:07Z",
+          "error": null,
+          "latest_tag": "v14.3.0",
+          "latest_version": "14.3.0",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/nolimits4web/swiper/releases/tag/v14.3.0",
+          "published_at": "2026-09-28T16:36:03Z",
+          "declared_tag": "v14.2.0",
+          "declared_url": "https://github.com/nolimits4web/swiper/releases/tag/v14.2.0",
+          "verifiedAt": "2026-09-02",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/swiper",
+          "timestamp": "2026-10-29T16:45:08Z",
+          "error": null,
+          "latest_version": "14.3.0",
+          "deprecated": "",
+          "pinned": "14.2.0",
+          "pin_source": "json_merge",
+          "comparison": "outdated"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 2
+    },
+    {
+      "id": "tailwind",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/tailwindlabs/tailwindcss",
+          "timestamp": "2026-10-29T16:45:09Z",
+          "error": null,
+          "latest_tag": "v4.3.3",
+          "latest_version": "4.3.3",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/tailwindlabs/tailwindcss/releases/tag/v4.3.3",
+          "published_at": "2026-07-16T11:55:08Z",
+          "declared_tag": "v4.3.3",
+          "declared_url": "https://github.com/tailwindlabs/tailwindcss/releases/tag/v4.3.3",
+          "verifiedAt": "2026-09-02",
+          "comparison": "current"
+        }
+      ],
+      "overall": "current",
+      "errors": [],
+      "upgrade_priority": 0
+    },
+    {
+      "id": "vue-base",
+      "installed_version": "2.0.0",
+      "catalog_status": "stable",
+      "sources_declared": 3,
+      "checks": [
+        {
+          "method": "github-releases",
+          "source": "https://github.com/vuejs/core",
+          "timestamp": "2026-10-29T16:45:11Z",
+          "error": null,
+          "latest_tag": "v3.5.44",
+          "latest_version": "3.5.44",
+          "prerelease": false,
+          "archived": false,
+          "draft": false,
+          "html_url": "https://github.com/vuejs/core/releases/tag/v3.5.44",
+          "published_at": "2026-10-13T07:43:25Z",
+          "declared_tag": "v3.5.44",
+          "declared_url": "https://github.com/vuejs/core/releases/tag/v3.5.44",
+          "verifiedAt": "2026-10-29",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/pinia",
+          "timestamp": "2026-10-29T16:45:12Z",
+          "error": null,
+          "latest_version": "4.1.0",
+          "deprecated": "",
+          "pinned": "4.1.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/vue",
+          "timestamp": "2026-10-29T16:45:13Z",
+          "error": null,
+          "latest_version": "3.5.44",
+          "deprecated": "",
+          "pinned": "3.5.44",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/vue-router",
+          "timestamp": "2026-10-29T16:45:14Z",
+          "error": null,
+          "latest_version": "5.4.0",
+          "deprecated": "",
+          "pinned": "5.4.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@types/node",
+          "timestamp": "2026-10-29T16:45:16Z",
+          "error": null,
+          "latest_version": "26.6.6",
+          "deprecated": "",
+          "pinned": "22.19.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@vitejs/plugin-vue",
+          "timestamp": "2026-10-29T16:45:17Z",
+          "error": null,
+          "latest_version": "6.0.10",
+          "deprecated": "",
+          "pinned": "6.0.10",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/@vue/test-utils",
+          "timestamp": "2026-10-29T16:45:19Z",
+          "error": null,
+          "latest_version": "2.5.1",
+          "deprecated": "",
+          "pinned": "2.4.6",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/eslint",
+          "timestamp": "2026-10-29T16:45:20Z",
+          "error": null,
+          "latest_version": "10.13.0",
+          "deprecated": "",
+          "pinned": "9.39.5",
+          "pin_source": "package.json.ejs",
+          "comparison": "outdated"
+        },
+        {
+          "method": "npm-registry",
+          "source": "https://registry.npmjs.org/eslint-plugin-vue",
+          "timestamp": "2026-10-29T16:45:21Z",
+          "error": null,
+          "latest_version": "10.12.0",
+          "deprecated": "",
+          "pinned": "10.12.0",
+          "pin_source": "package.json.ejs",
+          "comparison": "current"
+        }
+      ],
+      "overall": "outdated",
+      "errors": [],
+      "upgrade_priority": 1
+    }
+  ],
+  "upgrade_queue": [
+    {
+      "id": "admin-dashboard-core",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "aspnet-base",
+      "installed": "1.0.6",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "braintree",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "core-js",
+      "installed": "1.0.1",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "express",
+      "installed": "1.0.3",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "fastapi-base",
+      "installed": "1.1.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "footer",
+      "installed": "1.0.1",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "laravel-base",
+      "installed": "1.0.3",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "mysql",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "navbar",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "paddle",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "postgres",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "prettier-eslint-config",
+      "installed": "2.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "prisma",
+      "installed": "1.0.1",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "railway-hosting",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "sqlite",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "sqlserver",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "stripe",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "swiper",
+      "installed": "1.0.0",
+      "priority": 2,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "firebase",
+      "installed": "1.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "mongodb",
+      "installed": "1.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": [
+        "gh api failed: gh: Not Found (HTTP 404)"
+      ]
+    },
+    {
+      "id": "nextjs-base",
+      "installed": "2.2.0",
+      "priority": 1,
+      "reasons": [
+        "outdated",
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "paypal",
+      "installed": "1.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "shadcn-ui",
+      "installed": "1.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": [
+        "unparseable github-releases url: https://github.com/shadcn-ui/ui/releases"
+      ]
+    },
+    {
+      "id": "supabase-client",
+      "installed": "2.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated",
+        "outdated"
+      ],
+      "errors": [
+        "unparseable github-releases url: https://github.com/supabase/supabase/releases"
+      ]
+    },
+    {
+      "id": "svelte-base",
+      "installed": "2.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated"
+      ],
+      "errors": []
+    },
+    {
+      "id": "vue-base",
+      "installed": "2.0.0",
+      "priority": 1,
+      "reasons": [
+        "outdated",
+        "outdated",
+        "outdated"
+      ],
+      "errors": []
+    }
+  ],
+  "rules": {
+    "failed_check_never_current": true,
+    "no_inference_from_sample": true,
+    "evidence_required_for_current": true
+  }
+}
