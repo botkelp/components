@@ -9,3 +9,11 @@
 5. PR CI runs `scripts/check_templates.py`, `scripts/check_version_bump.py`, then render+build for each base.
 
 Source comments belong in `.ts` / `.vue` / `.py` / `.cs`, not in machine-parsed files.
+
+## Freshness audit
+
+See [docs/FRESHNESS.md](docs/FRESHNESS.md). Run `python scripts/check_freshness.py` before proposing dependency pin upgrades.
+
+## Freshness audit
+
+See [docs/FRESHNESS.md](docs/FRESHNESS.md). Run `python scripts/check_freshness.py` before proposing dependency pin upgrades. Generated evidence lives in reports/ (gitignored for routine runs; a sample is committed with the introduction of the checker).
