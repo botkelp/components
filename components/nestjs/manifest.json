@@ -1,8 +1,8 @@
 {
   "id": "nestjs",
   "name": "NestJS Backend",
-  "version": "1.0.5",
-  "description": "NestJS backend project with TypeScript. Packages pinned to @nestjs/core@10.0.0 (verified 2026-09-06).",
+  "version": "2.0.0",
+  "description": "NestJS 12 backend project with TypeScript. Packages pinned to @nestjs/core@12.3.2 (ESM packages; CommonJS apps continue to work via Node require(esm)).",
   "requires": [],
   "conflictsWith": ["nextjs-base", "express", "django-base", "fastapi-base", "laravel-base", "aspnet-base"],
   "provides": ["backend"],
@@ -10,8 +10,24 @@
   "devDependencies": ["@nestjs/cli", "@nestjs/schematics", "@nestjs/testing", "@types/express", "@types/node", "typescript"],
   "envVariables": ["NODE_ENV", "PORT", "API_PREFIX", "APP_NAME"],
   "sources": [
-    {"type": "docs", "label": "NestJS official documentation", "url": "https://docs.nestjs.com/", "verifiedAt": "2026-09-06"},
-    {"type": "github-releases", "label": "nestjs/nest v10.0.0", "url": "https://github.com/nestjs/nest/releases/tag/v10.0.0", "verifiedAt": "2026-09-06"}
+    {
+      "type": "docs",
+      "label": "NestJS 11 to 12 migration guide (ESM packages, Node 20.19+/22.12+, nest upgrade)",
+      "url": "https://docs.nestjs.com/migration-guide",
+      "verifiedAt": "2026-10-28"
+    },
+    {
+      "type": "github-releases",
+      "label": "nestjs/nest v12.3.2",
+      "url": "https://github.com/nestjs/nest/releases/tag/v12.3.2",
+      "verifiedAt": "2026-10-28"
+    },
+    {
+      "type": "github-examples",
+      "label": "Official nest new defaults for v12 (CJS still supported)",
+      "url": "https://github.com/nestjs/nest/tree/v12.3.2",
+      "verifiedAt": "2026-10-28"
+    }
   ],
   "actions": [
     {"type": "create_file", "templatePath": "templates/package.json.ejs", "destination": "package.json"},
@@ -33,6 +49,6 @@
     {"type": "create_file", "templatePath": "templates/README.md.ejs", "destination": "README.md"},
     {"type": "create_file", "templatePath": "templates/github-workflows-ci.yml.ejs", "destination": ".github/workflows/ci.yml"}
   ],
-  "compatibility": { "node": ">=20" },
+  "compatibility": { "node": ">=20.19" },
   "status": "stable"
 }

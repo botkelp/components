@@ -1516,8 +1516,8 @@
   {
     "id": "nestjs",
     "name": "NestJS Backend",
-    "version": "1.0.5",
-    "description": "NestJS backend project with TypeScript. Provides a progressive Node.js framework for building efficient, scalable server-side applications. Packages pinned to @nestjs/core@10.0.0, @nestjs/common@10.0.0, @nestjs/platform-express@10.0.0 (verified 2026-09-06).",
+    "version": "2.0.0",
+    "description": "NestJS 12 backend project with TypeScript. Packages pinned to @nestjs/core@12.3.2 (ESM packages; CommonJS apps continue to work via Node require(esm)).",
     "requires": [],
     "provides": [
       "backend"
@@ -1620,7 +1620,7 @@
       }
     ],
     "compatibility": {
-      "node": ">=20"
+      "node": ">=20.19"
     },
     "status": "stable",
     "releases": [
@@ -1629,6 +1629,13 @@
         "status": "stable",
         "compatibility": {
           "node": ">=20"
+        }
+      },
+      {
+        "version": "2.0.0",
+        "status": "stable",
+        "compatibility": {
+          "node": ">=20.19"
         }
       }
     ]
