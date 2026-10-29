@@ -1,0 +1,128 @@
+name: Upgrade component (resolve + verify + PR)
+
+on:
+  workflow_dispatch:
+    inputs:
+      component:
+        description: "Component id (e.g. vue-base, nestjs, nextjs-base)"
+        required: true
+        type: string
+      bump_version:
+        description: "Bump component version (semver minor)"
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Resolve latest versions and update pins
+        id: resolve
+        run: |
+          python3 << 'PY'
+          import json, subprocess, re
+          from pathlib import Path
+
+          component = "${{ inputs.component }}"
+          pkg_path = Path(f"components/{component}/templates/package.json.ejs")
+          if not pkg_path.exists():
+              raise SystemExit(f"No package.json.ejs for {component}")
+
+          text = pkg_path.read_text()
+          # Extract exact version pins (simple "name": "x.y.z")
+          pins = re.findall(r'"([^"]+)":\s*"(\d+\.\d+\.\d+[^"]*)"', text)
+
+          updates = []
+          for name, old in pins:
+              # Skip project-level fields
+              if name in ("name", "version", "description"):
+                  continue
+              try:
+                  latest = subprocess.check_output(
+                      ["npm", "view", name, "version"], text=True, stderr=subprocess.DEVNULL
+                  ).strip()
+              except subprocess.CalledProcessError:
+                  print(f"skip {name} (not on npm)")
+                  continue
+              if latest != old:
+                  updates.append((name, old, latest))
+                  text = text.replace(f'"{name}": "{old}"', f'"{name}": "{latest}"', 1)
+                  print(f"{name}: {old} → {latest}")
+
+          if updates:
+              pkg_path.write_text(text)
+              Path("updates.json").write_text(json.dumps(updates))
+          else:
+              print("No version updates needed")
+              Path("updates.json").write_text("[]")
+          PY
+
+      - name: Render template
+        run: python scripts/render_base.py "${{ inputs.component }}" --out /tmp/rendered --project upgrade-app
+
+      - name: Local install + build (fail fast on bad pins)
+        working-directory: /tmp/rendered
+        run: |
+          if [ -f package.json ]; then
+            npm install --no-audit --no-fund
+            if npm run build --if-present; then
+              echo "build ok"
+            else
+              echo "build failed"
+              exit 1
+            fi
+          fi
+
+      - name: Commit and open PR
+        if: success()
+        run: |
+          python3 << 'PY'
+          import json, subprocess, os
+          from pathlib import Path
+
+          component = "${{ inputs.component }}"
+          updates = json.loads(Path("updates.json").read_text())
+          if not updates:
+              print("Nothing to commit")
+              exit(0)
+
+          branch = f"feat/auto-upgrade-{component}"
+          subprocess.run(["git", "config", "user.email", "aiscimi@gmail.com"], check=True)
+          subprocess.run(["git", "config", "user.name", "INTLEACHTRESEARCH"], check=True)
+          subprocess.run(["git", "checkout", "-B", branch], check=True)
+          subprocess.run(["git", "add", f"components/{component}/templates/package.json.ejs"], check=True)
+          msg = f"chore({component}): auto-upgrade pins to latest compatible versions\n\n" + "\n".join(
+              f"- {n}: {o} → {l}" for n, o, l in updates
+          )
+          subprocess.run(["git", "commit", "-m", msg], check=True)
+          subprocess.run(["git", "push", "-u", "origin", branch, "--force"], check=True)
+
+          body = "## Auto-upgrade\n\n" + "\n".join(f"- `{n}` {o} → **{l}**" for n, o, l in updates)
+          body += "\n\nVerified with local `npm install` + `npm run build` before opening this PR."
+          subprocess.run([
+              "gh", "pr", "create",
+              "--title", f"chore({component}): auto-upgrade dependency pins",
+              "--body", body,
+              "--base", "main",
+              "--head", branch
+          ], check=True)
+          print("PR created")
+          PY
