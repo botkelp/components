@@ -56,11 +56,6 @@
     },
     {
       "type": "create_file",
-      "templatePath": "templates/svelte.config.js.ejs",
-      "destination": "svelte.config.js"
-    },
-    {
-      "type": "create_file",
       "templatePath": "templates/vite.config.ts.ejs",
       "destination": "vite.config.ts"
     },
