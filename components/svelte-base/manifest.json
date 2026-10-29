@@ -1,8 +1,8 @@
 {
   "id": "svelte-base",
   "name": "SvelteKit Base",
-  "version": "1.0.5",
-  "description": "Minimal SvelteKit project with TypeScript. Provides a foundation for Svelte applications with file-based routing and server-side rendering. Packages pinned to svelte@5.0.0, @sveltejs/kit@2.0.0 (verified 2026-09-06).",
+  "version": "2.0.0",
+  "description": "Minimal SvelteKit 3 project with TypeScript. Packages pinned to @sveltejs/kit@3.1.0, svelte@5.57.3. Config now lives in vite.config.ts.",
   "requires": [],
   "conflictsWith": [
     "nextjs-base",
@@ -26,27 +26,21 @@
   "sources": [
     {
       "type": "docs",
-      "label": "SvelteKit official documentation",
-      "url": "https://kit.svelte.dev/docs/introduction",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "docs",
-      "label": "Svelte documentation",
-      "url": "https://svelte.dev/docs/introduction",
-      "verifiedAt": "2026-09-06"
+      "label": "Migrating to SvelteKit v3",
+      "url": "https://svelte.dev/docs/kit/migrating-to-sveltekit-3",
+      "verifiedAt": "2026-10-29"
     },
     {
       "type": "github-releases",
-      "label": "sveltejs/kit v2.0.0",
-      "url": "https://github.com/sveltejs/kit/releases/tag/svelte-kit-2.0.0",
-      "verifiedAt": "2026-09-06"
+      "label": "sveltejs/kit @sveltejs/kit@3.1.0",
+      "url": "https://github.com/sveltejs/kit/releases/tag/%40sveltejs%2Fkit%403.1.0",
+      "verifiedAt": "2026-10-29"
     },
     {
       "type": "github-examples",
-      "label": "Official SvelteKit starter template",
-      "url": "https://github.com/sveltejs/kit/tree/svelte-kit-2.0.0/sites/kit.svelte.dev",
-      "verifiedAt": "2026-09-06"
+      "label": "Official sv migrate sveltekit-3",
+      "url": "https://svelte.dev/docs/cli/sv-migrate",
+      "verifiedAt": "2026-10-29"
     }
   ],
   "actions": [
