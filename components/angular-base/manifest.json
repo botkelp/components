@@ -1,8 +1,8 @@
 {
   "id": "angular-base",
   "name": "Angular Base",
-  "version": "1.0.3",
-  "description": "Minimal Angular application with Angular CLI, TypeScript, and RxJS. Provides a foundation for Angular applications with component-based architecture. Packages pinned to @angular/core@18.0.0, @angular/cli@18.0.0 (verified 2026-09-06).",
+  "version": "2.0.0",
+  "description": "Minimal Angular 22 application with Angular CLI, TypeScript, and RxJS. Packages pinned to @angular/core@22.2.3, @angular/cli@22.2.5.",
   "requires": [],
   "conflictsWith": [
     "nextjs-base",
@@ -43,27 +43,21 @@
   "sources": [
     {
       "type": "docs",
-      "label": "Angular official documentation",
-      "url": "https://angular.dev/docs",
-      "verifiedAt": "2026-09-06"
-    },
-    {
-      "type": "docs",
-      "label": "Angular CLI documentation",
-      "url": "https://angular.dev/cli",
-      "verifiedAt": "2026-09-06"
+      "label": "Angular update guide (v18 to v22 path)",
+      "url": "https://angular.dev/update-guide",
+      "verifiedAt": "2026-10-29"
     },
     {
       "type": "github-releases",
-      "label": "angular/angular v18.0.0",
-      "url": "https://github.com/angular/angular/releases/tag/18.0.0",
-      "verifiedAt": "2026-09-06"
+      "label": "angular/angular v22.2.3",
+      "url": "https://github.com/angular/angular/releases/tag/v22.2.3",
+      "verifiedAt": "2026-10-29"
     },
     {
       "type": "github-examples",
-      "label": "Official Angular starter template",
-      "url": "https://github.com/angular/angular-cli/tree/v18.0.0/packages/angular/cli/lib/config/schema.json",
-      "verifiedAt": "2026-09-06"
+      "label": "Official Angular CLI v22.2.x",
+      "url": "https://github.com/angular/angular-cli/releases/tag/v22.2.5",
+      "verifiedAt": "2026-10-29"
     }
   ],
   "actions": [
@@ -194,7 +188,7 @@
     }
   ],
   "compatibility": {
-    "angular": ">=18 <19"
+    "angular": ">=22 <23"
   },
   "status": "stable"
 }
